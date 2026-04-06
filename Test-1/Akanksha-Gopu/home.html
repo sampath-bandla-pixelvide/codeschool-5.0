@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="m-4 px-4">
+      <nav
+        class="navbar navbar-expand-lg navbar fixed-top bg-white px-3 px-lg-5"
+      >
+        <div>
+          <a class="navbar-brand" href="#">
+            <img
+              src="https://startersites.io/blocksy/garderobe/wp-content/uploads/2021/12/logo-dark.svg"
+              class="w-50"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            style="margin-left: 150px"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav d-flex gap-4">
+            <li class="nav-item active">
+              <a class="nav-link fw-bold text-decoration-underline" href="#"
+                >HOME</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> SERVICES </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">NEWS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CONTACT</a>
+            </li>
+          </ul>
+
+          <!--<form class="form-inline my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>!-->
+
+          <div class="d-flex gap-4 ms-auto align-items-center">
+            <i class="bi bi-search"></i>
+            <button class="border-0 bg-white" id="login">
+              <i class="bi bi-person-circle"></i>
+            </button>
+            <button class="btn btn-danger" id="signin">Sign in</button>
+            <button class="btn btn-danger d-none" id="logout">logout</button>
+            <i class="bi bi-bag"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="">
+      <div
+        class="d-flex flex-column flex-lg-row p-3 p-lg-5 align-items-center justify-content-center text-center text-lg-start"
+        style="background-color: #d0d3d4"
+      >
+        <div>
+          <h1 style="font-size: 4em; font-weight: bold" class="mb-4 pt-4">
+            Brand New Collection
+          </h1>
+          <p class="mb-5">
+            Mauris vitae ultricies leo integer malesuada tempor orci dapibus
+            ultrices diam in arcu cursus euismod purus viverra accumsan.
+          </p>
+          <div class="d-flex gap-4 mb-5">
+            <div>
+              <svg
+                class="ugb-custom-icon"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 20 20"
+                style="enable-background: new 0 0 20 20"
+                xml:space="preserve"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <style type="text/css">
+                  .st0 {
+                    fill: #131117;
+                  }
+                </style>
+                <path
+                  id="check-mark-icon"
+                  class="st0"
+                  d="M9.8,13.3c-0.4,0.4-0.9,0.4-1.3,0L4.9,9.7c-0.3-0.4-0.3-0.9,0-1.3c0.3-0.3,0.9-0.3,1.2,0
+	l3,3l7.5-7.5C13.3,0.2,7.6,0,3.9,3.4S0,12.4,3.4,16.1s9.1,3.9,12.7,0.5c3.1-2.9,3.8-7.6,1.6-11.3L9.8,13.3z"
+                ></path>
+              </svg>
+              <span>Top Brands</span>
+            </div>
+            <div>
+              <svg
+                class="ugb-custom-icon"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 20 20"
+                style="enable-background: new 0 0 20 20"
+                xml:space="preserve"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <style type="text/css">
+                  .st0 {
+                    fill: #131117;
+                  }
+                </style>
+                <path
+                  id="check-mark-icon"
+                  class="st0"
+                  d="M9.8,13.3c-0.4,0.4-0.9,0.4-1.3,0L4.9,9.7c-0.3-0.4-0.3-0.9,0-1.3c0.3-0.3,0.9-0.3,1.2,0
+	l3,3l7.5-7.5C13.3,0.2,7.6,0,3.9,3.4S0,12.4,3.4,16.1s9.1,3.9,12.7,0.5c3.1-2.9,3.8-7.6,1.6-11.3L9.8,13.3z"
+                ></path>
+              </svg>
+              <span>High Quality</span>
+            </div>
+            <div>
+              <svg
+                class="ugb-custom-icon"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 20 20"
+                style="enable-background: new 0 0 20 20"
+                xml:space="preserve"
+                aria-hidden="true"
+                width="20"
+                height="20"
+              >
+                <style type="text/css">
+                  .st0 {
+                    fill: #131117;
+                  }
+                </style>
+                <path
+                  id="check-mark-icon"
+                  class="st0"
+                  d="M9.8,13.3c-0.4,0.4-0.9,0.4-1.3,0L4.9,9.7c-0.3-0.4-0.3-0.9,0-1.3c0.3-0.3,0.9-0.3,1.2,0
+	l3,3l7.5-7.5C13.3,0.2,7.6,0,3.9,3.4S0,12.4,3.4,16.1s9.1,3.9,12.7,0.5c3.1-2.9,3.8-7.6,1.6-11.3L9.8,13.3z"
+                ></path>
+              </svg>
+              <span>Free Delivery</span>
+            </div>
+          </div>
+          <button class="btn btn-danger btn-lg rounded-0">EXPLORE SHOP</button>
+        </div>
+        <div class="">
+          <img
+            src="https://startersites.io/blocksy/garderobe/wp-content/uploads/2021/12/home-hero-image_optimized.webp"
+            class="img-fluid mt-4 mt-lg-0"
+          />
+        </div>
+      </div>
+
+      <div
+        class="d-flex flex-column flex-lg-row gap-4 align-items-center justify-content-between text-center py-5 px-3 px-lg-5 bg-dark text-white"
+      >
+        <div
+          class="d-flex flex-column align-items-center justify-content-center"
+        >
+          <svg
+            class="ugb-custom-icon mb-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 55 55"
+            xml:space="preserve"
+            aria-hidden="true"
+            width="50"
+            height="50"
+            style="fill: white"
+          >
+            <path
+              d="M22.8 33.9H6c-1.4 0-2.5-1.2-2.5-2.6V14h43.3v7.6c0 .9.8 1.7 1.7 1.7 1 0 1.8-.7 1.8-1.7v-12c0-3.3-2.7-6.1-6-6.1H6c-3.3 0-6 2.8-6 6.1v21.7c0 3.3 2.7 6.1 6 6.1H22.9c1 0 1.7-.8 1.7-1.8s-.8-1.7-1.8-1.7zM6 7h38.3c1.4 0 2.5 1.2 2.5 2.6v.9H3.5v-.9C3.5 8.2 4.6 7 6 7zm.6 16c0-1 .8-1.8 1.8-1.8h4.7c1 0 1.8.7 1.8 1.7s-.7 1.8-1.7 1.8H8.4c-1 .1-1.8-.7-1.8-1.7zm0 5.9c0-1 .8-1.8 1.8-1.8h9.4c1 0 1.7.8 1.7 1.8 0 .9-.8 1.7-1.7 1.7H8.4c-1 0-1.8-.8-1.8-1.7zm34.9-4.3c-7.4 0-13.5 6-13.5 13.5 0 7.4 6 13.5 13.5 13.5C49 51.5 55 45.5 55 38c0-7.4-6-13.4-13.5-13.4zm0 24C35.7 48.6 31 43.8 31 38s4.7-10.5 10.5-10.5S52.1 32.2 52.1 38s-4.8 10.6-10.6 10.6zm5.2-14c.6.6.6 1.5 0 2.1l-5.5 5.5c-.3.3-.7.4-1 .4-.4 0-.8-.1-1-.4l-2.8-2.8c-.6-.6-.6-1.5 0-2.1.6-.6 1.5-.6 2.1 0l1.8 1.8 4.4-4.4c.5-.7 1.4-.7 2-.1z"
+            ></path>
+          </svg>
+          <h3>Secure payment</h3>
+          <p class="text-disabled">100% secure payment</p>
+        </div>
+        <div
+          class="d-flex flex-column align-items-center justify-content-center"
+        >
+          <svg
+            class="ugb-custom-icon mb-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 55 55"
+            xml:space="preserve"
+            aria-hidden="true"
+            width="50"
+            height="50"
+            style="fill: white"
+          >
+            <path
+              d="M54.8 24.5c-.1-.9-.9-1.5-1.8-1.4-.9.1-1.5.9-1.4 1.8 1.5 13.3-8.2 25.3-21.5 26.8-.9.1-1.8.1-2.7.1-7.5 0-14.6-3.4-19.3-9.3h3.2c.8-.1 1.4-.8 1.4-1.7 0-.8-.6-1.5-1.4-1.6H4.5c-.4 0-.9.1-1.2.4-.3.4-.5.8-.5 1.3v7.3s0 1.2 1.6 1.2c.7.2 1.4-.4 1.6-1.1v-3.4c7.3 8.9 19.3 12.3 30.3 8.7 12.2-4.1 19.9-16.2 18.5-29.1zm-54.6 6c.1.9.9 1.5 1.8 1.4.9-.1 1.5-.9 1.4-1.8C1.9 16.8 11.5 4.8 24.8 3.4c.9-.1 1.8-.1 2.7-.1 7.5 0 14.6 3.4 19.3 9.3h-3.2c-.8.1-1.4.8-1.4 1.7 0 .8.6 1.5 1.4 1.6h6.9c.4 0 .9-.1 1.2-.4.3-.4.5-.8.5-1.3V6.7s0-1.2-1.6-1.2c-.7-.1-1.4.5-1.6 1.2v3.4C41.7 1.3 29.7-2.2 18.8 1.4 6.5 5.5-1.2 17.6.2 30.5zm25.1-3 3.8 2.8c.2.2.3.5.1.8-.1.1-.3.2-.4.2h-1.2c-.3 0-.6-.2-.6-.6 0-.9-.7-1.6-1.6-1.6-.9 0-1.6.7-1.6 1.6 0 1.7 1.1 3.2 2.8 3.6v.1c0 .9.7 1.6 1.6 1.6.9 0 1.6-.7 1.6-1.6v-.1c1.6-.5 2.8-2 2.8-3.7 0-1.2-.6-2.3-1.5-3l-3.8-2.8c-.2-.2-.3-.5-.1-.8.1-.1.3-.2.4-.2h1.2c.3 0 .6.2.6.6 0 .9.7 1.6 1.6 1.6.9 0 1.6-.7 1.6-1.6 0-1.7-1.1-3.2-2.8-3.6v-.1c0-.9-.7-1.6-1.6-1.6-.9 0-1.6.7-1.6 1.6v.1c-2 .6-3.2 2.6-2.6 4.6.2.9.6 1.6 1.3 2.1zm2.9 13.8c7.5 0 13.6-6.1 13.6-13.6s-6.1-13.6-13.6-13.6-13.6 6.1-13.6 13.6 6.1 13.5 13.6 13.6zm0-24c5.7 0 10.4 4.7 10.4 10.4S33.9 38 28.2 38s-10.4-4.7-10.4-10.4 4.6-10.3 10.4-10.3z"
+            ></path>
+          </svg>
+          <h3>30 Days Return</h3>
+          <p class="text-disabled">If goods have problems</p>
+        </div>
+        <div
+          class="d-flex flex-column align-items-center justify-content-center"
+        >
+          <svg
+            class="ugb-custom-icon mb-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 55 55"
+            xml:space="preserve"
+            aria-hidden="true"
+            width="50"
+            height="50"
+            style="fill: white"
+          >
+            <path
+              d="M27.5 0C14.2 0 3.3 10.8 3.3 24.2v13.1c0 2.7 2.2 4.8 4.8 4.8H10c.9 2.5 3.6 3.8 6.2 2.9 1.9-.7 3.2-2.5 3.2-4.6v-13c0-2.7-2.2-4.8-4.8-4.8-2 0-3.9 1.3-4.6 3.2H8.1c-.5 0-1.1.1-1.6.3v-1.9c-.2-11.6 9-21.1 20.6-21.3 11.6-.2 21.1 9 21.3 20.6V26.1c-.5-.2-1.1-.3-1.6-.3h-1.9c-.9-2.5-3.6-3.8-6.2-2.9-1.9.7-3.2 2.5-3.2 4.6v13.1c0 2.7 2.2 4.8 4.8 4.8.5 0 .9-.1 1.4-.2-.6 2-2.5 3.4-4.6 3.4H32c-.9-2.5-3.7-3.8-6.2-2.9-2.5.9-3.8 3.7-2.9 6.2.9 2.5 3.7 3.8 6.2 2.9 1.4-.5 2.5-1.6 2.9-2.9h5.1c4.4 0 8.1-3.6 8.1-8.1v-1.6h1.6c2.7 0 4.8-2.2 4.8-4.8V24.2C51.7 10.8 40.8 0 27.5 0zM13 27.4c0-.9.8-1.6 1.7-1.6.9 0 1.5.7 1.6 1.6v13.1c0 .9-.8 1.6-1.7 1.6-.9 0-1.5-.7-1.6-1.6V27.4zM8.2 29h1.6v9.9H8.2c-.9 0-1.6-.7-1.6-1.6v-6.7c0-.9.7-1.6 1.6-1.6zm19.3 22.8c-.9 0-1.6-.7-1.6-1.6 0-.9.7-1.6 1.6-1.6.9 0 1.6.7 1.6 1.6 0 .9-.7 1.6-1.6 1.6zM42 40.5c0 .9-.8 1.6-1.7 1.6-.9 0-1.5-.7-1.6-1.6V27.4c0-.9.8-1.6 1.7-1.6.9 0 1.5.7 1.6 1.6v13.1zm6.4-3.2c0 .9-.7 1.6-1.6 1.6h-1.6V29h1.6c.9 0 1.6.7 1.6 1.6v6.7z"
+            ></path>
+          </svg>
+          <h3>24/7 Support</h3>
+          <p class="text-disabled">Dedicated support</p>
+        </div>
+        <div
+          class="d-flex flex-column align-items-center justify-content-center"
+        >
+          <svg
+            class="ugb-custom-icon mb-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 55 55"
+            xml:space="preserve"
+            aria-hidden="true"
+            width="50"
+            height="50"
+            style="fill: white"
+          >
+            <path
+              d="m32.8 13.5 3.8 2.8c.2.2.3.5.1.8-.1.1-.3.2-.4.2h-1.2c-.3 0-.6-.2-.6-.6 0-.9-.7-1.6-1.6-1.6-.9 0-1.6.7-1.6 1.6 0 1.7 1.1 3.2 2.8 3.6v.1c0 .9.7 1.6 1.6 1.6.9 0 1.6-.7 1.6-1.6v-.1c1.6-.5 2.8-2 2.8-3.7 0-1.2-.6-2.3-1.5-3l-3.8-2.8c-.2-.2-.3-.5-.1-.8.1-.1.3-.2.4-.2h1.2c.3 0 .6.2.6.6 0 .9.7 1.6 1.6 1.6.9 0 1.6-.7 1.6-1.6 0-1.7-1.1-3.2-2.8-3.6 0-.9-.7-1.6-1.6-1.6-.9 0-1.6.7-1.6 1.6v.1c-2 .6-3.2 2.6-2.6 4.6.1.8.6 1.5 1.3 2zm2.9 13.7c7.5 0 13.6-6.1 13.6-13.6S43.2 0 35.6 0C28.1 0 22 6.1 22 13.6c.1 7.5 6.1 13.6 13.7 13.6zm0-24C41.4 3.2 46 7.9 46 13.6S41.4 24 35.6 24c-5.7 0-10.4-4.7-10.4-10.4.1-5.7 4.7-10.4 10.5-10.4zm18.2 27.7c-1.7-2.2-4.9-2.7-7.2-1.1l-6.1 4.1c-.9-1.6-2.6-2.7-4.5-2.7h-4.4c-4.8-4.5-12.4-4.3-16.9.5-.7.8-1.3 1.6-1.8 2.5l-.8.5-.2-.6c-.3-.8-1.2-1.3-2-1l-8.9 3c-.8.3-1.3 1.2-1 2l5.4 15.7c.3.8 1.2 1.3 2 1l8.9-3c.8-.3 1.3-1.2 1-2v-.1l14.1-.4c3.8 0 7.5-1.2 10.7-3.4l10.6-7.6c2.4-1.7 2.9-5 1.2-7.3l-.1-.1zM8 51.3 3.7 38.7l5.8-2 4.3 12.7L8 51.3zm42.9-15.6-10.6 7.6c-2.6 1.8-5.7 2.8-8.8 2.8l-15.1.5-3-8.7 1.8-1.1c.3-.2.5-.4.6-.7 2.1-4.3 7.4-6.1 11.7-4 .9.5 1.8 1.1 2.5 1.8.3.3.7.5 1.2.5h5c1 0 1.8.8 1.8 1.8s-.8 1.8-1.8 1.8h-9.1c-.9 0-1.6.7-1.6 1.6 0 .9.7 1.6 1.6 1.6h9.1c2.3 0 4.4-1.6 4.9-3.9l7.5-5c.9-.6 2.2-.4 2.8.5.6 1 .4 2.3-.5 2.9z"
+            ></path>
+          </svg>
+          <h3>Free Delivery</h3>
+          <p class="text-disabled">For all order over 80$</p>
+        </div>
+      </div>
+
+      <div class="m-4">
+        <div id="products" class="row g-4"></div>
+      </div>
+    </div>
+
+    <footer class="" style="margin: 80px">
+      <div
+        class="d-flex flex-column flex-lg-row align-items-center justify-content-between"
+      >
+        <div>
+          <h4>About Us</h4>
+          <span class=""> Mauris vitae ultricies leo integer malesuada. </span>
+          <p>
+            Odio tempor orci dapibus ultrices in. Egestas diam in arcu cursus
+            euismod.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt.
+          </p>
+        </div>
+        <div class="">
+          <h4>Account</h4>
+          <ul class="list-unstyled ms-0">
+            <li>My Account</li>
+            <li>My Wishlist</li>
+            <li>My Cart</li>
+            <li>Sign in</li>
+            <li>Check out</li>
+          </ul>
+        </div>
+        <div class="ms-4">
+          <h4>Shipping</h4>
+          <ul class="list-unstyled ms-0">
+            <li>New Products</li>
+            <li>Best Sellers</li>
+            <li>Manufacturers</li>
+            <li>Suppliers</li>
+            <li>Specials</li>
+          </ul>
+        </div>
+        <div class="ms-4">
+          <h4>Contact Us</h4>
+          <span>Phone: (+63) 555 1212</span>
+          <p>Fax: (+63) 555 0100</p>
+
+          <span>New York</span>
+          <p>96th Street, NY 10129</p>
+        </div>
+      </div>
+      <div>
+        <div class="mt-5 text-center">
+          <img
+            src="https://startersites.io/blocksy/garderobe/wp-content/uploads/2021/12/logo-dark.svg"
+            class=""
+            style="width: 200px"
+          />
+        </div>
+        <div>
+          <p class="text-center mt-5">
+            Copyright © 2026 - WordPress Theme by CreativeThemes
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+
+    <script src="home.js"></script>
+  </body>
+</html>

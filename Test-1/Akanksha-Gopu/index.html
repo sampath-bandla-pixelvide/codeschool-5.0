@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      $(document).ready(function () {
+        $("#btn-click").click(function (e) {
+          e.preventDefault();
+
+          let user = $("#user").val();
+          let password = $("#password").val();
+
+          let isUserValid = validate(user, 3, 12, "#usermsg");
+          let isPassValid = validate(password, 3, 12, "#passmsg");
+
+          if (isUserValid && isPassValid) {
+            getData(user, password);
+          }
+        });
+      });
+
+      function validate(value, min, max, msgSelector) {
+        let message = $(msgSelector);
+        message.text("");
+
+        if (value.length <= min) {
+          message.text(`Should have more than ${min} characters`);
+          return false;
+        } else if (value.length > max) {
+          message.text(`Should have less than ${max} characters`);
+          return false;
+        }
+
+        return true;
+      }
+
+      function getData(user, password) {
+        $.ajax({
+          url: "https://dummyjson.com/auth/login",
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({
+            username: user,
+            password: password,
+            expiresInMins: 30,
+          }),
+
+          success: function (data) {
+            console.log(data);
+            //alert("Login Successful...");
+
+            localStorage.getItem("accessToken");
+            localStorage.getItem("user");
+
+            if (localStorage.getItem("accessToken")) {
+              Swal.fire({
+                title: "Login Success!",
+                text: "Go To Home page!",
+                icon: "success",
+                confirmButtonText: "OK",
+              }).then(() => {
+                localStorage.setItem("accessToken", "user_logged_in");
+                window.location.replace("home.html");
+              });
+            }
+          },
+
+          error: function (err) {
+            //$("#passmsg").text("Invalid credentials");
+            Swal.fire({
+              title: "Error!",
+              text: "Invalid credentials",
+              icon: "error",
+            });
+          },
+        });
+      }
+    </script>
+
+    <title>Login Page</title>
+
+    <style>
+      body {
+        height: 100vh;
+      }
+
+      .login-container {
+        height: 100vh;
+      }
+
+      .login-img img {
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      class="container-fluid d-flex align-items-center justify-content-center"
+    >
+      <div
+        class="card rounded-4"
+        style="width: 800px; height: 600px; margin-top: 60px"
+      >
+        <div class="row login-container">
+          <div
+            class="col-md-6 d-flex justify-content-center align-items-center"
+          >
+            <div class="p-4">
+              <h2 class="mb-3 text-center">Login</h2>
+
+              <form>
+                <div class="mb-3">
+                  <label for="user" class="form-label fs-5">Username</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="user"
+                    placeholder="Enter your name"
+                  />
+                  <div id="usermsg" class="text-danger mt-2"></div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label fs-5">Password</label>
+                  <input
+                    type="password"
+                    class="form-control form-control-lg"
+                    id="password"
+                    placeholder="Enter password"
+                  />
+                  <div id="passmsg" class="text-danger mt-2"></div>
+                </div>
+
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg w-100"
+                  id="btn-click"
+                >
+                  Login
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-md-6 d-none d-md-block login-img">
+            <img
+              src="https://img.freepik.com/premium-photo/background-shopping_931878-80075.jpg"
+              class="w-100 rounded-end-4"
+              alt="login image"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
