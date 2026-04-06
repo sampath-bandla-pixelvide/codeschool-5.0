@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <script
+      src="https://code.jquery.com/jquery-4.0.0.js"
+      integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body class="vh-100 bg-secondary bg-opacity-10">
+    <div class="container-fluid vh-100">
+      <div class="row h-100">
+        <div class="col col-lg-3 col-sm-4 col-md-3 d-flex flex-column ps-3 ">
+          <div class="logo d-flex pt-3 justify-content-between pe-3">
+            <div>
+              <i class="bi bi-ui-checks-grid"></i>
+              <span>Untitled UI</span>
+            </div>
+            <div>
+              <p>v4.0</p>
+            </div>
+          </div>
+
+          <div class="general d-flex flex-column gap-1">
+            <h6 class="text-secondary">General</h6>
+            <div class="general-menu fs-6">
+              <ul class="general-list list-unstyled d-flex flex-column gap-2 fs-6">
+                <li>
+                  <i class="bi bi-clipboard-data"></i>
+                  <span> Dashboard </span>
+                </li>
+                <li>
+                  <i class="bi bi-crosshair"></i>
+                  <span> Appearance </span>
+                </li>
+                <li>
+                  <i class="bi bi-database"></i>
+                  <span> Database </span>
+                </li>
+                <li>
+                  <i class="bi bi-gear-wide-connected"></i>
+                  <span> Connections </span>
+                </li>
+                <li>
+                  <i class="bi bi-clock-history"></i>
+                  <span> Timezones </span>
+                </li>
+                <li>
+                  <i class="bi bi-app-indicator"></i>
+                  <span> Notification </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sisyphus-ventures">
+            <h6 class="text-secondary">SYSYPHUS VENTURES</h6>
+            <div class="general-menu fs-6">
+              <ul class="general-list list-unstyled d-flex flex-column gap-2 fs-6">
+                <li>
+                  <i class="bi bi-person-check-fill"></i>
+                  <span> User Management </span>
+
+                </li>
+                <li>
+                  <i class="bi bi-key-fill"></i>
+                  <span> Security & access </span>
+                </li>
+                <li>
+                  <i class="bi bi-shield-check"></i>
+                  <span> Authentication </span>
+                </li>
+                <li>
+                  <i class="bi bi-credit-card"></i>
+                  <span> Payments </span>
+                </li>
+                <li>
+                  <i class="bi bi-cloud-arrow-down"></i>
+                  <span> Import data </span>
+                </li>
+                <li>
+                  <i class="bi bi-cloud-arrow-up"></i>
+                  <span> Export data </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="settings-menu pt-3">
+            <div class="settings-list">
+              <ul class="general-list list-unstyled d-flex flex-column">
+                <li>
+                  <i class="bi bi-gear"></i>
+                  <span> Settings </span>
+                </li>
+                <li>
+                  <i class="bi bi-files"></i>
+                  <span> Documentation </span>
+                </li>
+                <li>
+                  <i class="bi bi-file-earmark-ruled"></i>
+                  <span> Open in browser </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col col-lg-9 col-sm-8 col-md-9 border rounded rounded-top-3 my-3 bg-white"
+        >
+          <div
+            class="logout pt-4 gap-1 d-flex align-items-center justify-content-between"
+          >
+            <div class="pages">
+              <i class="bi bi-app"></i>
+              <i class="bi bi-chevron-right"></i>
+              <span>sisyphus-ventures</span>
+              <i class="bi bi-chevron-right"></i>
+              <span>User Management</span>
+            </div>
+            <div class="logout-btn d-flex align-items-center gap-2">
+              <i class="bi bi-person-circle fs-3"></i>
+              <button type="button" class="btn btn-secondary btn-sm" id="logout">
+                Logout
+              </button>
+            </div>
+          </div>
+          <div class="usermanagement d-flex flex-column gap-0 mt-4">
+            <p class="fs-5 fw-bold m-0">User Management</p>
+            <p
+              >Manage your team members and their account permissions
+              here.</p>
+          </div>
+          <div class="user-content mt-4">
+            <div
+              class="searchbar d-flex align-items-center justify-content-between"
+            >
+              <div class="d-flex gap-1">
+                <p><b>All users</b><p class="text-secondary">44</p></p>
+              </div>
+              <div class="d-flex gap-3">
+                <div class="search-area border p-1 rounded">
+                  <i class="bi bi-search "></i>
+                  <input type="text" placeholder="search" class="border-0" style="outline: none;" id="searchUser"/>
+                </div>
+                <div
+                  class="filters border rounded d-flex align-items-center p-1"
+                >
+                  <i class="bi bi-filter"></i>
+                  <span>Filter</span>
+                </div>
+                <div
+                  class="adduser text-white bg-black d-flex align-items-center p-1 rounded"
+                >
+                  <i class="bi bi-plus"></i>
+                  <span>Adduser</span>
+                </div>
+              </div>
+            </div>
+            <div class="user-profiles" id="userProfiles">
+              <div class="container mt-4">
+                <div class="d-flex justify-content-between px-3">
+                  <div class="d-flex gap-2"><i class="bi bi-app"></i>
+                    <span>user Name</span>
+                </div>
+                
+                  <div class="text-center" style="width:170px;"><p>Access</p></div>
+                  <div class="d-flex gap-2" style="margin-right: 100px;"> <span>Last active</span><span>Date added</span></div>
+                </div>
+
+                <div id="userList" class="mt-3"></div>
+
+                <div class="d-flex justify-content-center mt-4">
+                  <ul class="pagination" id="pagination"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/authorization.js"></script>
+    <script src="./scripts/dashboard.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-4.0.0.js"
+      integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+      crossorigin="anonymous"
+    ></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  </head>
+  <body class="vh-100 d-flex align-items-center " style="background-image: url(./images/backgroundimage.png); background-repeat: none; background-size: cover;" >
+    <div
+      class="container d-flex flex-column align-items-center justify-content-center bg-white w-50 bg-opacity-50 rounded pb-3"
+    >
+      <h2 class="text-black">Register</h2>
+      <div class="form-floating mb-3 w-50">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">Email address</label>
+        <small class="text-danger" id="emailError"></small>
+      </div>
+      <div class="form-floating mb-3 w-50">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+        />
+        <label for="floatingPassword">Password</label>
+        <small class="text-danger" id="passwordError"></small>
+      </div>
+      <div class="form-floating mb-3 w-50">
+        <input
+          type="tel"
+          class="form-control"
+          id="PhoneNumber"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">Phone Number</label>
+        <small class="text-danger" id="phoneNumberError"></small>
+      </div>
+      <div class="form-floating mb-3 w-50">
+        <input
+          type="date"
+          class="form-control"
+          id="DateofBirth"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">Date of Birth</label>
+        <small class="text-danger" id="dateofBirthError"></small>
+      </div>
+      <div class="form-floating mb-3 w-50">
+        <input
+          type="text"
+          class="form-control"
+          id="panNumber"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">Pan Number</label>
+        <small class="text-danger" id="panError"></small>
+      </div>
+      <div class="d-flex gap-5 ">
+        <button type="submit" class="btn btn-primary px-5" id="register">
+          Register
+        </button>
+      </div>
+      <br />
+      <a href="./login.html">Already a user Login Directly</a>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./scripts/registration.js"></script>
+</html>
