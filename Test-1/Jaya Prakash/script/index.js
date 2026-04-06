@@ -89,5 +89,5 @@ function iterateDiv(article) {
   card.append(cardImg, cardBody);
 
   parentDiv.append(card);
-  parentUnderBanner.append(card);
+  // parentUnderBanner.append(card);
 }
