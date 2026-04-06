@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css3?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Pacifico&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.container-left {
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  width: 50%;
+  height: 100vh;
+  background-image: url("https://wallpaperaccess.com/full/2917213.jpg");
+}
+
+.container-right {
+  background: white;
+  margin-left: 50%;
+  padding: 25px;
+  border-radius: 10px;
+  width: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #43cea2;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #185a9d;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #14487a;
+}
+
+@media (max-width: 426px) {
+
+  .container-left {
+    display: none;   
+  }
+
+  .container-right {
+    width: 100%;
+    margin-left: 0; 
+  }
+}
