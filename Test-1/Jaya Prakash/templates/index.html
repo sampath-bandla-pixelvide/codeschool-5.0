@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid border mx-0 w-100 bg-white px-5 py-3 rounded">
+      <header>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a href="" class="navbar-brand text-danger fs-3 px-3 hover-pointer"
+              >Buletin</a
+            >
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarText"
+              aria-controls="navbarText"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Stories</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Creator</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Community</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Subscribe</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Stories</a
+                  >
+                </li>
+              </ul>
+              <div id="unAuthUser">
+                <ul class="navbar-nav">
+                  <li
+                    class="nav-link hover-pointer border-end border-1"
+                    id="logInBtn"
+                  >
+                    Login
+                  </li>
+
+                  <li class="nav-link hover-pointer" id="registerBtn">
+                    Register
+                  </li>
+                </ul>
+              </div>
+              <div id="AuthUser" class="d-none">
+                <ul class="navbar-nav">
+                  <li id="logOutBtn" class="nav-link hover-pointer">Logout</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main class="d-flex flex-column gap-3">
+        <div class="container bg-light text-center py-4 rounded-4">
+          <h5 class="text-muted">WELCOME TO BULETIN</h5>
+          <h2>
+            Craft narrctive ✍️ that ignite
+            <span class="text-danger">inspiration</span> 💡,
+          </h2>
+          <h2>
+            <span class="text-danger">knowledge</span> 📕, and
+            <span class="text-danger">entertainment</span> 🎬
+          </h2>
+        </div>
+        <div class="row justify-content-evenly">
+          <div class="col-lg-4">
+            <img
+              src="../assects/jw.jpg"
+              alt="jwimg"
+              class="img-fluid rounded-4 mt-4"
+            />
+          </div>
+          <div class="col-lg-6 p-4">
+            <div class="d-flex gap-2">
+              <img
+                src="../assects/netflix.jpg"
+                alt="netflix"
+                class="rounded-circle"
+                height="30"
+                width="30"
+              />
+              <p class="pt-1">Netflix · 12 minutes ago</p>
+            </div>
+            <p class="fw-bolder" style="font-size: 3rem">
+              Where to watch 'John Wick: Chapter 4'
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+              beatae rem, blanditiis quod est quisquam in quas itaque porro
+              tempora maiores explicabo deserunt laborum obcaecati commodi, odit
+              at delectus recusandae.
+            </p>
+            <p class="text-danger">
+              Movie <span class="text-dark"> · 4 min read</span>
+            </p>
+          </div>
+        </div>
+        <div class="container-fluid d-flex px-4 align-items-baseline">
+          <div>
+            <h2>Latest News</h2>
+          </div>
+          <div class="ms-auto"><span class="text-danger">See all -></span></div>
+        </div>
+
+        <div
+          class="conatiner-fluid d-flex px-3 gap-1 flex-wrap"
+          id="parentDiv"
+        ></div>
+        <div class="container-fluid d-flex px-4 align-items-baseline">
+          <div>
+            <h2>Buletin Story</h2>
+          </div>
+          <div class="ms-auto"><span class="text-danger">See all -></span></div>
+        </div>
+        <div
+          class="conatiner d-flex px-3 gap-1 justify-content-evenly flex-wrap"
+        >
+          <div>
+            <div
+              class="p-1 border border-3 rounded-circle"
+              style="border-color: orangered !important; width: fit-content"
+            >
+              <img
+                src="../assects/bbc.jpg"
+                alt="bbc"
+                class="rounded-circle"
+                height="80"
+              />
+            </div>
+            <h5>BBC NEWS</h5>
+          </div>
+          <div>
+            <div
+              class="p-1 border border-3 rounded-circle"
+              style="border-color: orangered !important; width: fit-content"
+            >
+              <img
+                src="../assects/bbc.jpg"
+                alt="bbc"
+                class="rounded-circle"
+                height="80"
+              />
+            </div>
+            <h5>BBC NEWS</h5>
+          </div>
+          <div>
+            <div
+              class="p-1 border border-3 rounded-circle"
+              style="border-color: orangered !important; width: fit-content"
+            >
+              <img
+                src="../assects/bbc.jpg"
+                alt="bbc"
+                class="rounded-circle"
+                height="80"
+              />
+            </div>
+            <h5>BBC NEWS</h5>
+          </div>
+          <div>
+            <div
+              class="p-1 border border-3 rounded-circle"
+              style="border-color: orangered !important; width: fit-content"
+            >
+              <img
+                src="../assects/bbc.jpg"
+                alt="bbc"
+                class="rounded-circle"
+                height="80"
+              />
+            </div>
+            <h5>BBC NEWS</h5>
+          </div>
+          <div>
+            <div
+              class="p-1 border border-3 rounded-circle"
+              style="border-color: orangered !important; width: fit-content"
+            >
+              <img
+                src="../assects/bbc.jpg"
+                alt="bbc"
+                class="rounded-circle"
+                height="80"
+              />
+            </div>
+            <h5>BBC NEWS</h5>
+          </div>
+          <div>
+            <div
+              class="p-1 border border-3 rounded-circle"
+              style="border-color: orangered !important; width: fit-content"
+            >
+              <img
+                src="../assects/bbc.jpg"
+                alt="bbc"
+                class="rounded-circle"
+                height="80"
+              />
+            </div>
+            <h5>BBC NEWS</h5>
+          </div>
+        </div>
+
+        <div class="container-fluid d-flex px-4 align-items-baseline">
+          <div>
+            <h2>Editor's Pick</h2>
+          </div>
+          <div class="ms-auto"><span class="text-danger">See all -></span></div>
+        </div>
+        <div class="row py-4 mt-2">
+          <div class="col">
+            <div class="card text-bg-dark border-0 rounded-4 overflow-hidden">
+              <img
+                src="../assects/iphone-banner.jpg"
+                class="card-img"
+                height="400"
+                alt="iphone"
+                style="object-fit: cover"
+              />
+
+              <div
+                class="card-img-overlay d-flex flex-column justify-content-end bg-dark bg-opacity-50 rounded-4"
+              >
+              <div class="d-flex gap-2">
+              <img
+                src="../assects/netflix.jpg"
+                alt="netflix"
+                class="rounded-circle"
+                height="30"
+                width="30"
+              />
+              <p class="pt-1">Mac Roumeus · 5 hours ago</p>
+            </div>
+                <h5 class="card-title">
+                  All the rumors about the iPhone 15, expected in 2023
+                </h5>
+
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Similique at dolorem et nam
+                  tempora, reiciendis architecto, rerum modi praesentium fuga,
+                  eius quidem rem sed unde quae laudantium. Quam, delectus
+                  reprehenderit!
+                </p>
+
+                <p class="card-text">
+                  <small>Last updated 3 mins ago</small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="conatiner-fluid d-flex px-3 gap-1 flex-wrap"
+          id="parentDivUnderbanner"
+        ></div>
+        <div class="container-fluid d-flex px-4 align-items-baseline">
+          <div>
+            <h2>Top Creators</h2>
+          </div>
+          <div class="ms-auto"><span class="text-danger">See all -></span></div>
+        </div>
+        <div class="row d-flex px-3 gap-1 flex-wrap">
+          <div class="col d-flex align-items-center gap-2">
+            <img
+              src="../assects/profile.jpg"
+              alt="pfp"
+              class="rounded-circle"
+              height="100"
+            />
+            <div>
+              <h4>Alex Young</h4>
+              <span class="text-danger">BBC News</span>
+            </div>
+          </div>
+          <div class="col d-flex align-items-center gap-2">
+            <img
+              src="../assects/profile.jpg"
+              alt="pfp"
+              class="rounded-circle"
+              height="100"
+            />
+            <div>
+              <h4>Alex Young</h4>
+              <span class="text-danger">BBC News</span>
+            </div>
+          </div>
+          <div class="col d-flex align-items-center gap-2">
+            <img
+              src="../assects/profile.jpg"
+              alt="pfp"
+              class="rounded-circle"
+              height="100"
+            />
+            <div>
+              <h4>Alex Young</h4>
+              <span class="text-danger">BBC News</span>
+            </div>
+          </div>
+          <div class="col d-flex align-items-center gap-2">
+            <img
+              src="../assects/profile.jpg"
+              alt="pfp"
+              class="rounded-circle"
+              height="100"
+            />
+            <div>
+              <h4>Alex Young</h4>
+              <span class="text-danger">BBC News</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row bg-light text-center py-4 mt-2 rounded-4">
+          <div class="col-lg-6 px-5 py-4">
+            <h5 class="text-muted">GET FIRST UPDATE</h5>
+            <h3 class="px-5">
+              Get the news in front line by
+              <span class="text-danger">subscribe</span> out latest updates
+            </h3>
+          </div>
+          <div
+            class="col-lg-6 d-flex align-items-center justify-content-center"
+          >
+            <div class="d-flex gap-4" style="width: 100%">
+              <input
+                type="text"
+                placeholder="your mail"
+                class="form-control"
+              /><button class="btn btn-danger">subscribe</button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <h3 class="text-danger fw-bold">Buletin</h3>
+              <p>
+                Craft narratives that ignite inspiration,<br />
+                knowledge, and entertainment.
+              </p>
+
+              <div class="d-flex gap-3">
+                <i class="bi bi-facebook text-danger"></i>
+                <i class="bi bi-linkedin text-danger"></i>
+                <i class="bi bi-twitter text-danger"></i>
+                <i class="bi bi-instagram text-danger"></i>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-3">
+                  <h6 class="fw-bold">Business</h6>
+                  <ul class="list-unstyled">
+                    <li>Startup</li>
+                    <li>Employee</li>
+                    <li>Success</li>
+                    <li>Videos</li>
+                    <li>Markets</li>
+                  </ul>
+                </div>
+
+                <div class="col-md-3">
+                  <h6 class="fw-bold">Technology</h6>
+                  <ul class="list-unstyled">
+                    <li>Innovate</li>
+                    <li>Gadget</li>
+                    <li>Innovative Cities</li>
+                    <li>Upstarts</li>
+                    <li>Future Tech</li>
+                  </ul>
+                </div>
+
+                <div class="col-md-3">
+                  <h6 class="fw-bold">Travel</h6>
+                  <ul class="list-unstyled">
+                    <li>Destinations</li>
+                    <li>Food & Drink</li>
+                    <li>Stay</li>
+                    <li>News</li>
+                    <li>Videos</li>
+                  </ul>
+                </div>
+
+                <div class="col-md-3">
+                  <h6 class="fw-bold">Sports</h6>
+                  <ul class="list-unstyled">
+                    <li>Football</li>
+                    <li>Tennis</li>
+                    <li>Golf</li>
+                    <li>Motosports</li>
+                    <li>Esports</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-md-3">
+                  <h6 class="fw-bold">Entertainment</h6>
+                  <ul class="list-unstyled">
+                    <li>Movies</li>
+                    <li>Artist</li>
+                    <li>Television</li>
+                    <li>Influencer</li>
+                    <li>Viral</li>
+                  </ul>
+                </div>
+
+                <div class="col-md-3">
+                  <h6 class="fw-bold">Features</h6>
+                  <ul class="list-unstyled">
+                    <li>As Equals</li>
+                    <li>Call to Earth</li>
+                    <li>Freedom Project</li>
+                    <li>Inside Asia</li>
+                    <li>2 Degrees</li>
+                  </ul>
+                </div>
+
+                <div class="col-md-3">
+                  <h6 class="fw-bold">Weather</h6>
+                  <ul class="list-unstyled">
+                    <li>Climate</li>
+                    <li>Storm Tracker</li>
+                    <li>Wildfire Tracker</li>
+                    <li>Earthquake</li>
+                    <li>Video</li>
+                  </ul>
+                </div>
+
+                <div class="col-md-3">
+                  <h6 class="fw-bold">More</h6>
+                  <ul class="list-unstyled">
+                    <li>Design</li>
+                    <li>Mentorship</li>
+                    <li>Investment</li>
+                    <li>Work for Buletin</li>
+                    <li>Support Us</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="mt-4">Copyright © 2023 Buletin.</p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../script/index.js"></script>
+  </body>
+</html>
