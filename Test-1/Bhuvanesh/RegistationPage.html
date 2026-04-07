@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="./styles/registor.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body class="vh-100">
+    <div class="container-fluid vh-100">
+      <div class="row justify-content-center align-items-center vh-100 sidebg">
+        <div
+          class="col-6 border algin-items-center p-5 rounded-4 shadow-lg bg-light"
+        >
+          <div>
+            <p class="display-5 fw-bold">SignUp</p>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="UsernameInput" />
+              <label for="floatingInput">Username</label>
+            </div>
+            <p class="d-none text-danger mb-1" id="Username"></p>
+
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="EmailInput"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Email address</label>
+            </div>
+            <p class="d-none text-danger mb-1" id="Email"></p>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="PanInput" />
+              <label for="floatingInput">PANcard Number</label>
+            </div>
+            <p class="d-none text-danger mb-1" id="PanNo"></p>
+            <div class="form-floating mb-3">
+        <input
+          type="date"
+          class="form-control"
+          id="DateofBirth"
+        />
+        <label for="floatingInput">Date of Birth</label></div>
+        <p class="d-none text-danger mb-1" id="dobError"></p>
+
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="Password"
+                placeholder="Password"
+              />
+              <label for="floatingPassword">Password</label>
+            </div>
+            <p class="d-none text-danger mb-1" id="Password"></p>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                placeholder="Password"
+              />
+              <label for="floatingPassword">Confirm Password</label>
+            </div>
+            <p class="d-none text-danger mb-1" id="confirm"></p>
+            <div class="d-flex justify-content-center w-100 mb-3">
+              <button
+                type="submit" 
+                class="btn btn-primary w-50"
+                id="registerBtn"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <p>or</p>
+            <a href="./Login.html" class="ms-2"
+              ><span><b>Login</b></span></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./scripts/RegistationPage.js"></script>
+  </body>
+</html>

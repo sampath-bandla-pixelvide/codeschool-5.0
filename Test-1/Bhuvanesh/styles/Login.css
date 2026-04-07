@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-position:center;
+  background-size: cover;
+}
+
+.mainContentRow{
+  flex-grow: 1;
+}
+.emptyCol{
+background-image: url(./images/sunrise.png);
+object-fit:cover;
+background-position: center;
+background-size:cover;
+background-repeat: no-repeat;
+}
