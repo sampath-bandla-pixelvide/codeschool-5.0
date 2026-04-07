@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css3?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Pacifico&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.input-container {
+  width: 45%;
+  border: 1px solid rgba(0, 0, 0, 0.208);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.input-container:hover {
+  box-shadow: 5px 4px 25px rgba(100, 187, 227, 0.75);
+}
+
+input {
+  outline: none;
+  background: none;
+}
+
+header {
+  background-color: rgba(235, 230, 230, 0.216);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#superDelicious,
+#curatedCollections,
+#latestRecipes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h3 {
+  font-family: "Bree Serif";
+}
+
+.inbox {
+  background-color: pink;
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+li:hover {
+  color: orange !important;
+}
+
+.join-btn {
+  background-color: orange;
+  font-weight: bold;
+}
+
+.card,
+.recipe-card {
+  width: 100%;
+  max-width: 320px;
+}
+
+@media (max-width: 992px) {
+  .input-container {
+    width: 70%;
+  }
+
+  header {
+    justify-content: center;
+  }
+
+  .popular-categories {
+    flex-wrap: wrap;
+  }
+
+  .popular-categories > div {
+    width: 45%;
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-container {
+    width: 100%;
+  }
+
+  .popular-categories {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popular-categories > div {
+    width: 100%;
+  }
+
+  ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .inbox h1 {
+    font-size: 22px;
+  }
+
+  .inbox h3 {
+    font-size: 16px;
+  }
+
+  footer .d-flex {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  footer .mx-5 {
+    margin: 0 !important;
+  }
+
+  footer .gap-5 {
+    flex-direction: column;
+    gap: 20px !important;
+  }
+  .media-icons{
+    flex-direction: row;
+  }
+  .media-icons>i{
+    padding:10px;
+  }
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        .top-div{
+            outline:none;
+            background-color:whitesmoke
+        }
+        #seeAllBtn{
+           border:none;
+           background-color: white;
+        }
+        .input-sec{
+          border: none;
+        
+        }
+    
+
+
+
+    </style>
+    
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand fw-bold text-danger" href="#">Buletin</a>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
+        <li class="nav-item"><a class="nav-link" href="#">Stories</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Creator</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Subscribe</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-3">
+        <i class="bi bi-file-earmark-easel-fill"></i>
+        <span>Write</span>
+        <i class="bi bi-bell"></i>
+      <button id="authBtn" class="btn btn-outline-dark btn-sm bg-danger text-white"></button>
+      </div>
+
+    </div>
+
+  </div>
+</nav>
+<main class="p-5">
+   <div class="top-div text-center p-4 rounded-3">
+     <p class="text-secondary">WELCOME TO BULETIN</p>
+     <h3 class="fs-5 fw-bold">Craft Narratives ✍️ that ignite <span class="text-danger">inspiration</span> 💡,<br><span class="text-danger">Knowledge</span> 📕,<span class="text-danger">Entertainment</span>🎬 </h3>
+    </div>
+
+    <section class="mt-5 d-flex gap-5 p-5">
+        <img src="./Images/div_image.png" alt="" style="height:300px;width:500px;border-radius:4px">
+        <div>
+            <span class="text-secondary">Netflix . 12 minutes ago</span>
+            <h1 class="fw-bold">Where To Watch `John <br>Wick:Chapter 4' </h1>
+            <p class="text-secondary">There's been no official announcement reagrding John Wick :Chapter 4's streaming relaese .However given it's a Lionsgate film,John Wick:Chapter 4 eventually released on Starz,..  </p>
+            <div>
+                <p class="text-secondary"><span class="text-danger">Movies </span>.4 min read </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container my-4">
+        <div class="d-flex justify-content-between">
+          <h3 class="mb-4">Latest News</h3>
+          <button id="seeAllBtn" class="text-danger fw-bold">See All-></button>
+        </div>
+        <div class="row" id="newsContainer"></div>
+    </section>
+    <div class="">
+           <h3>Editors pic</h3>
+           <img src="./Images/editorspic.png" class="mt-2 rounded-4 width-100" alt="">
+    </div>
+   <div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h3>Business</h3>
+    
+  </div>
+
+  <div class="row" id="businessContainer"></div>
+</div>
+    <div class="top-div mt-4 p-5 rounded-3 d-flex justify-content-between">
+     <div>
+         <p class="text-secondary fs-small" style="letter-spacing:3px">GET FIRST UPDATE</p>
+         <p class="fs-5 fw-bold">Get the news infront line by <br><span class="text-danger">subscribe</span> ✍️Our latest updates</p>
+     </div>
+     <div>
+       <input type="email" class="input-sec bg-white p-2 text-black fw-bold rounded-3" placeholder="Your email">
+       <button class="input-sec bg-danger p-2 text-white fw-bold rounded-3">Subscribe</button>
+     </div>
+    </div>
+
+  <footer class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h3 class="text-danger fw-bold">Buletin</h3>
+        <p>
+          Craft narratives that ignite inspiration,<br>
+          knowledge, and entertainment.
+        </p>
+
+        <div class="d-flex gap-3">
+          <i class="bi bi-facebook text-danger"></i>
+          <i class="bi bi-linkedin text-danger"></i>
+          <i class="bi bi-twitter text-danger"></i>
+          <i class="bi bi-instagram text-danger"></i>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-3">
+            <h6 class="fw-bold">Business</h6>
+            <ul class="list-unstyled">
+              <li>Startup</li>
+              <li>Employee</li>
+              <li>Success</li>
+              <li>Videos</li>
+              <li>Markets</li>
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+            <h6 class="fw-bold">Technology</h6>
+            <ul class="list-unstyled">
+              <li>Innovate</li>
+              <li>Gadget</li>
+              <li>Innovative Cities</li>
+              <li>Upstarts</li>
+              <li>Future Tech</li>
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+            <h6 class="fw-bold">Travel</h6>
+            <ul class="list-unstyled">
+              <li>Destinations</li>
+              <li>Food & Drink</li>
+              <li>Stay</li>
+              <li>News</li>
+              <li>Videos</li>
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+            <h6 class="fw-bold">Sports</h6>
+            <ul class="list-unstyled">
+              <li>Football</li>
+              <li>Tennis</li>
+              <li>Golf</li>
+              <li>Motosports</li>
+              <li>Esports</li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="row mt-4">
+
+          <div class="col-md-3">
+            <h6 class="fw-bold">Entertainment</h6>
+            <ul class="list-unstyled">
+              <li>Movies</li>
+              <li>Artist</li>
+              <li>Television</li>
+              <li>Influencer</li>
+              <li>Viral</li>
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+            <h6 class="fw-bold">Features</h6>
+            <ul class="list-unstyled">
+              <li>As Equals</li>
+              <li>Call to Earth</li>
+              <li>Freedom Project</li>
+              <li>Inside Asia</li>
+              <li>2 Degrees</li>
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+            <h6 class="fw-bold">Weather</h6>
+            <ul class="list-unstyled">
+              <li>Climate</li>
+              <li>Storm Tracker</li>
+              <li>Wildfire Tracker</li>
+              <li>Earthquake</li>
+              <li>Video</li>
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+            <h6 class="fw-bold">More</h6>
+            <ul class="list-unstyled">
+              <li>Design</li>
+              <li>Mentorship</li>
+              <li>Investment</li>
+              <li>Work for Buletin</li>
+              <li>Support Us</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <p class="mt-4">Copyright © 2023 Buletin.</p>
+
+  </div>
+</footer>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./dashboard.js"></script>
+
+</html>
