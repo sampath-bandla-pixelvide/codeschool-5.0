@@ -9,36 +9,26 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <title>Register</title>
   </head>
-  <body
-    class="min-vh-100 d-flex flex-column align-items-center justify-content-center px-5"
-  >
-    <div class="row border rounded-4 my-4" style="min-height: 80vh">
-      <div
-        class="col-4 bg-light d-md-flex flex-column justify-content-center align-items-center rounded-4 d-none"
-      >
-        <h3 class="text-danger mb-4">Buletin</h3>
-        <h5>WELCOME TO BULETIN</h5>
-        <h4 class="text-center">
-          Craft narrctive ✍️ that ignite
-          <span class="text-danger">inspiration</span> 💡,
-          <span class="text-danger">knowledge</span> 📕, and
-          <span class="text-danger">entertainment</span> 🎬
-        </h4>
-      </div>
-      <div class="col py-4 mt-5">
-        <h2 class="text-center text-dark">Login</h2>
-        <span
-          id="invalidCreds"
-          class="text-center text-danger d-none fw-bold fs-5"
-          >Invalid Credentials</span
+   <body
+    class="min-vh-100 d-flex flex-column align-items-center justify-content-center"
+    id="logInBgImg">
+    <div class="row border w-100 bg-toRight-gradient" style="min-height: 100vh;">
+      <div class="col-6 d-block d-none d-md-flex"></div>
+      <div class="col-12 col-md-6 py-4 d-flex justify-content-center align-items-center">
+        <div
+          class="w-100 w-md-75 d-flex flex-column gap-3 p-4 p-md-5 rounded-4 shadow border bg-low-opacity"
+          id="loginDiv"
+          style="max-width: 400px;"
         >
-        <form
-          class="container d-flex flex-column justify-content-center align-items-center w-100 w-lg-75 mt-5"
-        >
-          <div class="d-flex flex-column gap-4 w-100">
+            <h2 class="text-center text-dark">Login</h2>
+            <span
+              id="invalidCreds"
+              class="text-center text-danger d-none fw-bold fs-5"
+              >Invalid Credentials</span
+            >
             <div class="form-floating">
               <input
                 type="text"
@@ -46,7 +36,6 @@
                 class="form-control"
                 id="userName"
                 placeholder="User Name"
-                required
               />
               <label for="userName">User Name</label>
               <span id="userNameError" class="text-danger d-none"
@@ -60,17 +49,14 @@
                 class="form-control"
                 id="password"
                 placeholder="Password"
-                required
               />
               <label for="password" class="text-center">Password</label>
               <span id="passwordError" class="text-danger d-none"
                 >Invalid Password!!!</span
               >
             </div>
-
             <div class="d-flex justify-content-evenly mb-3">
               <button
-                onclick="auth()"
                 class="btn btn-primary w-100 py-2"
                 id="loginBtn"
               >
@@ -80,31 +66,14 @@
                   role="status"
                   id="spinner"
                 >
-                  <span class="visually-hidden">Loading...</span>
                 </div>
               </button>
             </div>
           </div>
-          <hr />
-          <p class="text-center">
-            New User?<a href="./register.html">Register</a>
-          </p>
-        </form>
-      </div>
+        </div>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-      crossorigin="anonymous"
-    ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script src="../script/script.js"></script>
-  </body>
+</body>
 </html>
