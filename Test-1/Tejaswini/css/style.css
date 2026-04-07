@@ -1,0 +1,27 @@
+body {
+  background: #f8f9fa;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+
+h1 {
+  letter-spacing: -1px;
+}
+.news-card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+
+
+.news-card h5 {
+  font-size: 14px;
+}
+
+.news-card p {
+  font-size: 11px;
+  color: #ddd;
+}

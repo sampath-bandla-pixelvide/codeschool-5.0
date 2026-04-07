@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Enjooy</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- navbar-->
+    <nav class="navbar navbar-expand-lg bg-light px-4 shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">enjooy</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+          <div class="ms-auto" id="authBtn">
+            <a href="#" id="signinBtn" class="btn btn-light me-2">Sign in</a>
+            <a href="#" id="registerBtn" class="btn btn-primary">Register</a>
+            <a href="#" id="logoutBtn" class="btn btn-danger d-none">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container text-center py-5">
+      <span class="badge bg-light text-dark text-muted mt-4 mb-3">Blog</span>
+      <h1 class="fw-bold">Discover our latest news</h1>
+      <p class="text-muted">
+        Discover the achievements that set usapart. From groundbreaking projects
+        to industry accolades, we take pride in our accomplishments.
+      </p>
+
+      <div class="d-flex justify-content-center mt-4">
+        <input
+          type="text"
+          class="form-control w-50 me-1"
+          placeholder="Search news..."
+        />
+        <button class="btn btn-primary">Find Now</button>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h4 class="fw-bold mb-4 ">Whiteboards are remarkable.</h4>
+      <div class="row">
+        <div class="col-lg-8">
+          <h4 class="fw-bold mb-4">Latest News</h4>
+          <div class="row" id="newsContainer"></div>
+          <div class="text-center mt-4"></div>
+        </div>
+
+        <!-- right -->
+        <div class="col-lg-4">
+          <h5 class="fw-bold mb-3">Featured</h5>
+          <div id="featuredNews"></div>
+
+          <div class="card p-3 mt-4 shadow-sm">
+            <h6 class="fw-bold">Subscribe</h6>
+            <p class="text-muted small">Get latest updates directly</p>
+            <input
+              type="email"
+              class="form-control mb-2"
+              placeholder="Enter email"
+            />
+            <button class="btn btn-primary w-100">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-outline-primary" id="loadMoreBtn">
+        Load More
+      </button>
+    </div>
+<hr class="mt-4" />
+    <footer class="text-center p-4 bg-light mt-5">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-12 col-md-6 col-lg-3">
+            <h5 class="fw-bold">∞ enjoy</h5>
+            <p class="text-muted small">
+              Enjoy Design, the comprehensive design system solution that
+              revolutionizes the way you create digital experiences.
+            </p>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2">
+            <h6 class="fw-semibold">Company</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Project Protection</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">FAQs</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <h6 class="fw-semibold">Help</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Getting Started</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">Feedback</a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Referral Program</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Network Status</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">FAQ</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <h6 class="fw-semibold">Email</h6>
+            <div class="input-group mb-3">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Input Placeholder"
+              />
+              <button class="btn btn-primary">Subscribe</button>
+            </div>
+
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-outline-secondary btn-sm"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="#" class="btn btn-outline-secondary btn-sm"
+                ><i class="bi bi-twitter"></i
+              ></a>
+              <a href="#" class="btn btn-outline-secondary btn-sm"
+                ><i class="bi bi-linkedin"></i
+              ></a>
+              <a href="#" class="btn btn-outline-secondary btn-sm"
+                ><i class="bi bi-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="mt-4" />
+      </div>
+      <p>© 2026 Enjooy. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
