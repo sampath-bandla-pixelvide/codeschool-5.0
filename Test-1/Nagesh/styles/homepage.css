@@ -1,0 +1,132 @@
+:root {
+  --primary-blue: #2d68f8;
+  --light-blue: #ebf2ff;
+  --text-dark: #1a1a1a;
+  --text-muted: #666;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #fdfdfd;
+  color: var(--text-dark);
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.icons {
+  padding: 30px;
+}
+
+@media (min-width: 992px) {
+  .icons {
+    margin-right: 600px !important;
+  }
+}
+@media (max-width: 991px) {
+  .collapse-menu {
+    display: none !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .collapse-menu ul {
+    flex-direction: column !important;
+  }
+
+  /* optional: center menu */
+  .icons {
+    margin-right: 0 !important;
+  }
+}
+
+.show-menu {
+  display: block !important;
+}
+
+/* other styles */
+.search-container input {
+  margin-left: 100px !important;
+  border-radius: 10px;
+}
+
+button {
+  text-decoration: none !important;
+}
+
+footer {
+  background-color: white;
+  padding: 80px 0 30px;
+  border-top: 1px solid #eee;
+}
+
+.footer-logo-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+.footer-heading {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.subscribe-group .form-control {
+  border-radius: 10px 0 0 10px;
+  height: 50px;
+  background: #f9f9f9;
+}
+
+.btn-subscribe {
+  border-radius: 0 10px 10px 0;
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 0 25px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+}
+
+.copyright {
+  border-top: 1px solid #eee;
+  margin-top: 50px;
+  padding-top: 25px;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.85rem;
+}
