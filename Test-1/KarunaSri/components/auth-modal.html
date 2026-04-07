@@ -1,0 +1,89 @@
+<!-- register modal -->
+<div class="modal fade" id="registerModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-white text-dark rounded-3">
+      <div class="modal-header">
+        <h5 class="fw-semibold">Register</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="registerForm">
+          <div class="mb-3">
+            <input class="form-control" id="reg-name" placeholder="Full Name" />
+            <div class="error-msg text-danger small mt-1" id="error-reg-name"></div>
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control" id="reg-email" placeholder="Email" />
+            <div class="error-msg text-danger small mt-1" id="error-reg-email"></div>
+          </div>
+
+          <div class="mb-3">
+            <input
+              class="form-control"
+              id="reg-password"
+              type="password"
+              placeholder="Password"
+            />
+            <div class="error-msg text-danger small mt-1" id="error-reg-password"></div>
+          </div>
+
+          <div class="mb-3">
+            <input
+              class="form-control"
+              id="reg-mobile"
+              placeholder="Mobile Number"
+            />
+            <div class="error-msg text-danger small mt-1" id="error-reg-mobile"></div>
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control" id="reg-pan" placeholder="PAN Number" />
+            <div class="error-msg text-danger small mt-1" id="error-reg-pan"></div>
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control" id="reg-dob" type="date" />
+            <div class="error-msg text-danger small mt-1" id="error-reg-dob"></div>
+          </div>
+
+          <button class="btn btn-primary w-100">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- login modal -->
+<div class="modal fade" id="loginModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-white text-dark rounded-3">
+      <div class="modal-header">
+        <h5 class="fw-semibold">Login</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="mb-3">
+            <input class="form-control" id="username" placeholder="Username" />
+            <div class="usernameError text-danger small mt-1"></div>
+          </div>
+
+          <div class="mb-3">
+            <input
+              class="form-control"
+              id="password"
+              type="password"
+              placeholder="Password"
+            />
+            <div class="passwordError text-danger small mt-1"></div>
+          </div>
+
+          <button class="btn btn-info w-100 text-white">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

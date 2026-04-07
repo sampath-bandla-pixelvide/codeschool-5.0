@@ -1,0 +1,83 @@
+.navbar .navbar-nav .nav-item .nav-link {
+  font-size: 14px;
+  margin-right: 10px;
+  color: gray;
+}
+.navbar .navbar-nav .nav-item:last-child {
+  margin-right: 30px;
+}
+.navbar-toggler {
+  border: none;
+  padding: none;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-nav .nav-item .nav-link:hover {
+  color: #e97e3d;
+}
+.carousel-content1 {
+  top: 120px;
+  left: 100px;
+}
+
+.btn-ctc {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.carousel-content {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.carousel-item.active .carousel-content {
+  animation: textAnimation 0.8s ease forwards;
+}
+.hero-imgs {
+  overflow: hidden;
+}
+.hero-imgs:hover img {
+  transform: scale(1.05);
+  transition: 0.5s ease-in-out;
+}
+.hero-imgs:hover .overlay {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease;
+}
+
+.trending-product:hover .trending-overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease;
+}
+
+.title-border {
+  margin: auto;
+  border-bottom: 2px solid black;
+  width: 25%;
+}
+
+.footer {
+  background-color: #222222;
+}
+
+@keyframes textAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
