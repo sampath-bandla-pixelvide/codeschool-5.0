@@ -1,0 +1,1259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garderobe</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Josefin Sans", sans-serif;
+      }
+      .nav-link {
+        letter-spacing: 0.1em;
+      }
+      .nav-link.active {
+        border-bottom: 2px solid red;
+      }
+      .category-card:hover .category-info,
+      .category-card.touched .category-info {
+        background-color: #e53935 !important;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <nav
+      class="navbar navbar-expand-lg border-bottom fixed-top"
+      style="background-color: #f8f6f1"
+    >
+      <div class="container-fluid px-4">
+        <a
+          class="navbar-brand fw-bold fs-4 text-dark text-decoration-none"
+          href="#"
+        >
+          <img src="../images/logo.svg" alt="logo" width="140" height="40" />
+        </a>
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="mainNav"
+        >
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item">
+              <a class="nav-link active fw-semibold text-dark" href="#">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold text-secondary" href="#"
+                >PRODUCTS</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold text-secondary" href="#"
+                >SERVICES</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold text-secondary" href="#"
+                >ABOUT US</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold text-secondary" href="#">NEWS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold text-secondary" href="#"
+                >CONTACT</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="d-none d-lg-flex align-items-center gap-3">
+          <p class="text-dark fs-5 btn"><i class="bi bi-search"></i></p>
+          <p class="text-dark fs-5 btn" id="userIcon">
+            <i class="bi bi-person"></i>
+          </p>
+          <p class="text-dark fs-5 btn"><i class="bi bi-bag"></i></p>
+        </div>
+      </div>
+    </nav>
+    <div class="modal fade" id="loginModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Login</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input
+                  id="userName"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter username"
+                />
+                <div id="userError" class="text-danger small"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter password"
+                />
+                <div id="passError" class="text-danger small"></div>
+              </div>
+            </form>
+            <p class="text-center mt-3">
+              New user?
+              <button
+                class="btn btn-link p-0"
+                data-bs-toggle="modal"
+                data-bs-target="#registerModal"
+                data-bs-dismiss="modal"
+              >
+                Register
+              </button>
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button id="login" class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Register</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input
+                  id="firstName"
+                  type="text"
+                  class="form-control"
+                  placeholder="First name"
+                />
+                <div id="firstError" class="text-danger small"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input
+                  id="lastName"
+                  type="text"
+                  class="form-control"
+                  placeholder="Last name"
+                />
+                <div id="lastError" class="text-danger small"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">DOB</label>
+                <input id="dob" type="date" class="form-control" />
+                <div id="dobError" class="text-danger small"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter email"
+                />
+                <div id="emailError" class="text-danger small"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Number</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  class="form-control"
+                  placeholder="Enter number"
+                />
+                <div id="phoneError" class="text-danger small"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">PAN</label>
+                <input
+                  id="pan"
+                  type="text"
+                  class="form-control"
+                  placeholder="PAN Number"
+                />
+                <div id="panError" class="text-danger small"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input
+                  id="username"
+                  type="text"
+                  class="form-control"
+                  placeholder="Choose username"
+                />
+                <div id="userError" class="text-danger small"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input
+                  id="regPassword"
+                  type="password"
+                  class="form-control"
+                  placeholder="Create password"
+                />
+                <div id="passError" class="text-danger small"></div>
+              </div>
+            </form>
+
+            <p class="text-center mt-3">
+              Already have an account?
+              <button
+                class="btn btn-link p-0"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+                data-bs-dismiss="modal"
+              >
+                Login
+              </button>
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button id="register" class="btn btn-success">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="userDropdown"
+      class="position-absolute bg-white shadow p-3 rounded mt-2"
+      style="right: 20px; top: 70px; display: none; width: 240px"
+    >
+      <p id="displayName" class="fw-bold mb-1"></p>
+      <p id="displayEmail" class="text-muted small"></p>
+      <button id="logoutBtn" class="btn btn-danger btn-sm w-100 mt-2">
+        Logout
+      </button>
+    </div>
+    <main class="text-center mt-5">
+      <div class="container-fluid px-0">
+        <div
+          class="row g-0 align-items-center"
+          style="background-color: #e8e8e8; min-height: 420px"
+        >
+          <div
+            class="col-12 col-md-6 px-4 px-md-5 py-5 text-center text-md-start"
+          >
+            <h1 class="fw-bold mb-3" style="font-size: 3rem; line-height: 1.15">
+              Brand New <br />
+              Collection
+            </h1>
+
+            <p class="text-muted mb-4 d-none d-md-block">
+              Mauris vitae ultricies leo integer malesuada tempor orci dapibus
+              ultrices diam in arcu cursus euismod purus viverra accumsan.
+            </p>
+
+            <p class="text-muted mb-4 d-block d-md-none">
+              Mauris vitae ultricies leo integer malesuada tempor orci dapibus
+              ultrices diam in arcu cursus euismod purus viverra accumsan.
+            </p>
+
+            <div class="d-none d-md-flex gap-4 mb-4">
+              <span
+                ><i class="bi bi-check-circle-fill text-dark me-1"></i> Top
+                Brands</span
+              >
+              <span
+                ><i class="bi bi-check-circle-fill text-dark me-1"></i> High
+                Quality</span
+              >
+              <span
+                ><i class="bi bi-check-circle-fill text-dark me-1"></i> Free
+                Delivery</span
+              >
+            </div>
+
+            <a
+              href="#"
+              class="btn text-white fw-bold px-4 py-2 text-uppercase"
+              style="background-color: #e53935; letter-spacing: 0.1em"
+            >
+              Explore Shop
+            </a>
+          </div>
+
+          <div class="col-12 col-md-6 px-0" style="min-height: 420px">
+            <img
+              src="../images/tshirt.webp"
+              alt="Brand New Collection"
+              class="w-100 h-100 d-none d-lg-block"
+              style="
+                object-fit: cover;
+                object-position: center top;
+                min-height: 420px;
+              "
+            />
+
+            <img
+              src="../images/tshirtmb.webp"
+              alt="Brand New Collection"
+              class="w-100 d-lg-none"
+              style="
+                /* height: 500px; */
+                object-fit: cover;
+                object-position: center top;
+              "
+            />
+          </div>
+        </div>
+      </div>
+      <div class="bg-dark text-white py-5">
+        <div class="container">
+          <div class="row text-center gy-4">
+            <div class="col-12 col-lg-3">
+              <i class="bi bi-credit-card-2-front fs-1 mb-3 d-block"></i>
+              <h6 class="fw-bold font-monospace">Secure Payment</h6>
+              <p class="text-secondary small mb-0">100% secure payment</p>
+            </div>
+
+            <div class="col-12 col-lg-3">
+              <i class="bi bi-arrow-repeat fs-1 mb-3 d-block"></i>
+              <h6 class="fw-bold font-monospace">30 Days Return</h6>
+              <p class="text-secondary small mb-0">If goods have problems</p>
+            </div>
+
+            <div class="col-12 col-lg-3">
+              <i class="bi bi-headset fs-1 mb-3 d-block"></i>
+              <h6 class="fw-bold font-monospace">24/7 Support</h6>
+              <p class="text-secondary small mb-0">Dedicated support</p>
+            </div>
+
+            <div class="col-12 col-lg-3">
+              <i class="bi bi-truck fs-1 mb-3 d-block"></i>
+              <h6 class="fw-bold font-monospace">Free Delivery</h6>
+              <p class="text-secondary small mb-0">For all order over 80$</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container py-5">
+        <h6 class="text-muted mb-1 text-start">Check out latest products</h6>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="fw-bold font-monospace mb-0">New Arrivals</h2>
+          <a
+            href="#"
+            class="btn btn-outline-dark text-uppercase small fw-semibold px-3 py-2"
+            >View All</a
+          >
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-lg-3">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img
+                  src="../images/cap.webp"
+                  class="card-img-top img-fluid"
+                  alt="Snapback Cap"
+                />
+                <span
+                  class="badge bg-danger position-absolute top-0 start-0 m-2"
+                  >SALE</span
+                >
+              </div>
+              <div class="card-body px-0 text-center text-lg-start">
+                <h6 class="fw-bold font-monospace">Snapback Cap</h6>
+                <p class="mb-1">
+                  <span class="fw-semibold">$30.00</span>
+                  <span
+                    class="text-muted text-decoration-line-through ms-1 small"
+                    >$45.00</span
+                  >
+                </p>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+                <p class="text-muted text-uppercase small mb-3">Accessories</p>
+                <a href="#" class="btn btn-danger text-white fw-semibold px-4"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img
+                  src="../images/shoes.webp"
+                  class="card-img-top img-fluid"
+                  alt="Gray Shoes"
+                />
+              </div>
+              <div class="card-body px-0 text-center text-lg-start">
+                <h6 class="fw-bold font-monospace">Gray Shoes</h6>
+                <p class="mb-1">
+                  <span class="fw-semibold">$50.00</span>
+                </p>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+                <p class="text-muted text-uppercase small mb-3">Sneakers</p>
+                <a href="#" class="btn btn-danger text-white fw-semibold px-4"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img
+                  src="../images/t-shirt.webp"
+                  class="card-img-top img-fluid"
+                  alt="Black T-shirt"
+                />
+                <span
+                  class="badge bg-danger position-absolute top-0 start-0 m-2"
+                  >SALE</span
+                >
+              </div>
+              <div class="card-body px-0 text-center text-lg-start">
+                <h6 class="fw-bold font-monospace">Black T-shirt</h6>
+                <p class="mb-1">
+                  <span class="fw-semibold">$50.00</span>
+                  <span
+                    class="text-muted text-decoration-line-through ms-1 small"
+                    >$80.00</span
+                  >
+                </p>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <p class="text-muted text-uppercase small mb-3">T-Shirts</p>
+                <a href="#" class="btn btn-danger text-white fw-semibold px-4"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img
+                  src="../images/glass.webp"
+                  class="card-img-top img-fluid"
+                  alt="Retro Sunglasses"
+                />
+                <span
+                  class="badge bg-danger position-absolute top-0 start-0 m-2"
+                  >SALE</span
+                >
+              </div>
+              <div class="card-body px-0 text-center text-lg-start">
+                <h6 class="fw-bold font-monospace">Retro Sunglasses</h6>
+                <p class="mb-1">
+                  <span class="fw-semibold">$55.00</span>
+                  <span
+                    class="text-muted text-decoration-line-through ms-1 small"
+                    >$60.00</span
+                  >
+                </p>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+                <p class="text-muted text-uppercase small mb-3">Accessories</p>
+                <a href="#" class="btn btn-danger text-white fw-semibold px-4"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="py-5" style="background-color: #0d0d0d">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-12 col-md-4">
+              <a href="#" class="text-decoration-none category-card">
+                <div
+                  class="card border-0 rounded-0"
+                  style="background-color: #0d0d0d"
+                >
+                  <img
+                    src="../images/jacket.webp"
+                    class="card-img-top rounded-0"
+                    alt="Jackets"
+                    style="height: 320px; object-fit: cover"
+                  />
+                  <div
+                    class="card-body px-3 py-3 category-info"
+                    style="
+                      background-color: #1a1a1a;
+                      transition: background-color 0.3s;
+                    "
+                  >
+                    <p class="text-white-50 small mb-1">461 articles</p>
+                    <h5 class="fw-bold text-white font-monospace mb-0">
+                      Jackets
+                    </h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-md-4">
+              <a href="#" class="text-decoration-none category-card">
+                <div
+                  class="card border-0 rounded-0"
+                  style="background-color: #0d0d0d"
+                >
+                  <img
+                    src="../images/women.webp"
+                    class="card-img-top rounded-0"
+                    alt="Sweaters"
+                    style="height: 320px; object-fit: cover"
+                  />
+                  <div
+                    class="card-body px-3 py-3 category-info"
+                    style="
+                      background-color: #1a1a1a;
+                      transition: background-color 0.3s;
+                    "
+                  >
+                    <p class="text-white-50 small mb-1">289 articles</p>
+                    <h5 class="fw-bold text-white font-monospace mb-0">
+                      Sweaters
+                    </h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-md-4">
+              <a href="#" class="text-decoration-none category-card">
+                <div
+                  class="card border-0 rounded-0"
+                  style="background-color: #0d0d0d"
+                >
+                  <img
+                    src="../images/acess.webp"
+                    class="card-img-top rounded-0"
+                    alt="Accessories"
+                    style="height: 320px; object-fit: cover"
+                  />
+                  <div
+                    class="card-body px-3 py-3 category-info"
+                    style="
+                      background-color: #1a1a1a;
+                      transition: background-color 0.3s;
+                    "
+                  >
+                    <p class="text-white-50 small mb-1">345 articles</p>
+                    <h5 class="fw-bold text-white font-monospace mb-0">
+                      Accessories
+                    </h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container py-5">
+        <div class="text-center mb-5">
+          <h6 class="text-muted mb-1">Check out popular products</h6>
+          <h2 class="fw-bold font-monospace mb-0">Popular Products</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-lg-3">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img
+                  src="../images/cap.webp"
+                  class="card-img-top img-fluid"
+                  alt="Snapback Cap"
+                />
+                <span
+                  class="badge bg-danger position-absolute top-0 start-0 m-2"
+                  >SALE</span
+                >
+              </div>
+              <div class="card-body px-0 text-center text-lg-start">
+                <h6 class="fw-bold font-monospace">Snapback Cap</h6>
+                <p class="mb-1">
+                  <span class="fw-semibold">$30.00</span>
+                  <span
+                    class="text-muted text-decoration-line-through ms-1 small"
+                    >$45.00</span
+                  >
+                </p>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+                <p class="text-muted text-uppercase small mb-3">Accessories</p>
+                <a href="#" class="btn btn-danger text-white fw-semibold px-4"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img
+                  src="../images/shoes.webp"
+                  class="card-img-top img-fluid"
+                  alt="Gray Shoes"
+                />
+              </div>
+              <div class="card-body px-0 text-center text-lg-start">
+                <h6 class="fw-bold font-monospace">Gray Shoes</h6>
+                <p class="mb-1">
+                  <span class="fw-semibold">$50.00</span>
+                </p>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+                <p class="text-muted text-uppercase small mb-3">Sneakers</p>
+                <a href="#" class="btn btn-danger text-white fw-semibold px-4"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img
+                  src="../images/t-shirt.webp"
+                  class="card-img-top img-fluid"
+                  alt="Black T-shirt"
+                />
+                <span
+                  class="badge bg-danger position-absolute top-0 start-0 m-2"
+                  >SALE</span
+                >
+              </div>
+              <div class="card-body px-0 text-center text-lg-start">
+                <h6 class="fw-bold font-monospace">Black T-shirt</h6>
+                <p class="mb-1">
+                  <span class="fw-semibold">$50.00</span>
+                  <span
+                    class="text-muted text-decoration-line-through ms-1 small"
+                    >$80.00</span
+                  >
+                </p>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <p class="text-muted text-uppercase small mb-3">T-Shirts</p>
+                <a href="#" class="btn btn-danger text-white fw-semibold px-4"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img
+                  src="../images/glass.webp"
+                  class="card-img-top img-fluid"
+                  alt="Retro Sunglasses"
+                />
+                <span
+                  class="badge bg-danger position-absolute top-0 start-0 m-2"
+                  >SALE</span
+                >
+              </div>
+              <div class="card-body px-0 text-center text-lg-start">
+                <h6 class="fw-bold font-monospace">Retro Sunglasses</h6>
+                <p class="mb-1">
+                  <span class="fw-semibold">$55.00</span>
+                  <span
+                    class="text-muted text-decoration-line-through ms-1 small"
+                    >$60.00</span
+                  >
+                </p>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+                <p class="text-muted text-uppercase small mb-3">Accessories</p>
+                <a href="#" class="btn btn-danger text-white fw-semibold px-4"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="d-none d-lg-block position-relative"
+        style="min-height: 700px"
+      >
+        <img
+          src="../images/womenstand.webp"
+          alt="New Cloth Technologies"
+          class="position-absolute end-0 top-0"
+          style="
+            width: 75%;
+            height: 700px;
+            object-fit: cover;
+            object-position: center top;
+            z-index: 1;
+          "
+        />
+        <div
+          class="position-absolute start-0 text-white p-5"
+          style="
+            background-color: #111;
+            z-index: 2;
+            top: 80px;
+            width: 38%;
+            min-height: 500px;
+          "
+        >
+          <h2
+            class="fw-bold font-monospace mb-4"
+            style="font-size: 2rem; line-height: 1.3"
+          >
+            New Cloth <br />
+            Technologies
+          </h2>
+          <p class="text-white-50 mb-1">
+            Mauris vitae ultricies leo integer malesuada.
+          </p>
+          <p class="text-white-50 mb-1">
+            Odio tempor orci dapibus ultrices in.
+          </p>
+          <p class="text-white-50 mb-1">Egestas diam in arcu cursus euismod.</p>
+          <p class="text-white-50 mb-1">
+            Dictum purus viverra accumsan in nisl.
+          </p>
+          <p class="text-white-50 mb-4">Tempor id eu</p>
+          <p
+            class="mb-1"
+            style="
+              font-family: &quot;Dancing Script&quot;, cursive;
+              font-size: 2.2rem;
+            "
+          >
+            Alice W
+          </p>
+          <p class="fw-bold text-white small">Alice Autumn, CEO</p>
+        </div>
+      </div>
+      <div class="d-flex d-lg-none flex-column">
+        <div class="text-white p-4" style="background-color: #111">
+          <h2
+            class="fw-bold font-monospace mb-4"
+            style="font-size: 1.8rem; line-height: 1.3"
+          >
+            New Cloth <br />
+            Technologies
+          </h2>
+          <p class="text-white-50 mb-1">
+            Mauris vitae ultricies leo integer malesuada.
+          </p>
+          <p class="text-white-50 mb-1">
+            Odio tempor orci dapibus ultrices in.
+          </p>
+          <p class="text-white-50 mb-1">Egestas diam in arcu cursus euismod.</p>
+          <p class="text-white-50 mb-1">
+            Dictum purus viverra accumsan in nisl.
+          </p>
+          <p class="text-white-50 mb-4">Tempor id eu</p>
+          <p
+            class="mb-1"
+            style="
+              font-family: &quot;Dancing Script&quot;, cursive;
+              font-size: 2.2rem;
+            "
+          >
+            Alice W
+          </p>
+          <p class="fw-bold text-white small">Alice Autumn, CEO</p>
+        </div>
+        <img
+          src="../images/womenstand.webp"
+          alt="New Cloth Technologies"
+          class="img-fluid"
+          style="object-fit: cover; object-position: center top"
+        />
+      </div>
+      <div class="container py-5">
+        <p class="text-center text-muted small mb-2">
+          Check out popular products
+        </p>
+        <h2 class="text-center fw-bold font-monospace mb-5">
+          Popular Products
+        </h2>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <div class="card border-0 h-100">
+              <img
+                src="../images/fash.webp"
+                class="card-img-top img-fluid"
+                alt="Lobortis Elementum"
+              />
+              <div class="card-body px-0 pt-4">
+                <h5 class="fw-bold font-monospace mb-3">
+                  Lobortis Elementum Nibhtellus Molestie Mauris
+                </h5>
+                <p class="text-muted mb-3">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore...
+                </p>
+                <p
+                  class="text-muted mb-0"
+                  style="font-size: 0.75rem; letter-spacing: 0.08em"
+                >
+                  IN LIFESTYLE &nbsp;/&nbsp; ON DECEMBER 24, 2021
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="card border-0 h-100">
+              <img
+                src="../images/dresses.webp"
+                class="card-img-top img-fluid"
+                alt="Condimentum Odvenenatis"
+              />
+              <div class="card-body px-0 pt-4">
+                <h5 class="fw-bold font-monospace mb-3">
+                  Condimentum Odvenenatis Vestibulum Dapibus
+                </h5>
+                <p class="text-muted mb-3">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore...
+                </p>
+                <p
+                  class="text-muted mb-0"
+                  style="font-size: 0.75rem; letter-spacing: 0.08em"
+                >
+                  IN TRENDS &nbsp;/&nbsp; ON DECEMBER 24, 2021
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="card border-0 h-100">
+              <img
+                src="../images/whitedress.webp"
+                class="card-img-top img-fluid"
+                alt="Accumsan Tortor"
+              />
+              <div class="card-body px-0 pt-4">
+                <h5 class="fw-bold font-monospace mb-3">
+                  Accumsan Tortor Posuere Acut Consequat
+                </h5>
+                <p class="text-muted mb-3">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore...
+                </p>
+                <p
+                  class="text-muted mb-0"
+                  style="font-size: 0.75rem; letter-spacing: 0.08em"
+                >
+                  IN LIFESTYLE &nbsp;/&nbsp; ON DECEMBER 24, 2021
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mx-4 mx-md-5 my-5">
+        <div
+          class="text-center text-white py-5 px-3 position-relative overflow-hidden"
+        >
+          <img
+            src="../images/newsletter.webp"
+            alt="newsletter"
+            class="position-absolute top-0 start-0 w-100 h-100"
+            style="object-fit: cover; z-index: 0"
+          />
+
+          <div
+            class="position-absolute top-0 start-0 w-100 h-100"
+            style="background-color: rgba(0, 0, 0, 0.45); z-index: 1"
+          ></div>
+
+          <div class="position-relative py-5" style="z-index: 2">
+            <h2 class="fw-bold font-monospace mb-3">Newsletter Updates</h2>
+            <p class="mb-4">
+              Subscribe to receive emails on new product arrivals &
+              <br class="d-none d-md-block" />
+              special offers
+            </p>
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-7">
+                <div class="input-group gap-3">
+                  <input
+                    type="email"
+                    class="form-control rounded-0 border-0 py-3"
+                    placeholder="Email address"
+                  />
+                  <button class="btn btn-danger fw-semibold rounded-0 px-4">
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="py-5" style="background-color: #0d0d0d">
+        <div class="container">
+          <div class="row g-4 align-items-start">
+            <div class="col-12 col-lg-3">
+              <div
+                class="card border-0 h-100"
+                style="background-color: #0d0d0d"
+              >
+                <div class="position-relative">
+                  <img
+                    src="../images/black_tshirt.webp"
+                    class="card-img-top img-fluid"
+                    alt="Black T-shirt"
+                  />
+                  <span
+                    class="badge bg-danger position-absolute top-0 start-0 m-2"
+                    >SALE</span
+                  >
+                </div>
+                <div
+                  class="card-body px-0 text-white text-center text-lg-start"
+                >
+                  <h6 class="fw-bold font-monospace">Black T-shirt</h6>
+                  <p class="mb-1">
+                    <span class="fw-semibold">$50.00</span>
+                    <span
+                      class="text-secondary text-decoration-line-through ms-1 small"
+                      >$80.00</span
+                    >
+                  </p>
+                  <div class="text-warning mb-1">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                  <p class="text-secondary small mb-3">T-SHIRTS</p>
+                  <a href="#" class="btn btn-danger fw-semibold px-4"
+                    >Add to cart</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-3">
+              <div
+                class="card border-0 h-100"
+                style="background-color: #0d0d0d"
+              >
+                <div class="position-relative">
+                  <img
+                    src="../images/watch.webp"
+                    class="card-img-top img-fluid"
+                    alt="Quartz Watch"
+                  />
+                  <span
+                    class="badge bg-danger position-absolute top-0 start-0 m-2"
+                    >SALE</span
+                  >
+                </div>
+                <div
+                  class="card-body px-0 text-white text-center text-lg-start"
+                >
+                  <h6 class="fw-bold font-monospace">Quartz Watch</h6>
+                  <p class="mb-1">
+                    <span class="fw-semibold">$50.00</span>
+                    <span
+                      class="text-secondary text-decoration-line-through ms-1 small"
+                      >$80.00</span
+                    >
+                  </p>
+                  <div class="text-warning mb-1">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                  </div>
+                  <p class="text-secondary small mb-3">ACCESSORIES</p>
+                  <a href="#" class="btn btn-danger fw-semibold px-4"
+                    >Add to cart</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-3">
+              <div
+                class="card border-0 h-100"
+                style="background-color: #0d0d0d"
+              >
+                <div class="position-relative">
+                  <img
+                    src="../images/color_shoes.webp"
+                    class="card-img-top img-fluid"
+                    alt="Color Sneakers"
+                  />
+                  <span
+                    class="badge bg-danger position-absolute top-0 start-0 m-2"
+                    >SALE</span
+                  >
+                </div>
+                <div
+                  class="card-body px-0 text-white text-center text-lg-start"
+                >
+                  <h6 class="fw-bold font-monospace">Color Sneakers</h6>
+                  <p class="mb-1">
+                    <span class="fw-semibold">$50.00</span>
+                    <span
+                      class="text-secondary text-decoration-line-through ms-1 small"
+                      >$80.00</span
+                    >
+                  </p>
+                  <div class="text-warning mb-1">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                  <p class="text-secondary small mb-3">SNEAKERS</p>
+                  <a href="#" class="btn btn-danger fw-semibold px-4"
+                    >Add to cart</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-12 col-lg-3 text-white d-flex flex-column justify-content-center ps-lg-4 text-center text-lg-start align-items-center align-items-lg-start"
+            >
+              <p class="fw-bold mb-2" style="color: #e53935; font-size: 1.2rem">
+                $50 ONLY!
+              </p>
+              <h2 class="fw-bold font-monospace mb-3">Final Sale</h2>
+              <p class="text-secondary mb-2">
+                Mauris vitae ultricies leo integer malesuada cursus.
+              </p>
+              <p class="text-secondary mb-4">
+                Odio tempor orci dapibus ultrices in. Egestas diam in arcu
+                cursus euismod dictum purus viverra accumsan.
+              </p>
+              <div>
+                <a href="#" class="btn btn-outline-light fw-semibold px-4"
+                  >ALL DEALS</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer style="background-color: #f8f6f1">
+        <div class="container py-5">
+          <div class="row g-4">
+            <div class="col-12 col-md-6 col-lg-3">
+              <h6 class="fw-bold font-monospace mb-3">About Us</h6>
+              <p class="text-muted small mb-2">
+                Mauris vitae ultricies leo integer malesuada. Odio tempor orci
+                dapibus ultrices in. Egestas diam in arcu cursus euismod.
+              </p>
+              <p class="text-muted small mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
+              </p>
+            </div>
+            <div class="col-12 col-md-3 col-lg-3 offset-lg-1">
+              <h6 class="fw-bold font-monospace mb-3">Account</h6>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >My Account</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >My Wishlist</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >My Cart</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >Sign in</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >Check out</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-3 col-lg-2">
+              <h6 class="fw-bold font-monospace mb-3">Shipping</h6>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >New Products</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >Best Sellers</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >Manufacturers</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >Suppliers</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-muted text-decoration-none small"
+                    >Specials</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <h6 class="fw-bold font-monospace mb-3">Contact Us</h6>
+              <p class="text-muted small mb-1">Phone: (+63) 555 1212</p>
+              <p class="text-muted small mb-3">Fax: (+63) 555 0100</p>
+              <p class="text-muted small mb-1">New York,</p>
+              <p class="text-muted small mb-0">96th Street, NY 10129</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-top border-bottom py-4 text-center"
+          style="border-color: #ddd !important"
+        >
+          <a href="#">
+            <img src="../images/logo.svg" alt="Garderobe" height="45" />
+          </a>
+        </div>
+        <div class="py-3 text-center">
+          <p class="text-muted small mb-0">
+            Copyright &copy; 2026 - WordPress Theme by CreativeThemes
+          </p>
+        </div>
+      </footer>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-4.0.0.min.js"
+      integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/checkAuth.js"></script>
+    <script src="../js/register.js"></script>
+  </body>
+</html>
