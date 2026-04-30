@@ -23,7 +23,7 @@ class AuthControllers
 
     private function clearExpiredOtps()
     {
-        $this->db->query("UPDATE otps SET status=FALSE WHERE otp_expires_at < current_timestamp");
+        $this->db->query("UPDATE otps SET status=FALSE WHERE otp_expires_at < current_timestamp")->execute();
         return;
     }
 
