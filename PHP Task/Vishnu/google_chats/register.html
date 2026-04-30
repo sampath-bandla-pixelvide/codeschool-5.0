@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create your Google Account</title>
+    <meta
+      name="description"
+      content="Create your Google Account – enter your name and password."
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #1a1a1a;
+        font-family: "Google Sans", "Roboto", Arial, sans-serif;
+        color: #e8eaed;
+      }
+      .signin-card {
+        background: #000;
+        border-radius: 16px;
+        max-width: 860px;
+      }
+      .right-pane {
+        border-left: 1px solid #3d3d3d;
+      }
+      .google-logo {
+        height: 30px;
+        width: 30px;
+      }
+      .left-desc {
+        font-size: 14px;
+        color: #9aa0a6;
+      }
+
+      .float-group {
+        position: relative;
+      }
+      .float-group input {
+        background: transparent;
+        border: 1px solid #5f6368;
+        color: #e8eaed;
+        padding: 18px 14px 6px;
+      }
+      .float-group input:focus {
+        border-color: #8ab4f8;
+        box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.2);
+      }
+      .float-group label {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9aa0a6;
+        transition: 0.15s;
+        pointer-events: none;
+      }
+      .float-group input:focus + label,
+      .float-group input:not(:placeholder-shown) + label {
+        top: 8px;
+        font-size: 11px;
+        color: #8ab4f8;
+      }
+
+      .error-text {
+        color: #f28b82;
+        font-size: 12px;
+        min-height: 16px;
+      }
+      .link-blue {
+        color: #8ab4f8;
+        font-size: 14px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-family: "Google Sans", sans-serif;
+      }
+      .link-blue:hover {
+        text-decoration: underline;
+        color: #aecbfa;
+      }
+
+      .btn-next-pill {
+        background: #8ab4f8;
+        color: #202124;
+        border-radius: 24px;
+        padding: 8px 24px;
+        border: none;
+        font-family: "Google Sans", sans-serif;
+        font-weight: 500;
+        transition: background 0.2s;
+      }
+      .btn-next-pill:hover {
+        background: #aecbfa;
+      }
+      .btn-next-pill:disabled {
+        background: #444;
+        color: #888;
+        cursor: not-allowed;
+      }
+
+      .form-control {
+        background: transparent !important;
+        color: #e8eaed !important;
+        border: 1px solid #5f6368;
+      }
+      .form-control:focus {
+        background: transparent !important;
+        color: #e8eaed !important;
+        border-color: #8ab4f8 !important;
+        box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.2) !important;
+      }
+
+      footer {
+        font-size: 12px;
+        color: #9aa0a6;
+      }
+      footer a {
+        color: #9aa0a6;
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+        color: #e8eaed;
+      }
+
+      .pw-wrap {
+        position: relative;
+      }
+      .btn-eye {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #9aa0a6;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      .btn-eye:hover {
+        color: #e8eaed;
+      }
+    </style>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <div
+      class="flex-grow-1 d-flex align-items-center justify-content-center p-3"
+    >
+      <div class="signin-card w-100">
+        <div class="row g-0">
+          <div class="col-md-5 p-4 d-flex flex-column">
+            <img
+              src="./images/googlelogo.jpg"
+              class="google-logo"
+              alt="Google"
+            />
+            <h1 class="mt-4 fs-3 fw-normal">Create your account</h1>
+            <p class="left-desc mt-2">
+              Enter your name to get started with Google.
+            </p>
+            <p class="mt-3" style="font-size: 13px; color: #9aa0a6">
+              Signing in as:<br />
+              <strong id="displayEmail" style="color: #8ab4f8"></strong>
+            </p>
+          </div>
+
+          <div
+            class="col-md-7 p-4 right-pane d-flex flex-column justify-content-between"
+          >
+            <div>
+              <div class="row g-3 mb-3">
+                <div class="col-6">
+                  <div class="float-group">
+                    <input
+                      type="text"
+                      id="firstName"
+                      placeholder=" "
+                      class="form-control"
+                    />
+                    <label for="firstName">First name</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="float-group">
+                    <input
+                      type="text"
+                      id="lastName"
+                      placeholder=" "
+                      class="form-control"
+                    />
+                    <label for="lastName">Last name</label>
+                  </div>
+                </div>
+              </div>
+              <div class="error-text mb-2" id="nameError"></div>
+
+              <div class="error-text mb-3" id="passwordError"></div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <a href="index.html" class="link-blue">Sign in instead</a>
+              <button
+                class="btn btn-next-pill"
+                id="registerBtn"
+                onclick="submitRegister()"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="d-flex justify-content-between align-items-center px-3 py-3 mt-auto"
+    >
+      <span>English (United Kingdom) <i class="bi bi-chevron-down"></i></span>
+      <div class="d-flex gap-3">
+        <a href="#">Help</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="./scripts/register.js"></script>
+  </body>
+</html>

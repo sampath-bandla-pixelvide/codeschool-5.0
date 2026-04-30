@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link rel="shortcut icon" href="./images/title.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/chat.css" />
+  </head>
+  <body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar">
+      <div class="d-flex align-items-center gap-2 p-3">
+        <button class="icon-btn" id="sidebarToggle">
+          <span class="material-icons">menu</span>
+        </button>
+        <img src="./images/logo.png" alt="" height="26" />
+      </div>
+
+      <button
+        class="new-chat-btn d-flex align-items-center gap-2"
+        id="newChatBtn"
+      >
+        <span class="material-icons" style="font-size: 20px">chat</span>
+        <span class="sidebar-text">New chat</span>
+      </button>
+      <button
+        class="section-toggle d-flex align-items-center gap-1"
+        data-bs-toggle="collapse"
+        data-bs-target="#shortcutsCollapse"
+        aria-expanded="true"
+      >
+        <span class="material-icons">arrow_drop_down</span>
+        <span class="sidebar-text">Shortcuts</span>
+      </button>
+      <div class="collapse show" id="shortcutsCollapse">
+        <button
+          id="homeBtn"
+          class="nav-item-btn active d-flex align-items-center gap-3 me-3"
+        >
+          <span class="material-icons" style="font-size: 20px">home</span>
+          <span class="sidebar-text">Home</span>
+        </button>
+        <button
+          class="nav-item-btn d-flex align-items-center gap-3 me-3"
+          id="mentionsBtn"
+        >
+          <span class="material-icons" style="font-size: 20px"
+            >alternate_email</span
+          >
+          <span class="sidebar-text">Mentions</span>
+        </button>
+        <button id="starredBtn" class="nav-item-btn d-flex align-items-center gap-3 me-3">
+          <span class="material-icons" style="font-size: 20px">star</span>
+          <span class="sidebar-text">Starred</span>
+        </button>
+      </div>
+
+      <button
+        class="section-toggle d-flex align-items-center gap-1"
+        data-bs-toggle="collapse"
+        data-bs-target="#dmCollapse"
+        aria-expanded="true"
+      >
+        <span class="material-icons">arrow_drop_down</span>
+        <span class="sidebar-text">Direct messages</span>
+      </button>
+      <div class="collapse show" id="dmCollapse">
+        <div id="dmList"></div>
+      </div>
+
+      <button
+        class="section-toggle d-flex align-items-center gap-1"
+        data-bs-toggle="collapse"
+        data-bs-target="#spacesCollapse"
+        aria-expanded="true"
+      >
+        <span class="material-icons">arrow_drop_down</span>
+        <span class="sidebar-text">Spaces</span>
+      </button>
+      <div class="collapse show" id="spacesCollapse">
+        <button class="nav-item-btn d-flex align-items-center gap-3 me-3">
+          <div class="avatar-letter-sm">P</div>
+          <span class="sidebar-text">Pixelvide</span>
+        </button>
+        <button
+          class="nav-item-btn d-flex align-items-center gap-3 me-3 link-text"
+        >
+          <span class="material-icons" style="font-size: 20px">group</span>
+          <span class="sidebar-text">Browse spaces</span>
+        </button>
+      </div>
+      <button
+        class="section-toggle d-flex align-items-center gap-1"
+        data-bs-toggle="collapse"
+        data-bs-target="#appsCollapse"
+        aria-expanded="true"
+      >
+        <span class="material-icons">arrow_drop_down</span>
+        <span class="sidebar-text">Apps</span>
+      </button>
+      <div class="collapse show" id="appsCollapse">
+        <div class="px-4 py-1" style="font-size: 12px; color: #5f6368">
+          No apps yet
+        </div>
+        <button
+          class="nav-item-btn d-flex align-items-center gap-3 me-3 link-text"
+        >
+          <span class="material-icons" style="font-size: 20px">explore</span>
+          <span class="sidebar-text">Explore apps</span>
+        </button>
+      </div>
+    </div>
+    <div class="main">
+      <div class="topbar d-flex align-items-center px-3 gap-2">
+        <button class="icon-btn d-md-none me-1" id="mobileMenuBtn">
+          <span class="material-icons">menu</span>
+        </button>
+        <div class="flex-grow-1 position-relative">
+          <input
+            type="text"
+            id="searchInput"
+            class="form-control search-box"
+            placeholder="Search chat"
+          />
+          <div
+            id="searchDropdown"
+            class="d-none"
+            style="
+              position: absolute;
+              top: calc(100% + 4px);
+              left: 0;
+              right: 0;
+              background: #2d2f33;
+              border-radius: 12px;
+              z-index: 1050;
+              padding: 8px 0;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+              max-height: 350px;
+              overflow-y: auto;
+            "
+          ></div>
+        </div>
+        <div class="position-relative">
+          <button
+            id="statusBtn"
+            class="status-btn d-flex align-items-center gap-2"
+          >
+            <span class="green-dot" id="statusDot"></span>
+            <span id="statusLabel">Active</span>
+            <span class="material-icons" style="font-size: 16px"
+              >arrow_drop_down</span
+            >
+          </button>
+          <div
+            id="statusDropdown"
+            class="d-none"
+            style="
+              position: absolute;
+              top: 42px;
+              left: 0;
+              width: 280px;
+              background: #2d2f33;
+              border-radius: 12px;
+              color: #e3e3e3;
+              z-index: 1050;
+              box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+              padding: 8px 0;
+            "
+          >
+            <div
+              class="status-option d-flex align-items-center gap-3 px-4 py-2"
+              data-status="active"
+              style="cursor: pointer"
+            >
+              <span class="green-dot"></span>
+              <div class="flex-grow-1">
+                <div style="font-size: 14px">Automatic</div>
+                <div style="font-size: 12px; color: #9aa0a6">
+                  Based on chat activity
+                </div>
+              </div>
+              <span
+                class="material-icons status-check"
+                style="font-size: 20px; color: #e3e3e3"
+                >check</span
+              >
+            </div>
+            <div
+              class="status-option d-flex align-items-center gap-3 px-4 py-2"
+              data-status="dnd"
+              style="cursor: pointer"
+            >
+              <span
+                style="
+                  width: 10px;
+                  height: 10px;
+                  background: #ea4335;
+                  border-radius: 50%;
+                  display: inline-block;
+                "
+              ></span>
+              <div class="flex-grow-1">
+                <div style="font-size: 14px">Do not disturb</div>
+                <div style="font-size: 12px; color: #9aa0a6">
+                  Mute chat notifications
+                </div>
+              </div>
+              <span
+                class="material-icons status-check d-none"
+                style="font-size: 20px; color: #e3e3e3"
+                >check</span
+              >
+            </div>
+            <hr class="my-1" style="border-color: #5f6368" />
+            <div
+              class="status-option d-flex align-items-center gap-3 px-4 py-2"
+              data-status="away"
+              style="cursor: pointer"
+            >
+              <span
+                class="material-icons"
+                style="font-size: 16px; color: #9aa0a6"
+                >circle</span
+              >
+              <span style="font-size: 14px">Set as away</span>
+            </div>
+            <div
+              class="d-flex align-items-center gap-3 px-4 py-2"
+              style="cursor: pointer"
+            >
+              <span
+                class="material-icons"
+                style="font-size: 16px; color: #9aa0a6"
+                >edit</span
+              >
+              <span style="font-size: 14px">Add a status</span>
+            </div>
+            <hr class="my-1" style="border-color: #5f6368" />
+            <div
+              class="d-flex align-items-center gap-3 px-4 py-2"
+              style="cursor: pointer"
+            >
+              <span style="font-size: 14px">Chat notification settings</span>
+            </div>
+          </div>
+        </div>
+        <div class="position-relative">
+          <button class="icon-btn" id="helpBtn">
+            <span class="material-icons">help_outline</span>
+          </button>
+          <div
+            id="helpDropdown"
+            class="d-none"
+            style="
+              position: absolute;
+              top: 42px;
+              right: 0;
+              width: 220px;
+              background: #2d2f33;
+              border-radius: 4px;
+              color: #e3e3e3;
+              z-index: 1050;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+              padding: 8px 0;
+            "
+          >
+            <div class="menu-item" style="font-size: 14px">Help</div>
+            <div class="menu-item" style="font-size: 14px">Training</div>
+            <hr class="my-1" style="border-color: #5f6368" />
+            <div class="menu-item" style="font-size: 14px">
+              Send feedback to Google
+            </div>
+          </div>
+        </div>
+        <button class="icon-btn" id="settingsBtn">
+          <span class="material-icons">settings</span>
+        </button>
+        <button class="icon-btn">
+          <span class="material-icons">apps</span>
+        </button>
+        <div class="position-relative">
+          <img
+            id="profileAvatar"
+            src=""
+            class="rounded-circle"
+            width="36"
+            height="36"
+            style="cursor: pointer"
+            alt="Profile"
+          />
+          <div
+            id="profileDropdown"
+            class="d-none"
+            style="
+              position: absolute;
+              top: 46px;
+              right: 0;
+              width: 380px;
+              background: #2d2f33;
+              border-radius: 20px;
+              color: #e3e3e3;
+              z-index: 1050;
+              box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            "
+          >
+            <div
+              class="d-flex align-items-center justify-content-between px-4 pt-3 pb-2"
+            >
+              <span
+                id="modalEmail"
+                style="font-size: 14px; color: #9aa0a6"
+              ></span>
+              <button
+                id="profileClose"
+                type="button"
+                class="btn-close btn-close-white"
+              ></button>
+            </div>
+            <div class="text-center pb-3">
+              <div class="position-relative d-inline-block mb-2">
+                <img
+                  id="modalAvatar"
+                  src=""
+                  class="rounded-circle"
+                  width="80"
+                  height="80"
+                  style="border: 3px solid #8ab4f8; object-fit: cover"
+                  alt=""
+                />
+                <span
+                  class="position-absolute bottom-0 end-0 bg-dark rounded-circle d-flex align-items-center justify-content-center"
+                  id="uploadAvatarBtn"
+                  style="
+                    width: 28px;
+                    height: 28px;
+                    border: 2px solid #2d2f33;
+                    cursor: pointer;
+                  "
+                >
+                  <span
+                    class="material-icons"
+                    style="font-size: 16px; color: #e3e3e3"
+                    >photo_camera</span
+                  >
+                </span>
+                <input
+                  type="file"
+                  id="avatarInput"
+                  accept="image/*"
+                  class="d-none"
+                />
+              </div>
+              <h5 class="mb-1" style="font-size: 20px">
+                Hi, <span id="modalName"></span>!
+              </h5>
+              <a
+                href="#"
+                class="btn btn-outline-light rounded-pill px-4 mt-2"
+                style="font-size: 14px; border-color: #5f6368"
+              >
+                Manage your Google Account
+              </a>
+            </div>
+            <hr class="m-0" style="border-color: #5f6368" />
+            <div
+              class="d-flex border-bottom"
+              style="border-color: #5f6368 !important"
+            >
+              <button
+                id="addAccountBtn"
+                class="btn flex-fill d-flex align-items-center justify-content-center gap-2 py-3"
+                style="
+                  color: #e3e3e3;
+                  font-size: 14px;
+                  border-right: 1px solid #5f6368;
+                  border-radius: 0;
+                "
+              >
+                <span class="material-icons" style="font-size: 20px">add</span>
+                Add account
+              </button>
+              <button
+                id="signOutBtn"
+                class="btn flex-fill d-flex align-items-center justify-content-center gap-2 py-3"
+                style="color: #e3e3e3; font-size: 14px; border-radius: 0"
+              >
+                <span class="material-icons" style="font-size: 20px"
+                  >logout</span
+                >
+                Sign out
+              </button>
+            </div>
+            <div
+              class="text-center py-3"
+              style="font-size: 12px; color: #9aa0a6"
+            >
+              <a href="#" class="text-decoration-none" style="color: #9aa0a6"
+                >Privacy policy</a
+              >
+              <span class="mx-1">•</span>
+              <a href="#" class="text-decoration-none" style="color: #9aa0a6"
+                >Terms of Service</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-grow-1 overflow-hidden">
+        <div
+          class="content-area flex-grow-1 d-flex flex-column overflow-hidden"
+        >
+          <div id="homeView" class="flex-grow-1 overflow-auto">
+            <div
+              class="d-flex align-items-center justify-content-between px-4 py-3"
+            >
+              <h5 class="mb-0 fw-normal" id="mainViewTitle">Home</h5>
+              <div class="d-flex align-items-center gap-2">
+                <span style="font-size: 13px; color: var(--text-dim)"
+                  >Unread</span
+                >
+                <button id="unreadToggle" class="custom-toggle">
+                  <span id="toggleThumb" class="thumb"></span>
+                </button>
+                <button
+                  class="icon-btn d-flex align-items-center gap-1 px-2 rounded-2"
+                  style="
+                    width: auto;
+                    border: 1px solid var(--border);
+                    font-size: 13px;
+                    color: var(--text);
+                  "
+                >
+                  <span class="material-icons" style="font-size: 16px"
+                    >calendar_today</span
+                  >
+                  Thread
+                </button>
+                <button
+                  class="icon-btn d-flex align-items-center gap-1 px-2 rounded-2"
+                  style="
+                    width: auto;
+                    border: 1px solid var(--border);
+                    font-size: 13px;
+                    color: var(--text);
+                  "
+                >
+                  <span class="material-icons" style="font-size: 16px"
+                    >view_list</span
+                  >
+                  <span class="material-icons" style="font-size: 16px"
+                    >arrow_drop_down</span
+                  >
+                </button>
+              </div>
+            </div>
+            <div id="convList"></div>
+          </div>
+
+          <div
+            id="chatView"
+            class="d-none flex-grow-1 d-flex flex-column"
+            style="height: 100%"
+          >
+            <div
+              class="d-flex align-items-center gap-2 px-3 py-2 position-relative"
+              style="border-bottom: 1px solid var(--border)"
+            >
+              <button class="icon-btn" id="chatBackBtn">
+                <span class="material-icons">arrow_back</span>
+              </button>
+              <div
+                id="chatUserAvatar"
+                class="avatar-letter"
+                style="width: 32px; height: 32px; font-size: 14px"
+              ></div>
+              <div>
+                <div class="d-flex align-items-center gap-1">
+                  <span
+                    id="chatUserName"
+                    style="font-size: 15px; font-weight: 500"
+                  ></span>
+                  <button
+                    class="icon-btn"
+                    id="chatUserInfoBtn"
+                    style="width: 24px; height: 24px"
+                  >
+                    <span
+                      class="material-icons"
+                      style="font-size: 16px; color: var(--text-dim)"
+                      >arrow_drop_down</span
+                    >
+                  </button>
+                </div>
+                <div
+                  id="chatUserStatus"
+                  style="font-size: 11px; color: #9aa0a6"
+                ></div>
+              </div>
+              <div class="flex-grow-1"></div>
+              <button class="icon-btn">
+                <span class="material-icons" style="font-size: 20px"
+                  >search</span
+                >
+              </button>
+              <button class="icon-btn">
+                <span class="material-icons" style="font-size: 20px"
+                  >videocam</span
+                >
+              </button>
+              <div
+                id="chatUserInfoPanel"
+                class="d-none"
+                style="
+                  position: absolute;
+                  top: 52px;
+                  left: 60px;
+                  width: 320px;
+                  background: #2d2f33;
+                  border-radius: 12px;
+                  color: #e3e3e3;
+                  z-index: 1060;
+                  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+                  padding: 20px;
+                "
+              >
+                <div class="text-center mb-3">
+                  <img
+                    id="infoPanelAvatar"
+                    src=""
+                    class="rounded-circle mb-2"
+                    width="72"
+                    height="72"
+                    alt=""
+                  />
+                  <h6
+                    id="infoPanelName"
+                    class="mb-0"
+                    style="font-size: 16px"
+                  ></h6>
+                  <div
+                    id="infoPanelEmail"
+                    style="font-size: 13px; color: #9aa0a6"
+                  ></div>
+                </div>
+                <hr style="border-color: #5f6368" />
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="material-icons"
+                    style="font-size: 18px; color: #9aa0a6"
+                    >circle</span
+                  >
+                  <div>
+                    <div style="font-size: 13px; color: #9aa0a6">Status</div>
+                    <div id="infoPanelStatus" style="font-size: 14px"></div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <span
+                    class="material-icons"
+                    style="font-size: 18px; color: #9aa0a6"
+                    >calendar_today</span
+                  >
+                  <div>
+                    <div style="font-size: 13px; color: #9aa0a6">
+                      Member since
+                    </div>
+                    <div id="infoPanelJoined" style="font-size: 14px"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="chatMessages"
+              class="flex-grow-1 overflow-auto px-4 py-3"
+              style="display: flex; flex-direction: column; gap: 8px"
+            ></div>
+            <div
+              class="position-relative"
+              style="border-top: 1px solid var(--border)"
+            >
+              <div
+                id="mentionDropdown"
+                class="d-none"
+                style="
+                  position: absolute;
+                  bottom: 100%;
+                  left: 16px;
+                  right: 16px;
+                  max-height: 200px;
+                  overflow-y: auto;
+                  background: #2d2f33;
+                  border-radius: 10px;
+                  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+                  z-index: 1050;
+                  padding: 6px 0;
+                "
+              ></div>
+              <div class="d-flex align-items-center gap-2 px-3 py-2">
+                <button class="icon-btn" style="width: 32px; height: 32px">
+                  <span
+                    class="material-icons"
+                    style="font-size: 20px; color: var(--active-text)"
+                    >add_circle</span
+                  >
+                </button>
+                <input
+                  type="text"
+                  id="chatMsgInput"
+                  class="form-control"
+                  placeholder="History is on"
+                  style="
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    color: var(--text);
+                    border-radius: 20px;
+                    font-size: 14px;
+                    padding: 8px 16px;
+                  "
+                />
+                <button class="icon-btn" style="width: 32px; height: 32px">
+                  <span
+                    class="material-icons"
+                    style="font-size: 20px; color: var(--text-dim)"
+                    >emoji_emotions</span
+                  >
+                </button>
+                <button
+                  class="icon-btn"
+                  id="uploadMediaBtn"
+                  style="width: 32px; height: 32px"
+                >
+                  <span
+                    class="material-icons"
+                    style="font-size: 20px; color: var(--text-dim)"
+                    >upload_file</span
+                  >
+                </button>
+                <input
+                  type="file"
+                  id="mediaFileInput"
+                  accept="image/*"
+                  style="display: none"
+                />
+                <button class="icon-btn" style="width: 32px; height: 32px">
+                  <span
+                    class="material-icons"
+                    style="font-size: 20px; color: var(--text-dim)"
+                    >mic</span
+                  >
+                </button>
+                <button
+                  class="icon-btn"
+                  id="sendMsgBtn"
+                  style="width: 32px; height: 32px"
+                >
+                  <span
+                    class="material-icons"
+                    style="font-size: 20px; color: var(--active-text)"
+                    >send</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="right-panel d-flex flex-column align-items-center py-3 gap-2"
+        >
+          <button
+            class="icon-btn"
+            style="background: var(--active-bg); color: var(--active-text)"
+          >
+            <span class="material-icons">mail</span>
+          </button>
+          <button class="icon-btn">
+            <span class="material-icons">check_circle</span>
+          </button>
+          <button class="icon-btn">
+            <span class="material-icons">people</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      id="newChatPopup"
+      class="d-none"
+      style="
+        position: fixed;
+        top: 56px;
+        left: 100px;
+        width: 360px;
+        background: #2d2f33;
+        border-radius: 12px;
+        color: #f9f7f7;
+        z-index: 1060;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      "
+    >
+      <div class="px-3 pt-3 pb-2">
+        <input
+          type="email"
+          id="newChatEmail"
+          class="form-control"
+          placeholder="Add 1 or more people"
+          style="
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #5f6368;
+            color: #fff;
+            border-radius: 0;
+            font-size: 14px;
+            padding: 8px 0;
+            box-shadow: none;
+            outline: none;
+          "
+        />
+      </div>
+      <div class="px-3 py-2">
+        <div
+          class="d-flex align-items-center gap-3 py-2"
+          style="cursor: pointer; color: #9aa0a6; font-size: 14px"
+        >
+          <span class="material-icons" style="font-size: 22px">group_add</span>
+          Create a space
+        </div>
+        <div
+          class="d-flex align-items-center gap-3 py-2"
+          style="cursor: pointer; color: #9aa0a6; font-size: 14px"
+        >
+          <span class="material-icons" style="font-size: 22px">groups</span>
+          Browse spaces
+        </div>
+        <div
+          class="d-flex align-items-center gap-3 py-2"
+          style="cursor: pointer; color: #9aa0a6; font-size: 14px"
+        >
+          <span class="material-icons" style="font-size: 22px">apps</span>
+          Find apps
+        </div>
+        <div
+          class="d-flex align-items-center gap-3 py-2"
+          style="cursor: pointer; color: #9aa0a6; font-size: 14px"
+        >
+          <span class="material-icons" style="font-size: 22px"
+            >mark_email_unread</span
+          >
+          Message requests
+        </div>
+      </div>
+      <div id="searchResultArea" class="d-none">
+        <div
+          class="px-3 pt-1 pb-1"
+          style="font-size: 12px; font-weight: 500; color: #9aa0a6"
+        >
+          Search result
+        </div>
+        <div id="searchResultContent" class="px-3 pb-2"></div>
+      </div>
+      <div
+        id="newChatError"
+        class="d-none px-3 pb-3"
+        style="font-size: 13px; color: #f28b82"
+      ></div>
+    </div>
+
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width: 400px">
+        <div
+          class="modal-content"
+          style="
+            background: #2d2f33;
+            color: #e3e3e3;
+            border: 1px solid #5f6368;
+            border-radius: 12px;
+          "
+        >
+          <div class="modal-header border-bottom-0 pb-0">
+            <h5 class="modal-title fs-5">Settings</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="settingsForm">
+              <div class="mb-3">
+                <label
+                  class="form-label"
+                  style="font-size: 13px; color: #9aa0a6"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-transparent text-white"
+                  id="settingsFirstName"
+                  required
+                  style="border-color: #5f6368"
+                />
+              </div>
+              <div class="mb-3">
+                <label
+                  class="form-label"
+                  style="font-size: 13px; color: #9aa0a6"
+                  >Last Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-transparent text-white"
+                  id="settingsLastName"
+                  required
+                  style="border-color: #5f6368"
+                />
+              </div>
+              <div
+                id="settingsError"
+                class="text-danger mb-3 d-none"
+                style="font-size: 13px"
+              ></div>
+              <div
+                id="settingsSuccess"
+                class="text-success mb-3 d-none"
+                style="font-size: 13px"
+              ></div>
+              <div class="d-grid gap-2">
+                <button
+                  type="submit"
+                  class="btn text-dark"
+                  style="background-color: #8ab4f8; font-weight: 500"
+                >
+                  Update Details
+                </button>
+              </div>
+            </form>
+            <hr style="border-color: #5f6368" class="my-4" />
+            <h6 class="text-danger mb-3">Danger Zone</h6>
+            <div class="d-grid gap-2">
+              <button
+                type="button"
+                id="deleteAccountBtn"
+                class="btn btn-outline-danger"
+              >
+                Delete Account
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./scripts/chatHelpers.js"></script>
+    <script src="./scripts/chatConversations.js"></script>
+    <script src="./scripts/chatMessages.js"></script>
+    <script src="./scripts/chatMentions.js"></script>
+    <script src="./scripts/chatStarred.js"></script>
+    <script src="./scripts/chatUIEvents.js"></script>
+    <script src="./scripts/chatAuth.js"></script>
+  </body>
+</html>
