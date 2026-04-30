@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>WhatsApp Clone</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <style>
+      .msg {
+        max-width: 60%;
+        border-radius: 12px;
+        font-size: 14px;
+        width: fit-content;
+        word-break: break-word;
+      }
+      .chat-area {
+  height: 100%;
+}
+    </style>
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+  </head>
+
+  <body style="background: #e5ddd5">
+    
+  <div class="row g-0 vh-100 app-wrapper">
+      <!-- LEFT ICON BAR -->
+      <div
+        class="col-auto bg-white border-end d-flex flex-column align-items-center py-3"
+        style="width: 65px; min-width: 65px; max-width: 65px"
+      >
+        <div class="text-center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            width="28"
+            class="mb-4"
+          />
+
+          <i
+            id="chatTabBtn"
+            class="bi bi-chat fs-5 d-block mb-4 text-success"
+          ></i>
+          <i class="bi bi-telephone fs-5 d-block mb-4 text-secondary"></i>
+          <i class="bi bi-people fs-5 d-block text-secondary"></i>
+        </div>
+
+        <!-- <div
+          id="profileBtn"
+          class="mt-auto d-flex align-items-center justify-content-center rounded-circle bg-secondary"
+          style="width: 40px; height: 40px"
+        >
+          <i class="bi bi-person text-white"></i>
+        </div> -->
+        <div
+          id="profileBtn"
+          class="mt-auto d-flex align-items-center justify-content-center rounded-circle bg-secondary overflow-hidden"
+          style="width: 40px; height: 40px"
+        >
+          <!-- Default Icon -->
+          <i id="defaultProfileIcon" class="bi bi-person text-white"></i>
+
+          <!-- Profile Image -->
+          <img
+            id="profileImg"
+            src=""
+            class="d-none"
+            style="width: 100%; height: 100%; object-fit: cover"
+          />
+        </div>
+        <!-- <i class="bi bi-gear fs-5 text-secondary"></i> -->
+      </div>
+
+      <!-- CHAT LIST -->
+      <div
+        class="col-md-4 col-lg-3 border-end bg-white d-flex flex-column"
+        
+      >
+        <!--  NEW CHAT PANEL -->
+        <div id="newChatPanel" class="d-none">
+          <div class="p-3 border-bottom d-flex align-items-center">
+            <button id="backToChats" class="btn btn-light me-2">←</button>
+            <h6 class="mb-0">New Chat</h6>
+          </div>
+
+          <div class="p-2">
+            <input
+              id="userSearch"
+              class="form-control"
+              placeholder="Search users"
+            />
+          </div>
+
+          <div id="usersList" class="list-group list-group-flush"></div>
+        </div>
+
+        <!-- CHAT LIST PANEL -->
+        <div id="chatListPanel" class="h-100 d-flex flex-column">
+          <div class="p-3 d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Chats</h5>
+            <i
+              id="newChatBtn"
+              class="bi bi-pencil-square"
+              style="cursor: pointer"
+            ></i>
+          </div>
+
+          <div class="px-3 pb-2">
+            <input
+              id="chatSearch"
+              class="form-control rounded-pill bg-light border-0"
+              placeholder="Search chat..."
+            />
+          </div>
+
+          <!--  Dynamic chat list -->
+          <div id="chatList" class="flex-grow-1 overflow-auto"></div>
+        </div>
+
+        <div
+          id="editProfilePanel"
+          class="d-none h-100 d-flex flex-column bg-white"
+        >
+          <!-- Header -->
+          <div class="p-3 border-bottom d-flex align-items-center bg-light">
+            <button id="backToProfile" class="btn btn-light me-3">←</button>
+            <h6 class="mb-0 fw-semibold">Profile</h6>
+          </div>
+
+          <!-- Body -->
+          <div class="flex-grow-1 overflow-auto">
+            <!-- Avatar Section -->
+            <div class="text-center py-4 border-bottom">
+              <div class="position-relative d-inline-block">
+                <img
+                  id="editProfileImg"
+                  src=""
+                  class="rounded-circle"
+                  style="width: 120px; height: 120px; object-fit: cover"
+                />
+
+                <!-- Camera Icon -->
+                <label
+                  for="profileInput"
+                  class="position-absolute bottom-0 end-0 bg-success text-white rounded-circle d-flex align-items-center justify-content-center"
+                  style="width: 35px; height: 35px; cursor: pointer"
+                >
+                  <i class="bi bi-camera"></i>
+                </label>
+
+                <input type="file" id="profileInput" class="d-none" />
+              </div>
+            </div>
+
+            <!-- Name Section -->
+            <div class="p-3 border-bottom">
+              <div class="text-muted small mb-1">Name</div>
+
+              <div class="d-flex align-items-center justify-content-between">
+                <!-- Display Mode -->
+                <div id="nameDisplay" class="fw-semibold"></div>
+
+                <!-- Edit Input (hidden initially) -->
+                <input
+                  id="nameInput"
+                  class="form-control d-none"
+                  style="max-width: 70%"
+                />
+
+                <!-- Pencil Icon -->
+                <i
+                  id="editNameBtn"
+                  class="bi bi-pencil"
+                  style="cursor: pointer"
+                ></i>
+              </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="p-3">
+              <button id="saveProfileBtn" class="btn btn-success w-100">
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--  PROFILE PANEL (LEFT SIDEBAR) -->
+        <div id="profilePanel" class="d-none h-100 d-flex flex-column bg-white">
+          <!-- Header -->
+          <div class="p-3 border-bottom d-flex align-items-center bg-light">
+            <button id="backToChatsFromProfile" class="btn btn-light me-3">
+              ←
+            </button>
+            <h6 class="mb-0 fw-semibold">Profile</h6>
+          </div>
+
+          <!-- Body -->
+          <div class="flex-grow-1 overflow-auto">
+            <!-- Avatar Section -->
+            <div class="text-center py-4 border-bottom">
+              <div
+                id="profileAvatar"
+                class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto"
+                style="width: 110px; height: 110px; font-size: 40px"
+              >
+                T
+              </div>
+            </div>
+
+            <!-- Name Section -->
+            <div class="p-3 border-bottom">
+              <small class="text-muted d-block mb-1"></small>
+              <div id="profileName" class="fw-semibold fs-6"></div>
+            </div>
+
+            <!-- Actions Section -->
+            <div class="mt-2">
+              <button
+                class="w-100 text-start px-3 py-3 border-0 bg-white border-bottom"
+                id="editProfileBtn"
+              >
+                <i class="bi bi-pencil me-2"></i> Edit profile
+              </button>
+
+              <button  id="changePasswordBtn"
+                class="w-100 text-start px-3 py-3 border-0 bg-white border-bottom"
+              >
+                <i class="bi bi-key me-2"></i> Change password
+              </button>
+              <div id="changePasswordSection" class="d-none p-3 border-top">
+                <input
+                  type="password"
+                  id="newPassword"
+                  class="form-control mb-2"
+                  placeholder="New password"
+                />
+
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  class="form-control mb-2"
+                  placeholder="Confirm password"
+                />
+
+                <!-- Message -->
+                <div id="passwordMsg" class="small mb-2"></div>
+
+                <button id="savePasswordBtn" class="btn btn-success w-100">
+                  Update Password
+                </button>
+              </div>
+
+              <button
+                class="w-100 text-start px-3 py-3 border-0 bg-white text-danger"
+                id="logoutBtn"
+              >
+                <i class="bi bi-box-arrow-right me-2"></i> Logout
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="deleteModal" class="d-none position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(0,0,0,0.4); z-index:1000;">
+
+  <div class="bg-white p-3 rounded shadow" style="width:280px;">
+    
+    <div class="mb-3 fw-semibold">
+      Delete for everyone?
+    </div>
+
+    <div class="d-flex justify-content-end gap-2">
+      <button id="cancelDelete" class="btn btn-light btn-sm">Cancel</button>
+      <button id="confirmDelete" class="btn btn-danger btn-sm">Delete</button>
+    </div>
+
+  </div>
+</div>
+      </div>
+
+      <!-- CHAT AREA -->
+      <div id="rightHeader" class="col chat-area flex-grow-1 d-none d-md-flex flex-column d-none">
+        <!-- 🔹 TOP BAR -->
+        <div
+          id="chatHeader"
+          class="bg-light d-flex justify-content-between align-items-center px-3 py-2 border-bottom"
+        >
+          <div class="d-flex align-items-center">
+            <div id="chatUserAvatar"></div>
+            <div class="ms-2">
+              <div id="chatUserName" class="fw-semibold"></div>
+              <small id="chatUserStatus" class="text-muted"></small>
+            </div>
+          </div>
+
+          <div>
+            <i class="bi bi-camera-video me-3"></i>
+            <i class="bi bi-telephone me-3"></i>
+            <i class="bi bi-three-dots-vertical"></i>
+          </div>
+        </div>
+
+        <!--  CHAT BODY -->
+        <div id="chatMessages" class="flex-grow-1 overflow-auto p-4 chat-bg">
+          <!-- messages will come here -->
+        </div>
+
+        <div id="mediaPreview" class="px-1 d-none">
+  <div class="position-relative d-block bg-white">
+
+    <img id="previewImg"
+         style="max-width:120px;border-radius:10px;display:block; border:1px solid #e0e0e0;">
+
+    <!-- ❌ remove button -->
+    <span id="removePreview"
+          class="position-absolute top-0 end-0 bg-danger text-white rounded-circle d-flex align-items-center justify-content-center"
+          style="width:22px;height:22px;cursor:pointer;font-size:12px;">
+      ✕
+    </span>
+
+  </div>
+</div>
+
+        <!-- INPUT -->
+        <div class="bg-light p-2 d-flex align-items-center border-top">
+          <i class="bi bi-emoji-smile fs-5 mx-2"></i>
+          <!-- <i class="bi bi-paperclip fs-5 mx-2"></i> -->
+           <i id="attachBtn" class="bi bi-paperclip fs-5 mx-2" style="cursor:pointer;"></i>
+
+  <!-- Hidden file input -->
+            <input type="file" id="fileInput" class="d-none" />
+
+          <textarea
+            id="messageInput"
+            rows="1"
+            class="form-control rounded-3 mx-2 border-0 resize-none"
+            placeholder="Type a message"
+            style="max-height: 120px; overflow-y: auto"
+          ></textarea>
+
+          <i
+            id="sendBtn"
+            class="bi bi-send fs-5 mx-2"
+            style="cursor: pointer"
+          ></i>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="js/app.js"></script> -->
+    <!-- <script src="js/register.js"></script> -->
+    <!-- <script src="js/login.js"></script> -->
+    <script src="/../js/users.js"></script>
+    <script src="/../js/chat.js"></script>
+    <script src="/../js/dashboard.js"></script>
+    <script src="/../js/profile.js"></script>
+  </body>
+</html>
