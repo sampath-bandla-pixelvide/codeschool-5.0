@@ -1,0 +1,47 @@
+<div
+  class="vh-100 auth-wrapper d-flex align-items-center justify-content-center"
+>
+  <div class="card p-4 shadow-sm auth-card">
+    <!-- Logo -->
+    <div class="text-center mb-3">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        width="50"
+      />
+    </div>
+
+    <!-- Title -->
+    <h5 class="text-center fw-semibold">Verify OTP</h5>
+    <p class="text-center text-muted small mb-4">
+      Enter the 6-digit code sent to your phone
+    </p>
+
+    <!-- OTP Inputs -->
+    <div class="d-flex justify-content-between mb-3">
+      <input class="form-control text-center otp" maxlength="1" />
+      <input class="form-control text-center otp" maxlength="1" />
+      <input class="form-control text-center otp" maxlength="1" />
+      <input class="form-control text-center otp" maxlength="1" />
+      <input class="form-control text-center otp" maxlength="1" />
+      <input class="form-control text-center otp" maxlength="1" />
+    </div>
+
+    <!-- Button -->
+    <button id="verifyOtpBtn" class="btn btn-success w-100">Verify OTP</button>
+
+    <!-- Timer -->
+    <p id="otpTimer" class="text-center text-muted small mt-1"></p>
+
+    <!-- Resend -->
+    <div class="text-center small">
+      <a href="#" id="resendOtp" style="display: none">Resend OTP</a>
+    </div>
+    <!-- Message -->
+    <div id="otpMessage" class="text-center small"></div>
+
+    <!-- Change number -->
+    <p class="text-center small mt-0">
+      <a href="#" id="changeNumber">Change number</a>
+    </p>
+  </div>
+</div>

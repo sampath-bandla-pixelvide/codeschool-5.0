@@ -1,0 +1,72 @@
+body {
+  background: #e5ddd5;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* subtle WhatsApp pattern */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  opacity: 0.15;
+  z-index: 0;
+}
+
+/* wrapper */
+.auth-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* card */
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 14px;
+  border: none;
+}
+
+/* inputs */
+.input-group-text {
+  border-right: none;
+}
+
+.form-control {
+  border-left: none;
+  height: 45px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #25D366;
+}
+
+/* button */
+.btn-success {
+  background-color: #25D366;
+  border: none;
+  height: 45px;
+  font-weight: 500;
+}
+
+/* links */
+a {
+  color: #25D366;
+}
+
+/* WhatsApp chat background */
+.chat-bg {
+  background-color: #efeae2;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+}
+
+/* Fix message width */
+.chat-bg .d-inline-block {
+  max-width: 60%;
+}
+.list-group-item:hover {
+  background-color: #f0f2f5;
+  cursor: pointer;
+}
