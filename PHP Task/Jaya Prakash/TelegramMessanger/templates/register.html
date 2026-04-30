@@ -1,0 +1,110 @@
+<div
+  class="card shadow-sm border-0 rounded-4 p-4"
+  style="max-width: 500px; width: 100%"
+>
+  <h4 class="fw-semibold text-center mb-3">Create Account</h4>
+
+  <form id="registerForm">
+    <div class="mb-3 text-center">
+      <img
+        id="photoPreview"
+        src="../assects/userImgPlaceHolder.avif"
+        class="rounded-circle"
+        style="width: 80px; height: 80px; object-fit: cover"
+      />
+    </div>
+
+    <div class="mb-3">
+      <input
+        type="file"
+        class="form-control"
+        id="photo"
+        name="photo"
+        accept="image/*"
+      />
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          name="first_name"
+          id="firstName"
+          placeholder="First Name *"
+          required
+        />
+        <small id="firstNameError" class="text-danger d-none"
+          >Invalid First-Name</small
+        >
+      </div>
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          name="last_name"
+          id="lastName"
+          placeholder="Last Name (optional)"
+        />
+        <small id="lastNameError" class="text-danger d-none"
+          >Invalid Last-Name</small
+        >
+      </div>
+    </div>
+
+    <div class="mb-3 position-relative">
+      <input
+        type="text"
+        class="form-control"
+        name="user_name"
+        id="username"
+        placeholder="Username"
+        required
+      />
+      <i
+        id="usernameCheck"
+        class="bi bi-check-circle-fill text-success position-absolute d-none"
+        style="right: 15px; top: 8px"
+      ></i>
+      <i
+        id="usernameX"
+        class="bi bi-x-circle-fill text-danger position-absolute d-none"
+        style="right: 15px; top: 8px"
+      ></i>
+      <i
+        id="usernameSpinner"
+        class="spinner-border spinner-border-sm text-secondary position-absolute d-none"
+        style="right: 15px; top: 12px"
+      ></i>
+
+      <small id="userNameError" class="text-danger d-none"></small>
+    </div>
+
+    <div class="mb-3">
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        id="email"
+        placeholder="Email (optional)"
+      />
+    </div>
+
+    <div class="mb-3">
+      <textarea
+        class="form-control"
+        id="bio"
+        name="bio"
+        rows="2"
+        maxlength="150"
+        placeholder="Bio..(Max 150 chars) (optional)"
+      ></textarea>
+    </div>
+
+    <div id="registerError" class="text-danger small mb-2 d-none"></div>
+
+    <button type="submit" class="btn btn-primary w-100 rounded-pill">
+      Register
+    </button>
+  </form>
+</div>

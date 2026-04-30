@@ -1,0 +1,50 @@
+<div class="mb-5">
+  <img
+    src="https://web.telegram.org/a/telegram-logo.1b2bb5b107f046ea9325.svg"
+    height="150"
+    alt=""
+  />
+</div>
+<div class="text-center" style="min-width: 300px">
+  <h4>Telegram</h4>
+  <span class="fs-6">Please enter your phone number.</span>
+  <div class="mt-4">
+    <div class="input-group">
+      <button class="btn diabled">+91</button>
+      <input
+        type="text"
+        class="form-control rounded-4"
+        id="phoneNumberInput"
+        maxlength="10"
+        placeholder="Your phone number..."
+      />
+    </div>
+    <span class="text-danger d-none" id="phoneNumberError"
+      >Invalid Phone number</span
+    >
+    <div class="text-center mt-3">
+      <input
+        type="checkbox"
+        name="keepmesignedin"
+        class="form-check-inline"
+        id="keepMeSignedIn"
+      />
+      <label for="keepMeSignedIn">Keep me signed in</label>
+    </div>
+    <div class="mt-4" style="max-width: 300px">
+      <button
+        class="btn text-white w-100 p-2 fs-5 fw-bold d-none"
+        id="nextBtn"
+        style="background-color: rgb(179, 100, 253)"
+      >
+        Next
+      </button>
+      <button
+        class="btn btn-outline-light text-primary fw-bold w-100 p-2 rounded-3 mt-1"
+        id="qrCodeLogin"
+      >
+        LOG IN BY QR CODE
+      </button>
+    </div>
+  </div>
+</div>
