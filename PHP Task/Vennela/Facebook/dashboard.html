@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Facebook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        background-color: #f0f2f5;
+      }
+
+      #topNavbar {
+        height: 49px;
+        background-color: #ffffff;
+      }
+      #topNavbar .container-fluid {
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+      #topNavbar .fa-facebook {
+        font-size: 36px;
+        margin-left: -10px;
+      }
+      #topNavbar .fa-home,
+      #topNavbar .fa-video,
+      #topNavbar .fa-store,
+      #topNavbar .fa-users {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #topNavbar .fa-th,
+      #topNavbar .fa-facebook-messenger,
+      #topNavbar .fa-bell {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #topNavbar img {
+        height: 32px !important;
+        width: 32px !important;
+        object-fit: cover;
+      }
+      .search-box {
+        position: relative;
+        width: 220px;
+      }
+      .search-box input {
+        width: 100%;
+        height: 35px;
+        padding-left: 35px;
+        border-radius: 20px;
+        border: none;
+        background-color: #f0f2f5;
+        outline: none;
+        font-size: 14px;
+      }
+      .search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 13px;
+        color: #65676b;
+      }
+      :root {
+        --sidebar-width: 300px;
+      }
+      #leftSidebar {
+        height: calc(100vh - 55px);
+        top: 55px;
+        overflow-y: auto;
+        background-color: #f0f2f5;
+        position: sticky;
+      }
+      #leftSidebar::-webkit-scrollbar {
+        width: 6px;
+      }
+      #leftSidebar::-webkit-scrollbar-thumb {
+        background: #bcc0c4;
+        border-radius: 10px;
+      }
+      .menu-item:hover {
+        background-color: #e4e6eb;
+        width: 100%;
+      }
+      .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .menu-icon {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        transform: scale(0.9);
+        transform-origin: left center;
+      }
+      .icon-meta {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yK/r/5yY-ohUpfUP.webp");
+        background-size: 37px 961px;
+        background-position: 0 0;
+      }
+      .icon-friends {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yq/r/6aum_pQMnLN.webp");
+        background-size: auto;
+        background-position: 0 -814px;
+      }
+      .icon-memories {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yU/r/ufiZ9HM6QJr.webp");
+        background-size: 37px 1702px;
+        background-position: 0 -1221px;
+      }
+      .icon-saved {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yU/r/ufiZ9HM6QJr.webp");
+        background-size: 37px 1702px;
+        background-position: 0 -518px;
+      }
+      .icon-groups {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yU/r/ufiZ9HM6QJr.webp");
+        background-size: 37px 1702px;
+        background-position: 0 -185px;
+      }
+      .icon-reels {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yU/r/ufiZ9HM6QJr.webp");
+        background-size: 37px 1702px;
+        background-position: 0 -111px;
+      }
+      .icon-market {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yU/r/ufiZ9HM6QJr.webp");
+        background-size: 37px 1702px;
+        background-position: 0 -962px;
+      }
+      .icon-feeds {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yD/r/D-suSzd5hj0.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+      }
+      .icon-events {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yU/r/ufiZ9HM6QJr.webp");
+        background-position: 0 -666px;
+        background-size: 37px 1702px;
+        width: 36px;
+        height: 36px;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      .icon-adsmanager {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yq/r/6aum_pQMnLN.webp");
+        background-position: 0 -407px;
+        background-size: auto;
+        width: 36px;
+        height: 36px;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      .icon-birthdays {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yL/r/_1B5IH4MpiR.webp");
+        background-position: 0 0;
+        background-size: auto;
+        width: 36px;
+        height: 36px;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      .icon-gaming-video {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yT/r/JYr05Vf7xjV.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+      }
+      .icon-messenger {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/ye/r/_BKY02QRDZQ.webp");
+        background-position: 0 0;
+        background-size: auto;
+        width: 36px;
+        height: 36px;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      .icon-orders-payments {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/ym/r/hHT2FUmLOwe.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+      }
+      .icon-pages {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yU/r/ufiZ9HM6QJr.webp");
+        background-position: 0 -333px;
+        background-size: 37px 1702px;
+        width: 36px;
+        height: 36px;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      .icon-play-games {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yU/r/ufiZ9HM6QJr.webp");
+        background-position: 0 -259px;
+        background-size: 37px 1702px;
+        width: 36px;
+        height: 36px;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      .icon-recent-ad-activity {
+        background-image: url("https://static.xx.fbcdn.net/rsrc.php/yD/r/1e13-VywaL5.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+      }
+
+      #mainFeed {
+        margin-top: 25px;
+      }
+      .top-icons {
+        gap: 80px;
+        margin-left: -150px;
+      }
+
+      .inside-search-box {
+        position: relative;
+        width: 450px;
+      }
+      .inside-search-box input {
+        width: 100%;
+        height: 38px;
+        padding-left: 10px;
+        border-radius: 20px;
+        border: none;
+        background-color: #f0f2f5;
+        outline: none;
+        font-size: 14px;
+      }
+      .inside-search-box input:hover {
+        background-color: #e4e6eb;
+        cursor: pointer;
+      }
+      .main-card {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      .d-flex img {
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      .d-flex img:hover {
+        background-color: #e4e6eb;
+      }
+      .top-btn {
+        width: 90px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 8px;
+        color: #65676b;
+        position: relative;
+        margin-top: -5px;
+      }
+
+      .top-btn:hover {
+        background-color: #f0f2f5;
+      }
+
+      .top-btn.active {
+        color: #1877f2;
+      }
+      .top-btn.active::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        width: 100%;
+        height: 3px;
+        background-color: #1877f2;
+      }
+
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        overflow-y: auto;
+      }
+
+      .modal-box {
+        background: #fff;
+        width: 500px;
+        border-radius: 10px;
+        padding: 15px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .modal-header span {
+        cursor: pointer;
+        font-size: 22px;
+      }
+      .modal-body textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+        margin: 10px 0;
+        font-size: 16px;
+      }
+      #previewContainer img,
+      #previewContainer video {
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+      #profileMenu {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        width: 180px;
+      }
+      .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        border: none;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+      }
+      .dropdown-item:hover {
+        background: #f0f2f5;
+      }
+      #postsWrapper {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      #postsContainer .card {
+        width: 100%;
+        border-radius: 10px;
+      }
+      #postsContainer img,
+      #postsContainer video {
+        width: 100%;
+        max-height: 400px;
+        object-fit: contain;
+        background: #ffffff;
+        border-radius: 5px;
+      }
+      .post-actions {
+        display: flex;
+        gap: 10px;
+        padding-left: 10px;
+      }
+      .action-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #65676b;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .action-btn:hover {
+        background-color: #f0f2f5;
+        border-radius: 5px;
+        padding: 5px 8px;
+      }
+      .liked {
+        color: #1877f2;
+      }
+      .modal-content {
+        border-radius: 12px;
+      }
+
+      .modal-header {
+        border-bottom: 1px solid #eee;
+      }
+
+      .modal-footer {
+        border-top: 1px solid #eee;
+      }
+      .dropdown-menu-custom {
+        position: absolute;
+        right: 0;
+        top: 30px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        padding: 5px;
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="topNavbar" class="navbar shadow-sm px-3 fixed-top">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center gap-2">
+          <i class="fab fa-facebook text-primary"></i>
+
+          <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search Facebook" />
+          </div>
+        </div>
+
+        <div class="d-none d-md-flex text-secondary top-icons" id="topMenu">
+          <div class="top-btn active" data-page="home">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="x14rh7hd x1lliihq x1tzjh5l x1k90msu x2h7rmj x1qfuztq"
+              style="--x-color: var(--secondary-icon)"
+            >
+              <path
+                d="M8.99 23H7.93c-1.354 0-2.471 0-3.355-.119-.928-.125-1.747-.396-2.403-1.053-.656-.656-.928-1.475-1.053-2.403C1 18.541 1 17.425 1 16.07v-4.3c0-1.738-.002-2.947.528-4.006.53-1.06 1.497-1.784 2.888-2.826L6.65 3.263c1.114-.835 2.02-1.515 2.815-1.977C10.294.803 11.092.5 12 .5c.908 0 1.707.303 2.537.786.795.462 1.7 1.142 2.815 1.977l2.232 1.675c1.391 1.042 2.359 1.766 2.888 2.826.53 1.059.53 2.268.528 4.006v4.3c0 1.355 0 2.471-.119 3.355-.124.928-.396 1.747-1.052 2.403-.657.657-1.476.928-2.404 1.053-.884.119-2 .119-3.354.119H8.99zM7.8 4.9l-2 1.5C4.15 7.638 3.61 8.074 3.317 8.658 3.025 9.242 3 9.937 3 12v4c0 1.442.002 2.424.101 3.159.095.706.262 1.033.485 1.255.223.223.55.39 1.256.485.734.099 1.716.1 3.158.1V14.5a2.5 2.5 0 0 1 2.5-2.5h3a2.5 2.5 0 0 1 2.5 2.5V21c1.443 0 2.424-.002 3.159-.101.706-.095 1.033-.262 1.255-.485.223-.222.39-.55.485-1.256.099-.734.101-1.716.101-3.158v-4c0-2.063-.025-2.758-.317-3.342-.291-.584-.832-1.02-2.483-2.258l-2-1.5c-1.174-.881-1.987-1.489-2.67-1.886C12.87 2.63 12.425 2.5 12 2.5c-.425 0-.87.13-1.53.514-.682.397-1.495 1.005-2.67 1.886zM14 21v-6.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V21h4z"
+              ></path>
+            </svg>
+          </div>
+          <div class="top-btn" data-page="reels">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="x14rh7hd x1lliihq x1tzjh5l x1k90msu x2h7rmj x1qfuztq"
+              style="--x-color: var(--secondary-icon)"
+            >
+              <path
+                d="M10.996 12.132A1 1 0 0 0 9.5 13v4a1 1 0 0 0 1.496.868l3.5-2a1 1 0 0 0 0-1.736l-3.5-2z"
+              ></path>
+              <path
+                d="M12.075 1h-.15C9.632 1 7.81 1 6.38 1.192c-1.472.198-2.674.616-3.623 1.565-.949.95-1.367 2.15-1.565 3.623C1 7.81 1 9.632 1 11.925v.15c0 2.293 0 4.116.192 5.545.198 1.472.616 2.674 1.565 3.623.95.949 2.15 1.367 3.623 1.565C7.81 23 9.632 23 11.925 23h.15c2.293 0 4.116 0 5.545-.192 1.472-.198 2.674-.616 3.623-1.565.949-.95 1.367-2.15 1.565-3.623.192-1.43.192-3.252.192-5.545v-.15c0-2.293 0-4.116-.192-5.545-.198-1.472-.616-2.674-1.565-3.623-.95-.949-2.15-1.367-3.623-1.565C16.19 1 14.368 1 12.075 1zM4.172 4.172c.515-.516 1.224-.83 2.475-.998l.183-.023L8.113 7H3.132c.013-.121.027-.239.042-.353.168-1.25.482-1.96.998-2.475zM10.22 7 8.895 3.023C9.778 3 10.801 3 12 3c.642 0 1.234 0 1.78.004L15.114 7H10.22zm6.253 2h4.507c.02.86.02 1.848.02 3 0 2.385-.002 4.074-.174 5.353-.168 1.25-.482 1.96-.998 2.475-.515.516-1.224.83-2.475.998-1.28.172-2.968.174-5.353.174s-4.074-.002-5.353-.174c-1.25-.168-1.96-.482-2.475-.998-.516-.515-.83-1.224-.998-2.475C3.002 16.073 3 14.385 3 12c0-1.152 0-2.14.02-3h13.454zm.747-2-1.316-3.949c.537.026 1.016.065 1.448.123 1.25.168 1.96.482 2.475.998.516.515.83 1.224.998 2.475.015.114.03.232.042.353H17.22z"
+              ></path>
+            </svg>
+          </div>
+          <div class="top-btn" data-page="friends">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="x14rh7hd x1lliihq x1tzjh5l x1k90msu x2h7rmj x1qfuztq"
+              style="--x-color: var(--secondary-icon)"
+            >
+              <path
+                d="M12.496 5a4 4 0 1 1 8 0 4 4 0 0 1-8 0zm4-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-9 2.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm-2 4a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM5.5 15a5 5 0 0 0-5 5 3 3 0 0 0 3 3h8.006a3 3 0 0 0 3-3 5 5 0 0 0-5-5H5.5zm-3 5a3 3 0 0 1 3-3h4.006a3 3 0 0 1 3 3 1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1zm12-9.5a5.04 5.04 0 0 0-.37.014 1 1 0 0 0 .146 1.994c.074-.005.149-.008.224-.008h4.006a3 3 0 0 1 3 3 1 1 0 0 1-1 1h-3.398a1 1 0 1 0 0 2h3.398a3 3 0 0 0 3-3 5 5 0 0 0-5-5H14.5z"
+              ></path>
+            </svg>
+          </div>
+          <div class="top-btn" data-page="groups">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="x14rh7hd x1lliihq x1tzjh5l x1k90msu x2h7rmj x1qfuztq"
+              style="--x-color: var(--secondary-icon)"
+            >
+              <path
+                d="M.5 12c0 6.351 5.149 11.5 11.5 11.5S23.5 18.351 23.5 12 18.351.5 12 .5.5 5.649.5 12zm2 0c0-.682.072-1.348.209-1.99a2 2 0 0 1 0 3.98A9.539 9.539 0 0 1 2.5 12zm.84-3.912A9.502 9.502 0 0 1 12 2.5a9.502 9.502 0 0 1 8.66 5.588 4.001 4.001 0 0 0 0 7.824 9.514 9.514 0 0 1-1.755 2.613A5.002 5.002 0 0 0 14 14.5h-4a5.002 5.002 0 0 0-4.905 4.025 9.515 9.515 0 0 1-1.755-2.613 4.001 4.001 0 0 0 0-7.824zM12 5a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm-2 4a2 2 0 1 0 4 0 2 2 0 0 0-4 0zm11.291 1.01a9.538 9.538 0 0 1 0 3.98 2 2 0 0 1 0-3.98zM16.99 20.087A9.455 9.455 0 0 1 12 21.5c-1.83 0-3.54-.517-4.99-1.414a1.004 1.004 0 0 1-.01-.148V19.5a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v.438a1 1 0 0 1-.01.148z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <i class="fas fa-th"></i>
+          <i class="fab fa-facebook-messenger"></i>
+          <i class="fas fa-bell"></i>
+          <img
+            id="postProfilePic"
+            class="rounded-circle me-2"
+            style="height: 3em; width: 3em"
+          />
+          <div id="profileMenu" class="d-none">
+            <button id="uploadProfile" class="dropdown-item">
+              Upload Profile
+            </button>
+            <input type="file" id="profileFile" hidden />
+            <button id="logoutBtn" class="dropdown-item">Logout</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-md-3 d-none d-md-block">
+          <div id="leftSidebar" class="p-2">
+            <ul class="list-unstyled d-flex flex-column gap-1">
+              <li class="menu-item">
+                <img
+                  id="userImg"
+                  class="rounded-circle"
+                  style="height: 2em; width: 2em"
+                />
+                <strong id="userName"></strong>
+              </li>
+              <li>
+                <a
+                  href="https://www.meta.ai/?utm_source=facebook_bookmarks&fbclid=IwY2xjawRb7YZleHRuA2FlbQIxMABicmlkETFjQko0ZTZWT01ZNzZlMnFNc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHn6U3IwswfcqulYRpOx_SdEd2HbbsvpA6NaiqnHpz0ydLlCfo83ScboVaqRR_aem_Bg2No4wT4OdSMMpvXx8ktg"
+                  class="menu-item text-decoration-none text-dark"
+                >
+                  <span class="menu-icon icon-meta"></span>
+                  <span>Meta AI</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-friends"></span> Friends
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-memories"></span> Memories
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-saved"></span> Saved
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-groups"></span> Groups
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-reels"></span> Reels
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-market"></span> Marketplace
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-feeds"></span>Feeds
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-events"></span>Events
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-adsmanager"></span>Ads Manager
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-birthdays"></span>Birthdays
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-gaming-video"></span>Gaming Video
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-messenger"></span>Messenger
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-orders-payments"></span>Orders and
+                Payments
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-pages"></span>Pages
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-play-games"></span>Play Games
+              </li>
+              <li class="menu-item">
+                <span class="menu-icon icon-recent-ad-activity"></span>Recent Ad
+                Activity
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div id="mainFeed"></div>
+        </div>
+
+        <div id="postModal" class="modal-overlay d-none">
+          <div class="modal-box">
+            <div class="modal-header">
+              <h5>Create post</h5>
+              <span id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <textarea
+                id="modalText"
+                placeholder="What's on your mind?"
+              ></textarea>
+              <div id="previewContainer"></div>
+              <div id="postsWrapper">
+                <div id="postsContainer"></div>
+              </div>
+            </div>
+            <button id="submitPost" class="btn btn-primary w-100">Post</button>
+          </div>
+        </div>
+        <div class="modal fade" id="commentModal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Comments</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div id="modalCommentsList"></div>
+              </div>
+              <div class="modal-footer">
+                <input
+                  type="text"
+                  id="modalCommentInput"
+                  class="form-control"
+                  placeholder="Write comment"
+                />
+                <button id="postCommentBtn" class="btn btn-primary">
+                  Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="scripts/dashboard.js"></script>
+  </body>
+</html>
