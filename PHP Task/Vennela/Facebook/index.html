@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facebook</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        background: #ffffff;
+        font-family: "Segoe UI", sans-serif;
+      }
+      .container-fluid {
+        height: 100vh;
+      }
+      .left-section,
+      .right-section {
+        position: relative;
+      }
+      .left-section {
+        padding: 60px;
+        display: flex;
+        align-items: center;
+        border-right: 2px solid #e4e6eb;
+      }
+      .left-content {
+        display: flex;
+        align-items: center;
+      }
+      .logo {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+      }
+      .image-sec {
+        position: relative;
+        display: inline-block;
+      }
+      .left-img {
+        max-width: 500px;
+        margin-left: 70px;
+        position: relative;
+        top: -20px;
+      }
+      .overlay-text {
+        position: absolute;
+        top: 220px;
+        left: -30px;
+        font-size: 55px;
+        font-weight: 600;
+        line-height: 1.1;
+        color: black;
+      }
+      .overlay-text span {
+        color: #1877f2;
+      }
+      .right-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .login-box {
+        width: 100%;
+        max-width: 550px;
+      }
+      .form-floating input {
+        border-radius: 12px;
+        height: 60px;
+        border-width: 1.5px;
+      }
+      .form-control:focus {
+        border-color: black;
+        box-shadow: none;
+      }
+      .login-btn {
+        background: #0868e6;
+        color: white;
+        border-radius: 30px;
+        height: 50px;
+        font-size: 18px;
+        border: none;
+      }
+
+      .login-btn:hover {
+        background: #0868e6;
+      }
+      .create-btn {
+        border-radius: 30px;
+        height: 50px;
+      }
+      .create-btn:hover {
+        background: #e8e8e8;
+        color: #0868e6;
+      }
+      .forgot {
+        display: block;
+        text-align: center;
+        margin: 15px 0;
+        text-decoration: none;
+      }
+      .line {
+        border-top: 2px solid #e4e6eb;
+        width: 100%;
+        margin: 20px 0;
+        margin-top: 5.9vh;
+      }
+      @media (max-width: 992px) {
+        .left-section {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row h-100">
+        <div class="col-lg-6 left-section">
+          <div class="left-content">
+            <div>
+              <div class="logo">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="#0868e6"
+                  width="70px"
+                  height="70px"
+                >
+                  <path
+                    d="M22 12.037C22 6.494 17.523 2 12 2S2 6.494 2 12.037c0 4.707 3.229 8.656 7.584 9.741v-6.674H7.522v-3.067h2.062v-1.322c0-3.416 1.54-5 4.882-5 .634 0 1.727.125 2.174.25v2.78a12.807 12.807 0 0 0-1.155-.037c-1.64 0-2.273.623-2.273 2.244v1.085h3.266l-.56 3.067h-2.706V22C18.164 21.4 22 17.168 22 12.037z"
+                  />
+                </svg>
+              </div>
+              <div class="image-sec">
+                <img
+                  src="./Images/login_page_img.png"
+                  class="img-fluid left-img"
+                />
+                <h5 class="main-text overlay-text">
+                  Explore<br />
+                  the<br />
+                  things<br />
+                  <span>you love</span>.
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 right-section">
+          <div class="login-box">
+            <h5 class="mb-4">Log in to Facebook</h5>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="emailInput"
+                class="form-control"
+                placeholder="Email"
+                required
+              />
+              <label>Email address or mobile number</label>
+            </div>
+            <div
+              id="emailError"
+              class="text-danger small mb-3"
+              style="display: none"
+            >
+              <i class="bi bi-exclamation-circle"></i>
+              The email address or mobile number you entered isn't connected to
+              an account.
+            </div>
+            <div
+              id="errorMsg"
+              class="text-danger small mb-3"
+              style="display: none"
+            >
+              <i class="bi bi-exclamation-circle"></i>
+              The email address or mobile number you entered isn't connected to
+              an account.
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                id="passwordInput"
+                class="form-control"
+                placeholder="Password"
+                required
+              />
+              <label>Password</label>
+            </div>
+            <div
+              id="passwordError"
+              class="text-danger small mb-3"
+              style="display: none"
+            >
+              <i class="bi bi-exclamation-circle"></i>
+              The password you entered is incorrect.
+            </div>
+            <button id="loginBtn" class="btn login-btn w-100">Log in</button>
+            <a href="./findAccount.html" class="forgot text-dark"
+              >Forgotten password?</a
+            >
+            <button class="btn btn-outline-primary create-btn w-100">
+              <a href="register.html" class="text-decoration-none"
+                >Create new account</a
+              >
+            </button>
+            <div class="text-center mt-4">
+              <span
+                ><img
+                  src="./Images/meta_logo.png"
+                  style="height: 2em; width: 2em" /></span
+              >Meta
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="container text-muted footer" style="font-size: 15px">
+      <div class="d-flex flex-wrap gap-4 mb-2 mt-4">
+        <a href="#" class="text-decoration-none text-muted">English (UK)</a>
+        <a href="#" class="text-decoration-none text-muted">हिंदी</a>
+        <a href="#" class="text-decoration-none text-muted">اردو</a>
+        <a href="#" class="text-decoration-none text-muted">தமிழ்</a>
+        <a href="#" class="text-decoration-none text-muted">বাংলা</a>
+        <a href="#" class="text-decoration-none text-muted">मराठी</a>
+        <a href="#" class="text-decoration-none text-muted">తెలుగు</a>
+        <a href="#" class="text-decoration-none text-muted"
+          >More languages...</a
+        >
+      </div>
+      <div class="d-flex flex-wrap gap-3 mb-2">
+        <a href="#" class="text-decoration-none text-muted">Sign up</a>
+        <a href="#" class="text-decoration-none text-muted">Log in</a>
+        <a href="#" class="text-decoration-none text-muted">Messenger</a>
+        <a href="#" class="text-decoration-none text-muted">Facebook Lite</a>
+        <a href="#" class="text-decoration-none text-muted">Video</a>
+        <a href="#" class="text-decoration-none text-muted">Meta Pay</a>
+        <a href="#" class="text-decoration-none text-muted">Meta Store</a>
+        <a href="#" class="text-decoration-none text-muted">Meta Quest</a>
+        <a href="#" class="text-decoration-none text-muted">Ray-Ban Meta</a>
+        <a href="#" class="text-decoration-none text-muted">Meta AI</a>
+        <a href="#" class="text-decoration-none text-muted">Instagram</a>
+        <a href="#" class="text-decoration-none text-muted">Threads</a>
+        <a href="#" class="text-decoration-none text-muted">Privacy Policy</a>
+      </div>
+      <div class="d-flex flex-wrap gap-3 mb-2">
+        <a href="#" class="text-decoration-none text-muted">Privacy Centre</a>
+        <a href="#" class="text-decoration-none text-muted">About</a>
+        <a href="#" class="text-decoration-none text-muted">Create ad</a>
+        <a href="#" class="text-decoration-none text-muted">Create Page</a>
+        <a href="#" class="text-decoration-none text-muted">Developers</a>
+        <a href="#" class="text-decoration-none text-muted">Careers</a>
+        <a href="#" class="text-decoration-none text-muted">Cookies</a>
+        <a href="#" class="text-decoration-none text-muted">AdChoices</a>
+        <a href="#" class="text-decoration-none text-muted">Terms</a>
+        <a href="#" class="text-decoration-none text-muted">Help</a>
+        <a href="#" class="text-decoration-none text-muted"
+          >Contact uploading and non-users</a
+        >
+      </div>
+      <div class="mt-2">Meta © 2026</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./scripts/login.js"></script>
+  </body>
+</html>
