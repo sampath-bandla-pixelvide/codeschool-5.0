@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create your Google Account</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/register.css">
+</head>
+<body>
+  <div class="top-bar">
+    <img src="/styles/googlelogo.png" alt="Google">
+  </div>
+
+  <div class="page-center">
+    <div class="card">
+      <h1>Create your Google Account</h1>
+      <p class="subtitle">Enter your personal info to get started</p>
+
+      <div class="row">
+        <div class="input-wrap">
+          <label for="first_name">First name</label>
+          <input type="text" id="first_name" autocomplete="given-name">
+          <div class="error-msg" id="firstNameError"></div>
+        </div>
+        <div class="input-wrap">
+          <label for="last_name">Last name</label>
+          <input type="text" id="last_name" autocomplete="family-name">
+
+          <div class="error-msg" id="lastNameError"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-wrap">
+          <label for="dob">Date of birth</label>
+          <input type="date" id="dob">
+          <div class="error-msg" id="dobError"></div>
+        </div>
+        <div class="input-wrap">
+          <label for="gender">Gender</label>
+          <select id="gender">
+            <option value="">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <!-- <option value="Rather not say">Rather not say</option> -->
+          </select>
+          <div class="error-msg" id="genderError"></div>
+        </div>
+      </div>
+
+      <div class="input-wrap">
+        <label for="email">Email address</label>
+        <input type="email" id="email" autocomplete="email">
+        <div class="error-msg" id="emailError"></div>
+      </div>
+
+      <div class="input-wrap">
+        <label for="password">Password</label>
+        <input type="password" id="password" autocomplete="new-password">
+        <div class="error-msg" id="passwordError"></div>
+      </div>
+
+      <p class="terms">
+        By creating an account, you agree to our
+        <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+      </p>
+
+      <div class="actions">
+        <a href="index.html" class="signin-link">Sign in </a>
+        <button class="btn-create" onclick="register()">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>English (United States)</span>
+    <a href="#">Help</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="script/register.js"></script>
+</body>
+</html>
