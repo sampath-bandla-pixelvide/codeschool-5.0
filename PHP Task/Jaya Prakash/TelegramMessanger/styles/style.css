@@ -1,0 +1,88 @@
+* {
+ box-sizing: border-box;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+}
+
+.bg-telegram-pattern {
+  background-image: url(../assects/telegramBgPattern.jpg);
+  background-color: rgba(0, 0, 0, 0.575);
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+  background-repeat: repeat;
+}
+
+.onHover:hover:not(.active-contact) {
+  background-color: rgb(184, 184, 184) !important;
+  cursor: pointer;
+}
+
+.active-contact {
+  background-color: rgb(67, 97, 246) !important;
+  color: white !important;
+}
+
+.bg-gray {
+  background-color: rgb(44 44 44);
+}
+
+#menu > li > a:hover {
+  background-color: rgb(34, 34, 34) !important;
+}
+
+.msg {
+  max-width: 60%;
+  border-radius: 12px;
+  font-size: 14px;
+  width: fit-content;
+  word-break: break-word;
+}
+
+.msg.received {
+  background: white;
+  border-bottom-left-radius: 4px;
+}
+
+.msg.sent {
+  background: #d2f8d2;
+  border-bottom-right-radius: 4px;
+}
+
+.msg-time {
+  display: block;
+  font-size: 11px;
+  color: gray;
+  text-align: right;
+}
+
+.msg img {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+#chatBox {
+  margin-left: calc(25% + 0px) !important;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+@media (max-width: 767px) {
+  #chatBox {
+    margin-left: 0px !important;
+    width: 100%;
+  }
+  #sidebar {
+    position: relative !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  #chatBox {
+    margin-left: calc(33% + 2px) !important;
+  }
+}

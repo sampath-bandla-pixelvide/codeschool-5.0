@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://web.telegram.org/a/favicon.svg"
+      type="image/x-icon"
+    />
+    <title>Telegram</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+
+  <body class="vh-100">
+    <!-- offcanvas -->
+    <!-- edit Profile -->
+    <div
+      class="offcanvas offcanvas-start"
+      id="editProfileOffcanvas"
+      aria-labelledby="editProfileOffcanvasLabel"
+    >
+      <div class="offcanvas-header d-flex justify-content-between p-4">
+        <h5 class="offcanvas-title" id="editProfileOffcanvasLabel">
+          Edit Profile Details
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="mt-2 offcanvas-body px-2">
+        <form id="profileUpdateForm">
+          <div class="mb-3 text-center">
+            <img
+              id="photoPreview"
+              src="../assects/userImgPlaceHolder.avif"
+              class="rounded-circle"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="file"
+              class="form-control p-1"
+              id="photo"
+              name="photo"
+              accept="image/*"
+            />
+          </div>
+
+          <div class="row mb-3 gap-2">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control p-1"
+                name="first_name"
+                id="first_name"
+                placeholder="First Name *"
+                required
+              />
+              <small id="firstNameError" class="text-danger d-none"
+                >Invalid First-Name</small
+              >
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                class="form-control p-1"
+                name="last_name"
+                id="lastName"
+                placeholder="Last Name (optional)"
+              />
+              <small id="lastNameError" class="text-danger d-none"
+                >Invalid Last-Name</small
+              >
+            </div>
+          </div>
+
+          <div class="mb-3 position-relative">
+            <input
+              type="text"
+              class="form-control p-1"
+              name="user_name"
+              id="username"
+              placeholder="Username"
+              required
+            />
+            <i
+              id="usernameCheck"
+              class="bi bi-check-circle-fill text-success position-absolute d-none"
+              style="right: 15px; top: 8px"
+            ></i>
+            <i
+              id="usernameX"
+              class="bi bi-x-circle-fill text-danger position-absolute d-none"
+              style="right: 15px; top: 8px"
+            ></i>
+            <i
+              id="usernameSpinner"
+              class="spinner-border spinner-border-sm text-secondary position-absolute d-none"
+              style="right: 15px; top: 12px"
+            ></i>
+
+            <small id="userNameError" class="text-danger d-none"></small>
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control p-1"
+              name="email"
+              id="email"
+              placeholder="Email (optional)"
+            />
+          </div>
+
+          <div class="mb-3">
+            <textarea
+              class="form-control p-1"
+              id="bio"
+              name="bio"
+              rows="2"
+              maxlength="150"
+              placeholder="Bio..(Max 150 chars) (optional)"
+            ></textarea>
+          </div>
+
+          <div id="registerError" class="text-danger small mb-2 d-none"></div>
+
+          <button
+            type="submit"
+            class="btn btn-primary w-100 p-1 align-center rounded-pill"
+          >
+            Confirm
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- notifications -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header d-flex justify-content-between p-4">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+          Notifications
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <hr class="border border-dark" />
+      <div class="offcanvas-body" id="notificationPanal">
+        <div class="text-center w-100 p-4">No notifications...</div>
+      </div>
+    </div>
+
+    <div class="container-fluid h-100">
+      <div class="row h-100">
+        <!-- SIDEBAR -->
+        <div
+          class="col-12 col-md-4 col-lg-3 border-end bg-light d-flex flex-column p-0 position-fixed"
+          id="sidebar"
+          style="height: 100vh; overflow-y: auto"
+        >
+          <!-- Top Bar -->
+          <div
+            class="p-2 border-bottom bg-light d-flex align-items-center gap-2 sticky-top position-relative"
+          >
+            <div class="dropdown">
+              <button
+                class="btn btn-light px-1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-list fs-3"></i>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu border-0 p-2 shadow">
+                <!-- Profile -->
+                <li class="border-bottom pb-2 mb-2">
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    id="editProfile"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#editProfileOffcanvas"
+                    aria-controls="editProfileOffcanvas"
+                    href="#"
+                  >
+                    <img
+                      src="./assects/placeholderImg.jpg"
+                      width="30"
+                      height="30"
+                      id="userProfile"
+                      class="rounded-circle"
+                    />
+                    <span class="fw-medium" id="userName"></span>
+                  </a>
+                </li>
+
+                <!-- Items -->
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    href="#"
+                  >
+                    <i class="bi bi-bookmark"></i>
+                    <span>Saved Messages</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    href="#"
+                  >
+                    <i class="bi bi-people"></i>
+                    <span>Contacts</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    href="#"
+                  >
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                  </a>
+                </li>
+
+                <!-- Logout -->
+                <li class="border-top mt-2 pt-2">
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2 text-danger"
+                    id="logoutBtn"
+                    href="#"
+                  >
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="w-100 position-relative">
+              <i
+                class="bi bi-search text-dark fs-5 position-absolute"
+                style="left: 15px; top: 5px"
+              ></i
+              ><input
+                type="text"
+                id="searchContacts"
+                class="form-control rounded-pill text-dark border-0 px-5"
+                placeholder="Search..."
+                style="height: 40px; background-color: rgb(234, 233, 233)"
+              />
+              <i
+                class="bi bi-x text-dark fs-4 position-absolute d-none"
+                id="cancelSearch"
+                style="right: 15px; top: 0px"
+              ></i>
+            </div>
+
+            <div class="position-relative">
+              <i
+                class="bi bi-bell fs-5 px-2 p-1 onHover rounded-circle"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                aria-controls="offcanvasExample"
+              ></i
+              ><span
+                class="position-absolute bg-danger p-1 rounded-circle d-none"
+                id="notificationsPopupIcon"
+                style="right: 3px; top: 1px"
+              ></span>
+            </div>
+          </div>
+
+          <!-- Contacts -->
+          <div class="flex-grow-1 overflow-auto" id="contactsContainer">
+            <!-- Contact -->
+          </div>
+          <!-- <button
+            class="btn btn-primary position-absolute rounded-circle py-1 px-2"
+            style="right: 10px; bottom: 10px"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            <i class="bi bi-people fs-5"></i>
+          </button> -->
+        </div>
+
+        <!-- Modal For Creting New Channel -->
+        <!-- <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                  Create Channel
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form action="" id="createChannelForm">
+                  <div class="d-flex justify-content-center">
+                    <img src="./assects/placeholderImg.jpg" height="80" width="80" class="rounded-circle" id="groupImagePreview" alt="placeholder">
+                  </div>
+                  <div class="d-flex justify-content-center mb-2">
+                    <button type="button" class="btn btn-light mt-1 rounded fs-6" id="uploadChannelImageTriggerBtn">Upload <i class="bi bi-upload fs-6"></i></button>
+                  </div>
+                  <input type="file" name="channelPhoto" id="channelPhoto" hidden>
+                  <input type="text" class="form-control px-2" name="channelName" id="ChannelNameInput" placeholder="Channel name...">
+                  <small class="text-danger d-none" id="channelNameError">Invalid Channel Name!!</small>
+                </form>
+
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  id="cancelCreateChannel"
+                >
+                  Cancel
+                </button>
+                <button type="button" class="btn btn-primary"  id="createChannelConfirm">
+                  Create
+                </button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- CHAT AREA -->
+        <div
+          class="col d-md-flex flex-column p-0 bg-telegram-pattern d-none min-vh-100"
+          id="chatBox"
+        ></div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./scripts/home.js"></script>
+  </body>
+</html>
