@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Signup</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      #splashScreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .container-box {
+        max-width: 550px;
+        margin: 40px auto;
+      }
+
+      .form-control {
+        background: #f5f6f7;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        height: 56px;
+      }
+
+      .form-control:focus {
+        border-color: #1877f2;
+        box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        background: #fff;
+      }
+
+      .form-floating label {
+        color: #777;
+        font-size: 14px;
+      }
+
+      .input-error {
+        border: 1px solid #ed4956 !important;
+      }
+
+      .label-error {
+        color: #ed4956 !important;
+      }
+
+      .input-error:focus {
+        border-color: #ed4956 !important;
+        box-shadow: 0 0 0 2px rgba(237, 73, 86, 0.2) !important;
+      }
+
+      .btn-primary-custom {
+        background: #1877f2;
+        border-radius: 25px;
+        padding: 10px;
+        font-weight: 500;
+      }
+
+      .btn-outline-custom {
+        border-radius: 25px;
+      }
+
+      .text {
+        font-size: 15px;
+      }
+
+      .footer {
+        font-size: 13px;
+        word-spacing: 8px;
+      }
+
+      img {
+        height: 40px;
+        margin-left: -10px;
+      }
+
+      .dropdown-box {
+        border-radius: 12px;
+        padding: 10px;
+        width: 180px;
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .dropdown-list {
+        position: absolute;
+        top: 45px;
+        left: 0;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: none;
+        z-index: 1000;
+      }
+
+      .dropdown-item {
+        padding: 10px;
+      }
+
+      .dropdown-item:hover {
+        background: #f0f0f0;
+      }
+
+      .btn-primary-custom {
+        background-color: #1877f2;
+        border: none;
+        color: #fff;
+        border-radius: 25px;
+        padding: 10px;
+      }
+
+      .btn-primary-custom:hover {
+        background-color: #166fe5;
+        color: #fff;
+      }
+
+      .btn-primary-custom:active {
+        background-color: #145ec9;
+        color: #fff;
+      }
+
+      .btn-primary-custom:focus {
+        background-color: #1877f2;
+        color: #fff;
+        box-shadow: none;
+      }
+      .btn-outline-custom {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        color: #000;
+        border-radius: 25px;
+        padding: 10px;
+      }
+
+      .btn-outline-custom:hover {
+        background-color: #e6f4ea;
+        border-color: #cce3d3;
+        color: #000;
+      }
+
+      .btn-outline-custom:active {
+        background-color: #d2ead9;
+      }
+
+      .btn-outline-custom:focus {
+        box-shadow: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="splashScreen">
+      <img
+        src="./Images/instagram_logo.jpg"
+        alt=""
+        style="height: 150px; width: 150px"
+      />
+    </div>
+    <div id="mainContent" style="display: none">
+      <div class="container-box">
+        <img src="./Images/meta_logo.png" alt="" />
+
+        <div class="fs-3 fw-semibold">Get started on Instagram</div>
+        <p class="text">Sign up to see photos and videos from your friends.</p>
+
+        <form id="signupForm">
+          <div class="form-floating mt-3">
+            <input
+              type="text"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Mobile number or email"
+            />
+            <label>Mobile number or email</label>
+          </div>
+          <div id="emailError" class="text-danger small mt-1"></div>
+
+          <p class="text mt-2">
+            You may receive notifications from us.
+            <a href="#">Learn why we ask for your contact information</a>
+          </p>
+
+          <div class="form-floating mt-3">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Password"
+            />
+            <label>Password</label>
+          </div>
+          <div id="passwordError" class="text-danger small mt-1"></div>
+
+          <label class="fw-semibold mt-3">Birthday</label>
+
+          <div class="d-flex gap-2 mt-2">
+            <div
+              class="dropdown-box border"
+              onclick="toggleDropdown('monthList', event)"
+            >
+              <span id="monthText">Month</span>
+              <i class="bi bi-chevron-down"></i>
+              <div class="dropdown-list" id="monthList"></div>
+            </div>
+
+            <div
+              class="dropdown-box border"
+              onclick="toggleDropdown('dayList', event)"
+            >
+              <span id="dayText">Day</span>
+              <i class="bi bi-chevron-down"></i>
+              <div class="dropdown-list" id="dayList"></div>
+            </div>
+
+            <div
+              class="dropdown-box border"
+              onclick="toggleDropdown('yearList', event)"
+            >
+              <span id="yearText">Year</span>
+              <i class="bi bi-chevron-down"></i>
+              <div class="dropdown-list" id="yearList"></div>
+            </div>
+          </div>
+
+          <input type="hidden" id="month" name="month" />
+          <input type="hidden" id="day" name="day" />
+          <input type="hidden" id="year" name="year" />
+
+          <div
+            id="dobError"
+            class="text-danger small mt-1"
+            style="display: none"
+          ></div>
+
+          <div class="form-floating mt-3">
+            <input
+              type="text"
+              id="fullname"
+              name="fullname"
+              class="form-control"
+              placeholder="Full name"
+            />
+            <label>Full name</label>
+          </div>
+
+          <div class="form-floating mt-3">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              placeholder="Username"
+            />
+            <label>Username</label>
+          </div>
+          <div id="usernameError" class="text-danger small mt-1"></div>
+
+          <p class="text mt-3">
+            People who use our service may have uploaded your contact
+            information to Instagram.
+            <a href="#">Learn more.</a>
+          </p>
+
+          <p class="text">
+            By tapping Submit, you agree to Instagram's
+            <a href="#">Terms</a>, <a href="#">Privacy Policy</a> and
+            <a href="#">Cookies Policy</a>.
+          </p>
+
+          <button type="submit" class="btn btn-primary-custom w-100 mt-2">
+            Submit
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-outline-custom w-100 mt-2"
+            onclick="window.location.href = 'login.html'"
+          >
+            I already have an account
+          </button>
+        </form>
+      </div>
+
+      <div class="footer text-center text-secondary mt-3">
+        <div>
+          Meta About Blog Jobs Help API Privacy Terms Locations Instagram Lite
+        </div>
+        <div class="mt-1">English © 2026 Instagram from Meta</div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./Scripts/splash.js"></script>
+    <script src="./Scripts/signup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <style>
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 75px;
+        height: 100vh;
+        background: white;
+        border-right: 1px solid #ddd;
+
+        display: flex;
+        flex-direction: column;
+        padding: 15px 10px;
+      }
+
+      .top-section {
+        margin-bottom: 20px;
+      }
+
+      .middle-section {
+        flex-grow: 1;
+      }
+
+      .bottom-section {
+        margin-bottom: 10px;
+      }
+
+      .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .menu-item i {
+        font-size: 24px;
+      }
+
+      .menu-item:hover {
+        background: #f2f2f2;
+        border-radius: 10px;
+      }
+
+      .menu-item span {
+        opacity: 0;
+        transition: 0.2s;
+        white-space: nowrap;
+      }
+
+      .sidebar:hover {
+        width: 170px;
+      }
+
+      .sidebar:hover .menu-item span {
+        opacity: 1;
+      }
+      .active:hover {
+        font-weight: bold;
+      }
+      #rightSidebar {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 300px;
+        height: 100vh;
+        padding: 20px;
+        border-left: 1px solid #ddd;
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container m-0 p-0">
+      <aside class="sidebar">
+        <div class="top-section">
+          <div class="menu-item logo">
+            <i class="bi bi-instagram fs-6"></i>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="middle-section">
+          <div
+            class="menu-item active"
+            onclick="window.location.href = 'instgramHome.html'"
+          >
+            <i class="bi bi-house-door fs-6"></i><span>Home</span>
+          </div>
+          <div class="menu-item active">
+            <i class="bi bi-search fs-6"></i><span>Search</span>
+          </div>
+          <div class="menu-item active">
+            <i class="bi bi-compass fs-6"></i><span>Explore</span>
+          </div>
+          <div class="menu-item active">
+            <i class="bi bi-youtube fs-6"></i><span>Reels</span>
+          </div>
+          <div class="menu-item active">
+            <i class="bi bi-chat fs-6"></i><span>Messages</span>
+          </div>
+          <div class="menu-item active">
+            <i class="bi bi-heart fs-6"></i><span>Notifications</span>
+          </div>
+          <div class="menu-item active" id="createBtn">
+            <i class="bi bi-plus-square fs-6"></i><span>Create</span>
+          </div>
+
+          <div
+            class="menu-item active"
+            onclick="window.location.href = 'profile.html'"
+          >
+            <span class="sidebar-profile">
+              <i class="bi bi-person-circle fs-6"></i>
+            </span>
+            <span>Profile</span>
+          </div>
+        </div>
+
+        <div class="bottom-section">
+          <div class="menu-item">
+            <i class="bi bi-list fs-6"></i><span>More</span>
+          </div>
+          <div class="menu-item">
+            <i class="bi bi-grid fs-6"></i><span>Also from Meta</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="modal fade" id="uploadModal">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div
+          class="modal-content p-3"
+          style="background: white; border-radius: 15px"
+        >
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 id="modalTitle" class="m-0">Create new post</h5>
+            <div>
+              <button id="nextBtn" class="btn btn-sm btn-primary d-none">
+                Next
+              </button>
+              <button id="sharePostBtn" class="btn btn-sm btn-success d-none">
+                Share
+              </button>
+            </div>
+          </div>
+
+          <hr />
+
+          <div id="step1" class="text-center p-5">
+            <i class="bi bi-images fs-1"></i>
+            <p>Drag photos and videos here</p>
+            <button id="selectBtn" class="btn btn-primary">
+              Select from computer
+            </button>
+
+            <input type="file" id="imageInput" hidden />
+          </div>
+
+          <div id="step2" class="d-none text-center">
+            <img
+              id="previewImg"
+              class="img-fluid rounded"
+              style="max-height: 400px"
+            />
+          </div>
+
+          <div id="step3" class="d-none">
+            <div class="row">
+              <div class="col-md-7">
+                <img id="finalPreview" class="img-fluid rounded" />
+              </div>
+
+              <div class="col-md-5">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-person-circle fs-4"></i>
+                  <b id="shareUsername"></b>
+                </div>
+
+                <textarea
+                  class="form-control"
+                  placeholder="Write a caption..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div id="step4" class="d-none text-center p-5">
+            <div id="finalSpinner">
+              <div class="spinner-border text-primary"></div>
+              <p>Sharing...</p>
+            </div>
+
+            <div id="successText" class="d-none">
+              <h4>Your post has been shared</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="homeFeed"
+      style="margin-left: 200px; margin-right: 320px; padding: 20px"
+    ></div>
+    <div id="rightSidebar">
+      <div id="currentUserBox" class="d-flex align-items-center gap-3">
+        <!-- <i class="bi bi-person-circle fs-1"></i> -->
+        <span class="sidebar-profile" id="sideBarProfile">
+          <i class="bi bi-person-circle fs-6"></i>
+        </span>
+        <div>
+          <b id="currentUsername">Loading...</b><br />
+          <small id="currentFullname" class="text-muted"></small>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="./Scripts/create.js"></script>
+    <script src="Scripts/home.js?v=1"></script>
+  </body>
+</html>
