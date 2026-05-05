@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/controllers/AdminControllers.php";
 
-$token = $_POST['userToken'];
+$token = $_POST['token'];
+
 $adminControl = new AdminControllers();
-echo $adminControl->getOrders($token);
+echo $adminControl->validateAdmin($token);

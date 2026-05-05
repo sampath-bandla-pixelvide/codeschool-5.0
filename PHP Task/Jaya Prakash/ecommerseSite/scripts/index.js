@@ -134,7 +134,7 @@ function getProducts() {
     dataType: "json",
     success: function (response) {
       if (!response.status) {
-        Swal.fire("Error", "Error while fetching data!!", "error");
+        $("#productsContainer").html("<h3 class='w-100 text-center'>No Products...</h3>")
         return;
       }
       const products = response.data;
@@ -142,7 +142,7 @@ function getProducts() {
       products.forEach((product) => {
         html += `
         <div class="card rounded-4 card-hover" style="width: 20rem" onclick=getProductDetails('${product.id}')>
-          <img src="./uploads/${product.product_image}" class="card-img-top" alt="" />
+          <img src="./uploads/${product.product_image}" height="400" width="250" class="card-img-top" alt="" />
           <div class="card-body">
             <div class="card-title fs-5 fw-bold mb-0">${product.product_name}</div>
             <span class="text-muted">${product.category_name}</span>
@@ -243,7 +243,7 @@ function getProductsByCategory() {
           <div class="card rounded-4 card-hover" style="width: 20rem"
                onclick="getProductDetails('${product.id}')">
 
-            <img src="./uploads/${product.product_image}" class="card-img-top">
+            <img src="./uploads/${product.product_image}"  height="400" width="250" class="card-img-top">
 
             <div class="card-body">
               <div class="fw-bold">${product.product_name}</div>
@@ -466,7 +466,7 @@ function getCartItems() {
         carts.forEach((cart) => {
           html += `
           <div class="card rounded-4 card-hover" style="width: 20rem">
-            <img src="./uploads/${cart.product_image}" class="card-img-top" alt="" />
+            <img src="./uploads/${cart.product_image}" height="400" width="250" class="card-img-top" alt="" />
             <div class="card-body">
               <div class="card-title fs-5 fw-bold mb-0">${cart.product_name}</div>
               <div class="card-text mt-2">

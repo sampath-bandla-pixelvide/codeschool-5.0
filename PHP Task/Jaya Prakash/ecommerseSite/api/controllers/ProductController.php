@@ -34,7 +34,7 @@ class ProductControllers
 
     public function getProducts($category)
     {
-        if ($category === 'all') {
+        if ($category == 'all') {
             $products = $this->db->query("SELECT p.id, p.product_name, p.stock, p.price, p.product_description, p.product_image, c.category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE p.status=true ORDER BY p.id DESC")->getAll();
             if (!$products) {
                 return sendResponse(false, "No products found");

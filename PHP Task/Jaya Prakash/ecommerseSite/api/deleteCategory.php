@@ -6,4 +6,4 @@ $id = $_POST['id'] ?? null;
 $token = $_POST['userToken'];
 
 $adminControl = new AdminControllers();
-echo $adminControl->deleteCategory($id);
+echo $adminControl->deleteCategory($id,$token);

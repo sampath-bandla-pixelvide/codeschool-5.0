@@ -16,6 +16,12 @@ class OrderControllers
         return $userData['user_id'];
     }
 
+    private function checkProductStock()
+    {
+        $this->db->query("UPDATE products SET status=false WHERE stock=0");
+        return;
+    }
+
     public function orderCartProducts($token, $addressId, $paymode, $product_Id)
     {
         $userId = $this->getUserIdByToken($token);
@@ -61,15 +67,15 @@ class OrderControllers
 
                 $this->db->query("UPDATE products SET stock = stock - :qty WHERE id = :id")->execute([":qty" => $quantity, ":id"  => $productId]);
             }
-
+            $this->checkProductStock();
             $this->db->query("DELETE FROM cart_items WHERE cart_id=:id")->execute([':id' => $userCartId]);
         } else {
-            
+
             $orderItem = $this->db->query("SELECT * FROM products WHERE id=:id")->get([":id" => $product_Id]);
             $quantity  = 1;
             $total_amount     = $orderItem['price'];
-            
-            $orderId = $this->db->query("INSERT INTO orders (customer_id,total_amount,address_id) VALUES (:customer_id,:amount,:address_id)  RETURNING id")->get([":customer_id" => $userId, ":amount" => $total_amount , ":address_id" => $addressId]);
+
+            $orderId = $this->db->query("INSERT INTO orders (customer_id,total_amount,address_id) VALUES (:customer_id,:amount,:address_id)  RETURNING id")->get([":customer_id" => $userId, ":amount" => $total_amount, ":address_id" => $addressId]);
 
             if ($orderItem['stock'] < 1) {
                 return sendResponse(false, "Insufficient stock for product ID: " . $orderItem['product_name']);
@@ -86,7 +92,7 @@ class OrderControllers
             $this->db->query("UPDATE products SET stock = stock - :qty WHERE id = :id")->execute([":qty" => $quantity, ":id"  => $product_Id]);
         }
 
-        $this->db->query("INSERT INTO payments (order_id,payment_type,amount,payment_status) VALUES (:order_id,:paymode,:amount,:pay_status)")->execute([":order_id" => $orderId['id'], ":paymode" => $paymode, ":amount" => $total_amount , ":pay_status" => "SUCCESS"]);
+        $this->db->query("INSERT INTO payments (order_id,payment_type,amount,payment_status) VALUES (:order_id,:paymode,:amount,:pay_status)")->execute([":order_id" => $orderId['id'], ":paymode" => $paymode, ":amount" => $total_amount, ":pay_status" => "SUCCESS"]);
 
         return sendResponse(true, "orders_updated");
     }

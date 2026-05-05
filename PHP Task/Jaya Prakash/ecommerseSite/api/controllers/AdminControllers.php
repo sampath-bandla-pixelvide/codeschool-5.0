@@ -25,14 +25,23 @@ class AdminControllers
         return false;
     }
 
+    public function validateAdmin($token)
+    {
+        $userId = $this->getUserIdByToken($token);
+        if ($this->isAdmin($userId)){
+            return sendResponse(true,"Is admin: True");
+        }
+        return sendResponse(false,"Unauthorized Access!!");
+    }
+
     public function getDashboardCardData($token)
     {
         $userId = $this->getUserIdByToken($token);
         $isAdmin = $this->isAdmin($userId);
         if ($isAdmin) {
-            $userCount = $this->db->query("SELECT COUNT(*) AS count FROM users WHERE role='customer'")->get();
-            $orderData = $this->db->query("SELECT COUNT(*) AS count,SUM(total_amount) AS total_revenue FROM orders")->get();
-            $productsCount = $this->db->query("SELECT COUNT(*) AS count FROM products")->get();
+            $userCount = $this->db->query("SELECT COUNT(*) AS count FROM users WHERE role='customer' AND status=true")->get();
+            $orderData = $this->db->query("SELECT COUNT(*) AS count,SUM(total_amount) AS total_revenue FROM orders WHERE order_status !='Cancelled'")->get();
+            $productsCount = $this->db->query("SELECT COUNT(*) AS count FROM products WHERE status=true")->get();
             $data['usersCount'] = $userCount['count'];
             $data['ordersCount'] = $orderData['count'];
             $data['total_revenue'] = $orderData['total_revenue'];
@@ -79,8 +88,13 @@ class AdminControllers
         return sendResponse(true, "Category added successfully");
     }
 
-    public function deleteCategory($id)
+    public function deleteCategory($id, $token)
     {
+        $userId = $this->getUserIdByToken($token);
+        $isAdmin = $this->isAdmin($userId);
+        if (!$isAdmin) {
+            return sendResponse(false, "Unauthorized");
+        }
         $this->db->query("UPDATE categories SET status=false WHERE id=:id")->execute([":id" => $id]);
         return sendResponse(true, "Category Deleted!!");
     }
@@ -96,7 +110,7 @@ class AdminControllers
         $product = $this->db->query("SELECT product_image FROM products WHERE id=:id")->get([":id" => $id]);
 
         if ($product && $product['product_image']) {
-            $filePath = __DIR__ . "/../uploads/" . $product['product_image'];
+            $filePath = __DIR__ . "../uploads/" . $product['product_image'];
             unlink($filePath);
         }
 
@@ -136,8 +150,12 @@ class AdminControllers
         return sendResponse(true, "Product updated");
     }
 
-    public function getUsers()
+    public function getUsers($token)
     {
+        $userId = $this->getUserIdByToken($token);
+        if (!$this->isAdmin($userId)) {
+            return sendResponse(false, "Unauthorized");
+        }
         $users = $this->db->query("SELECT id, first_name, last_name, email, phone_number, role FROM users WHERE status=true AND role='customer' ORDER BY id DESC")->getAll();
         return sendResponse(true, "Users fetched", [], $users);
     }
@@ -153,8 +171,13 @@ class AdminControllers
         return sendResponse(true, "user deleted");
     }
 
-    public function getOrders()
+    public function getOrders($token)
     {
+        $userId = $this->getUserIdByToken($token);
+        if (!$this->isAdmin($userId)) {
+            return sendResponse(false, "Unauthorized");
+        }
+
         $orders = $this->db->query("SELECT o.id, CONCAT(u.first_name, ' ', u.last_name) AS customer_name, city,state,pin_code, o.total_amount, o.order_status, o.ordered_date FROM orders o JOIN users u ON o.customer_id = u.id JOIN address a on o.address_id=a.id ORDER BY o.id DESC")->getAll();
         if (!$orders) {
             return sendResponse(false, "No orders found");
@@ -168,7 +191,7 @@ class AdminControllers
         if (!$this->isAdmin($userId)) {
             return sendResponse(false, "Unauthorized");
         }
-        $this->db->query("UPDATE orders SET order_status=:status WHERE id=:id")->execute([":status"=>$status,":id"=>$order_id]);
-        return sendResponse(true,"Order status updated!");
+        $this->db->query("UPDATE orders SET order_status=:status WHERE id=:id")->execute([":status" => $status, ":id" => $order_id]);
+        return sendResponse(true, "Order status updated!");
     }
 }

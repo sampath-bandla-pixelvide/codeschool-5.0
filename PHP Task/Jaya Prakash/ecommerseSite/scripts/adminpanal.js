@@ -1,17 +1,31 @@
 const userToken = localStorage.getItem("userToken");
 
-function loadAdminDashboard() {
+function validateAdmin() {
   const token = localStorage.getItem("userToken");
-
   if (!token) {
-    window.location.href = "./index.html";
+    window.location.replace("./index.html");
     return;
   }
+  $.ajax({
+    type: "POST",
+    url: "../api/validateAdmin.php",
+    data: { token },
+    dataType: "dataType",
+    success: function (response) {
+      if (!response.status) {
+        $("#logoutBtn").click();
+        return;
+      }
+    },
+  });
+}
 
+function loadAdminDashboard() {
+  validateAdmin();
   $.ajax({
     type: "POST",
     url: "../api/getAdminDashboardStats.php",
-    data: { userToken: token },
+    data: { userToken },
     dataType: "json",
     success: function (response) {
       console.log(response);
@@ -28,7 +42,6 @@ function loadAdminDashboard() {
         $("#totalRevenue").text(`₹.${response.data.total_revenue}`);
       }
     },
-
     error: function () {
       window.location.replace("./index.html");
     },
@@ -74,6 +87,7 @@ function validateProductForm(
 }
 
 function getCategories() {
+  validateAdmin();
   $.ajax({
     type: "GET",
     url: "../api/getCategories.php",
@@ -104,6 +118,7 @@ function getCategories() {
 }
 
 function getProducts() {
+  validateAdmin();
   $.ajax({
     type: "GET",
     url: "../api/getProducts.php",
@@ -146,6 +161,7 @@ function getProducts() {
 }
 
 function deleteCategory(id) {
+  validateAdmin();
   Swal.fire({
     title: "Are you sure?",
     text: "This category will be deleted permanently!",
@@ -187,6 +203,7 @@ function deleteCategory(id) {
 }
 
 function deleteProduct(id, btn) {
+  validateAdmin();
   Swal.fire({
     title: "Are you sure?",
     text: "This product will be deleted permanently!",
@@ -228,6 +245,7 @@ function deleteProduct(id, btn) {
 
 let editProductId = null;
 function editProduct(id) {
+  validateAdmin();
   $.ajax({
     type: "GET",
     url: "../api/getOneProduct.php",
@@ -255,11 +273,12 @@ function editProduct(id) {
 }
 
 function getUsers() {
+  validateAdmin();
   $.ajax({
-    type: "GET",
+    type: "POST",
     url: "../api/getUsers.php",
+    data: { userToken },
     dataType: "json",
-
     success: function (response) {
       if (!response.status) {
         $("#userTable").html("<tr><td colspan='6'>No users found</td></tr>");
@@ -290,6 +309,7 @@ function getUsers() {
 }
 
 function deleteUser(id) {
+  validateAdmin();
   Swal.fire({
     title: "Are you sure?",
     text: "User will be deleted permanently!",
@@ -320,9 +340,11 @@ function deleteUser(id) {
 }
 
 function getOrders() {
+  validateAdmin();
   $.ajax({
-    type: "GET",
+    type: "POST",
     url: "../api/getOrders.php",
+    data: { userToken },
     dataType: "json",
 
     success: function (response) {
@@ -362,6 +384,7 @@ function getOrders() {
 }
 
 function updateOrderStatus(id) {
+  validateAdmin();
   Swal.fire({
     title: "Update Status",
     input: "select",
@@ -402,6 +425,7 @@ function updateOrderStatus(id) {
 }
 
 function loadCategoryOptions() {
+  validateAdmin();
   $.ajax({
     type: "GET",
     url: "../api/getCategories.php",
@@ -426,11 +450,7 @@ function loadCategoryOptions() {
 }
 
 $(document).ready(function () {
-  
-  if (!userToken) {
-    window.location.href = "./index.html";
-    return;
-  }
+  validateAdmin();
   loadAdminDashboard();
 
   $(document).on("click", "#productsLink", function () {
@@ -482,12 +502,11 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "#saveCategoryBtn", function () {
+    validateAdmin();
     const name = $("#CategoryNameInput").val().trim();
-
     if (name.length === 0) {
       return;
     }
-
     $.ajax({
       type: "POST",
       url: "../api/addCategory.php",
@@ -518,6 +537,7 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "#saveProductBtn", function () {
+    validateAdmin();
     const name = $("#productNameInput").val().trim();
     const category = $("#categoryInput").val();
     const stock = $("#stockInput").val();
@@ -526,7 +546,7 @@ $(document).ready(function () {
     const image = $("#imageInput")[0].files[0];
 
     let isUpdateing = false;
-    if (editProduct) {
+    if (editProductId) {
       isUpdateing = true;
     }
 
@@ -573,15 +593,16 @@ $(document).ready(function () {
 
           return;
         }
-        Swal.fire("Success", "Product added successfully!", "success").then(
-          () => {
-            getProducts();
-          },
-        );
         const modal = bootstrap.Modal.getInstance(
           document.getElementById("addProductModal"),
         );
         modal.hide();
+        Swal.fire("Success", "Product added successfully!", "success").then(
+          () => {
+            loadAdminDashboard();
+            getProducts();
+          },
+        );
       },
     });
   });
