@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Admin Panel</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+<link rel="stylesheet" href="./styles/style.css">
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h4 class="fw-bold mb-4">Admin Panel</h4>
+
+      <a href="#" id="dashboardLink"
+        ><i class="bi bi-speedometer2"></i> Dashboard</a
+      >
+      <a href="#" id="productsLink"><i class="bi bi-box"></i> Products</a>
+      <a href="#" id="categoriesLink"><i class="bi bi-tags"></i> Categories</a>
+      <a href="#" id="ordersLink"><i class="bi bi-bag"></i> Orders</a>
+      <a href="#" id="usersLink"><i class="bi bi-people"></i> Users</a>
+
+      <hr />
+
+      <a href="#" id="logoutBtn" class="text-danger">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Top Navbar -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 id="pageTitle">Dashboard</h3>
+        <div>
+          <i class="bi bi-person-circle"></i>
+          <span id="adminName">Admin</span>
+        </div>
+      </div>
+
+      <!-- Dashboard Cards -->
+      <div class="row g-3" id="dashboardSection">
+        <div class="row g-3">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card p-3 card-hover shadow">
+              <h6>Total Users</h6>
+              <h4 id="totalUsers"></h4>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card p-3 card-hover shadow">
+              <h6>Total Orders</h6>
+              <h4 id="totalOrders"></h4>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card p-3 card-hover shadow">
+              <h6>Total Products</h6>
+              <h4 id="totalProducts"></h4>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card p-3 card-hover shadow">
+              <h6>Revenue</h6>
+              <h4 id="totalRevenue"></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="contentArea" class="mt-4"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./scripts/adminpanal.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!-- add Category modal -->
+<div class="modal fade" id="addCategoryModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Category</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="CategoryNameInput"
+            placeholder="Category Name"
+          />
+          <label>Category Name</label>
+          <small class="text-danger d-none" id="CategoryNameError"
+            >Invalid Category name</small
+          >
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button class="btn btn-dark" id="saveCategoryBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-dark mb-3" id="addCategoryBtn" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Category Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="categoryTable"></tbody>
+</table>
