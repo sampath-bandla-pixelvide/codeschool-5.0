@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+
+  <body>
+    <div id="sidebar"></div>
+
+    <div id="header"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold text-dark mb-0">Dashboard</h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <a href="#" class="text-decoration-none">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="row g-4 mb-4">
+        <div class="col-xl-3 col-md-6">
+          <div class="card stat-card primary">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="stat-label text-primary">Total Users</div>
+                  <div class="stat-value" id="totalUsers">0</div>
+                </div>
+                <i class="bi bi-people stat-icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+          <div class="card stat-card success">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="stat-label text-success">Revenue</div>
+                  <div class="stat-value" id="revenue">$0</div>
+                </div>
+                <i class="bi bi-currency-dollar stat-icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+          <div class="card stat-card info">
+            <div class="stat-body">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="stat-label text-info">Orders</div>
+                    <div class="stat-value" id="orders">0</div>
+                  </div>
+                  <i class="bi bi-cart stat-icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+          <div class="card stat-card warning">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="stat-label text-warning">Pending</div>
+                  <div class="stat-value" id="pending">0</div>
+                </div>
+                <i class="bi bi-clock stat-icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Cards -->
+      <!--<div class="row g-4">
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-0 py-3">
+              <h6 class="fw-bold mb-0">Recent Activity</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>User</th>
+                      <th>Action</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>John Doe</td>
+                      <td>Created new order</td>
+                      <td>Apr 15, 2026</td>
+                      <td><span class="badge bg-success">Completed</span></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Jane Smith</td>
+                      <td>Updated profile</td>
+                      <td>Apr 14, 2026</td>
+                      <td><span class="badge bg-info">In Progress</span></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Bob Johnson</td>
+                      <td>Submitted payment</td>
+                      <td>Apr 13, 2026</td>
+                      <td><span class="badge bg-warning">Pending</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-0 py-3">
+              <h6 class="fw-bold mb-0">Quick Actions</h6>
+            </div>
+            <div class="card-body">
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary">
+                  <i class="bi bi-plus-circle me-2"></i>Add New User
+                </button>
+                <button class="btn btn-success">
+                  <i class="bi bi-box-seam me-2"></i>Add Product
+                </button>
+                <button class="btn btn-info text-white">
+                  <i class="bi bi-file-earmark-text me-2"></i>Generate Report
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="bi bi-download me-2"></i>Export Data
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>!-->
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script>
+        // Sidebar toggle for mobile
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('show');
+        });
+
+        
+    </script> -->
+    <script src="scripts/loaduser.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    
+  </body>
+</html>
