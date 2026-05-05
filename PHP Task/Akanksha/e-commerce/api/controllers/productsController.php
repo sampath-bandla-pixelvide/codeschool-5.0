@@ -50,7 +50,7 @@
                   stock = :stock,
                   category = :category,
                   description = :description,
-                  image = :imagePath
+                  image = :image
                 WHERE id = :id";
 
   

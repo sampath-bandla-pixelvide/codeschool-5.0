@@ -12,6 +12,18 @@ $(document).on("click", "#logout", function (e) {
   window.location.href = "index.html";
 });
 
+$(document).ready(function () {
+  const role = localStorage.getItem("role");
+  if (role !== "admin") {
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+  }
+  const token = localStorage.getItem("token");
+  if(!token) {
+    window.location.href = "index.html";
+  }
+});
+
 loadDashboard();
 
 function loadDashboard() {

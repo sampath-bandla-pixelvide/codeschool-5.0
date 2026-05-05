@@ -8,7 +8,7 @@
   if ($method === "POST") {
 
     $id = $_POST['id'];
-    $delete_id = $_POST['delete_id'];
+    $delete_id = $_POST['delete_id'] ?? null;
 
     $product_name = $_POST['product_name'];
     $price = $_POST['price'];

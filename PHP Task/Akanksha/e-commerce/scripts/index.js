@@ -1,4 +1,8 @@
 $(document).ready(() => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    window.location.href = "dashboard.html";
+  }
   let url = new URL(window.location);
   let registered = url.searchParams.get("registered");
   if (registered) {
@@ -11,8 +15,6 @@ $(document).ready(() => {
 function login() {
   const email = $("#email").val();
   const password = $("#password").val();
-
-  // validate
 
   $.ajax({
     method: "POST",

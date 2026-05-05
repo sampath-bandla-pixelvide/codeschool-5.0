@@ -2,11 +2,17 @@ $(document).ready(function () {
   loadCart();
 });
 
-const user_id = localStorage.getItem("user_id");
+const role = localStorage.getItem("role");
 
-if (!user_id) {
-  window.location.href = "index.html"; 
+if (role !== "user") {
+  window.location.href = "index.html";
 }
+const token = localStorage.getItem("token");
+if (!token) {
+  window.location.href = "index.html";
+}
+
+const user_id = localStorage.getItem("user_id");
 
 const cartKey = "cart_" + user_id;
 const checkoutKey = "checkout_" + user_id;

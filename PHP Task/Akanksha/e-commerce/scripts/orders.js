@@ -13,9 +13,19 @@ $(document).on("click", "#logout", function (e) {
 });
 
 $(document).ready(function () {
-  loadOrders();
+  const role = localStorage.getItem("role");
+  if (role !== "admin") {
+    window.location.href = "index.html";
+  }
+  const token = localStorage.getItem("token");
+  if(!token) {
+    window.location.href = "index.html";
+  }
 });
 
+$(document).ready(function () {
+  loadOrders();
+});
 
 function loadOrders() {
   $.ajax({

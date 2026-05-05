@@ -2,15 +2,24 @@ $(document).on("click", "#sidebarToggle", function () {
   $(".sidebar").toggleClass("show");
 });
 
+$(document).ready(function () {
+  const role = localStorage.getItem("role");
+  const token = localStorage.getItem("token");
+  if (role !== "user") {
+    window.location.href = "index.html";
+  }
+  if (!token) {
+    window.location.href = "index.html";
+  }
+
+  loadProducts();
+  loadUser();
+});
+
 $(document).on("click", "#logout", function (e) {
   e.preventDefault();
   localStorage.removeItem("token");
   window.location.href = "index.html";
-});
-
-$(document).ready(function () {
-  loadProducts();
-  loadUser();
 });
 
 function loadProducts() {

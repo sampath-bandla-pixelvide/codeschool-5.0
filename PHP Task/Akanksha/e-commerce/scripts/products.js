@@ -12,6 +12,17 @@ $(document).on("click", "#logout", function (e) {
   window.location.href = "index.html";
 });
 
+$(document).ready(function () {
+  const role = localStorage.getItem("role");
+  const token = localStorage.getItem("token");
+  if (role !== "admin") {
+    window.location.href = "index.html";
+  }
+  if(!token) {
+    window.location.href = "index.html";
+  } 
+});
+
 function products() {
   const id = $("#product_id").val();
 
@@ -64,7 +75,6 @@ function products() {
 }
 
 loadProducts();
-
 
 function loadProducts() {
   $.ajax({

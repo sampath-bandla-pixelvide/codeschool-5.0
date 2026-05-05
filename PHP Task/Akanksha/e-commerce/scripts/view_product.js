@@ -2,6 +2,16 @@ $(document).on("click", "#sidebarToggle", function () {
   $(".sidebar").toggleClass("show");
 });
 
+const role = localStorage.getItem("role");
+
+if (role !== "user") {
+  window.location.href = "index.html";
+}
+const token = localStorage.getItem("token");
+if (!token) {
+  window.location.href = "index.html";
+}
+
 $(document).on("click", "#logout", function (e) {
   e.preventDefault();
   localStorage.removeItem("token");
@@ -82,7 +92,7 @@ function loadProductDetails(id) {
 const user_id = localStorage.getItem("user_id");
 
 if (!user_id) {
-  window.location.href = "index.html"; 
+  window.location.href = "index.html";
 }
 
 const cartKey = "cart_" + user_id;
@@ -91,10 +101,10 @@ const checkoutKey = "checkout_" + user_id;
 function addToCart(productId) {
   let cart = [];
 
-   try {
+  try {
     cart = JSON.parse(localStorage.getItem(cartKey)) || [];
   } catch (e) {
-    cart = []; 
+    cart = [];
   }
 
   const qty = $("#quantity").val();
@@ -116,14 +126,36 @@ function addToCart(productId) {
 }
 
 function buyNow(productId) {
-  const qty = $("#quantity").val();
+  const qty = parseInt($("#quantity").val());
 
-  localStorage.setItem(
-    "checkout",
-    JSON.stringify([{ product_id: productId, quantity: qty }]),
-  );
+  $.ajax({
+    url: "api/products.php",
+    method: "GET",
+    dataType: "json",
+    success: function (products) {
+      const product = products.find((p) => p.id == productId);
 
-  window.location.href = "checkout.html";
+      if (!product) {
+        alert("Product not found");
+        return;
+      }
+
+      const checkoutData = [
+        {
+          product_id: product.id,
+          product_name: product.product_name,
+          price: product.price,
+          image: product.image,
+          quantity: qty,
+        },
+      ];
+
+      localStorage.setItem(checkoutKey, JSON.stringify(checkoutData));
+
+      // redirect
+      window.location.href = "checkout.html";
+    },
+  });
 }
 
 // function orderProduct(productId) {

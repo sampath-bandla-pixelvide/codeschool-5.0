@@ -2,6 +2,16 @@ $(document).on("click", "#sidebarToggle", function () {
   $(".sidebar").toggleClass("show");
 });
 
+const role = localStorage.getItem("role");
+
+if (role !== "user") {
+  window.location.href = "index.html";
+}
+const token = localStorage.getItem("token");
+if (!token) {
+  window.location.href = "index.html";
+}
+
 $(document).on("click", "#logout", function (e) {
   e.preventDefault();
   localStorage.removeItem("token");
