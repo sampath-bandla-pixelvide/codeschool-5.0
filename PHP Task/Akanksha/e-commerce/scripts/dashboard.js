@@ -1,0 +1,46 @@
+$(document).on("click", ".nav-link", function () {
+  console.log("clicked");
+});
+
+$(document).on("click", "#sidebarToggle", function () {
+  $(".sidebar").toggleClass("show");
+});
+
+$(document).on("click", "#logout", function (e) {
+  e.preventDefault();
+  localStorage.removeItem("token");
+  window.location.href = "index.html";
+});
+
+$(document).ready(function () {
+  const role = localStorage.getItem("role");
+  if (role !== "admin") {
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+  }
+  const token = localStorage.getItem("token");
+  if(!token) {
+    window.location.href = "index.html";
+  }
+});
+
+loadDashboard();
+
+function loadDashboard() {
+  $.ajax({
+    url: "/api/dashboard.php",
+    method: "GET",
+    dataType: "json",
+    success: function (res) {
+      console.log(res);
+      if (res.status) {
+        const data = res.data;
+
+        $("#totalUsers").text(data.users);
+        $("#revenue").text(data.revenue);
+        $("#orders").text(data.orders);
+        $("#pending").text(data.pending);
+      }
+    },
+  });
+}

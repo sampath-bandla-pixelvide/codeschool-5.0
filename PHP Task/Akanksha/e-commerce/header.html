@@ -1,0 +1,84 @@
+<header class="header">
+  <div class="d-flex align-items-center">
+    <button class="btn btn-link text-dark d-md-none me-3" id="sidebarToggle">
+      <i class="bi bi-list fs-4"></i>
+    </button>
+    <div class="position-relative search-box d-none d-md-block">
+      <i class="bi bi-search search-icon"></i>
+      <input type="text" 
+      class="form-control" placeholder="Search..." />
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center gap-3">
+
+    <!-- <div class="dropdown">
+      <button
+        class="btn btn-link text-dark position-relative"
+        data-bs-toggle="dropdown"
+      >
+        <i class="bi bi-bell fs-5"></i>
+        <span
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+        >
+          3
+        </span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><h6 class="dropdown-header">Notifications</h6></li>
+        <li><a class="dropdown-item" href="#">New order received</a></li>
+        <li><a class="dropdown-item" href="#">User registration</a></li>
+        <li><a class="dropdown-item" href="#">Payment confirmed</a></li>
+      </ul>
+    </div> -->
+
+    <div class="dropdown profile-dropdown">
+      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+        <div
+          id="userAvatar"
+          class="rounded-circle text-white d-flex align-items-center justify-content-center"
+          style="
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          "
+        ></div>
+        <div class="d-none d-md-block">
+          <div class="fw-semibold mt-3" id="userName"></div>
+          <p class="" id="role"></p>
+        </div>
+        <i class="bi bi-chevron-down ms-2"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+          <div class="dropdown-header text-center">
+            <h6 class="mb-0" id="userNameDropdown"></h6>
+            <small id="userEmail"></small>
+          </div>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li>
+          <a class="dropdown-item" href="#">
+            <i class="bi bi-person"></i>My Profile
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">
+            <i class="bi bi-gear"></i>Settings
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">
+            <i class="bi bi-activity"></i>Activity Log
+          </a>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li id="logout">
+          <a class="dropdown-item text-danger">
+            <i class="bi bi-box-arrow-right"></i>Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
