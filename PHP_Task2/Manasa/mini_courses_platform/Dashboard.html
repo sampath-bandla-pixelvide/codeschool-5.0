@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #f5f7fb;
+        font-family: "Outfit", sans-serif;
+      }
+
+      .sidebar {
+        width: 250px;
+        height: 100vh;
+        background: linear-gradient(180deg, #ba97fb, #211735);
+        color: white;
+        position: fixed;
+        padding: 20px;
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        margin-bottom: 8px;
+      }
+
+      .sidebar a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .main {
+        margin-left: 250px;
+        padding: 20px;
+      }
+
+      .topbar {
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .card-box {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .banner {
+        background: linear-gradient(135deg, #ba97fb, #211735);
+        color: white;
+        border-radius: 20px;
+        padding: 30px;
+      }
+
+      .admin-only,
+      .student-only {
+        display: none;
+      }
+
+      .enrollBtn {
+        background: linear-gradient(135deg, #ba97fb, #211735);
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+        .main {
+          margin-left: 0;
+        }
+      }
+      .starBtn {
+        font-size: 20px;
+        color: #ccc;
+        transition: 0.2s;
+      }
+
+      .starBtn.active {
+        color: gold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark d-md-none" style="background: #211735">
+      <div class="container-fluid">
+        <button
+          class="btn text-white"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileSidebar"
+        >
+          <i class="bi bi-list fs-3"></i>
+        </button>
+        <span class="navbar-brand">Learnix</span>
+      </div>
+    </nav>
+
+    <div
+      class="offcanvas offcanvas-start text-white"
+      id="mobileSidebar"
+      style="background: #211735"
+    >
+      <div class="offcanvas-header">
+        <h5>Learnix</h5>
+        <button
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <a href="#">Dashboard</a>
+
+        <div class="student-only">
+          <a href="#">Courses</a>
+          <a href="#">My Learning</a>
+        </div>
+
+        <div class="admin-only">
+          <a data-bs-toggle="modal" data-bs-target="#createCourseModal">
+            <i class="bi bi-plus-circle"></i> Create Course
+          </a>
+          <a href="#">Manage Courses</a>
+          <a href="#">Revenue</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar d-none d-md-block">
+      <h4>Learnix</h4>
+      <hr />
+
+      <a href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+
+      <div class="student-only">
+        <a href="#" id="coursesBtn"> <i class="bi bi-book"></i> Courses </a>
+        <a href="#" id="myLearningBtn">
+          <i class="bi bi-play-circle"></i> My Learning
+        </a>
+      </div>
+
+      <div class="admin-only">
+        <a data-bs-toggle="modal" data-bs-target="#createCourseModal">
+          <i class="bi bi-plus-circle"></i> Create Course
+        </a>
+        <a href="#"><i class="bi bi-journal"></i> Manage Courses</a>
+        <a href="#"><i class="bi bi-cash-stack"></i> Revenue</a>
+        <div class="mt-3">
+  <label class="ms-2 form-label text-white">Course Access</label>
+
+  <div class="ms-2 form-check form-switch">
+    <input 
+      class="form-check-input" 
+      type="checkbox" 
+      id="globalApprovalToggle"
+    >
+    <label class="form-check-label text-white">
+      Require Approval (All Courses)
+    </label>
+  </div>
+</div>
+      </div>
+      
+    </div>
+
+    <div class="main">
+      <div class="topbar mb-4">
+        <h5 id="welcomeText">Welcome back 👋</h5>
+        <div class="d-flex gap-2">
+          <i class="bi bi-bell"></i>
+          <i class="bi bi-person-circle"></i>
+          <button id="logoutBtn" class="btn btn-danger btn-sm">Logout</button>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3 student-only">
+          <div class="card-box">
+            <p>Enrolled Courses</p>
+            <div id="enrolledCount" class="stat">0</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 student-only">
+          <div class="card-box">
+            <p>Progress</p>
+            <div class="stat">70%</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 admin-only">
+          <div class="card-box">
+            <p class="fw-bold">Total Courses</p>
+            <div id="totalCoursesCount">0</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 admin-only">
+          <div class="card-box">
+            <p class="fw-bold">Revenue</p>
+            <div id="revenueStat" class="stat">₹0</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 admin-only">
+          <div class="card-box">
+            <p class="fw-bold">Students</p>
+            <div class="stat">02</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="banner mb-4">
+        <h3>Empower Learning 🚀</h3>
+        <p>Create and learn bite-sized courses</p>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-8">
+          <div class="student-only">
+            <div class="card-box mb-3">
+              <h5>Available Courses</h5>
+              <div id="studentCoursesContainer" class="row g-3"></div>
+
+              <div class="text-center mt-3">
+                <button
+                  id="toggleStudentCoursesBtn"
+                  class="btn btn-outline-dark btn-sm"
+                >
+                  Show More ⬇
+                </button>
+              </div>
+            </div>
+
+            <div class="card-box">
+              <h5>My Learning</h5>
+              <div id="myCoursesContainer" class="row g-3"></div>
+            </div>
+          </div>
+
+          <div class="admin-only">
+            <div class="card-box">
+              <h5>All Courses</h5>
+              <div id="coursesContainer" class="row g-3"></div>
+
+              <div class="text-center mt-3">
+                <button
+                  id="toggleCoursesBtn"
+                  class="btn btn-outline-dark btn-sm"
+                >
+                  Show More ⬇
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 admin-only">
+
+
+  <div class="card-box mb-3">
+    <h6>Recent Activity</h6>
+    <p>✔️ New user registered</p>
+    <p>✔️ Course published</p>
+    <p>✔️ Payment received</p>
+  </div>
+
+  
+  <div class="card-box">
+    <h5>Enrollment Requests</h5>
+    <div id="requestsContainer"></div>
+  </div>
+  </div>
+
+</div>
+      <div id="myLearningSection" class="card-box mt-4" style="display: none">
+        <h5>My Learning Progress</h5>
+        <div id="myLearningProgressContainer"></div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="createCourseModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Create Course</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+  <input
+    id="courseTitle"
+    class="form-control mb-2"
+    placeholder="Title"
+  />
+
+  <textarea
+    id="courseDesc"
+    class="form-control mb-2"
+    placeholder="Description"
+  ></textarea>
+
+  <input
+    id="coursePrice"
+    type="number"
+    class="form-control mb-2"
+    placeholder="Price"
+  />
+
+
+  <div class="form-check form-switch mt-2">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="courseApprovalToggle"
+    />
+    <label class="form-check-label">
+      Require Approval for this Course
+    </label>
+  </div>
+</div>
+
+          <div class="modal-footer">
+            <button id="saveCourseButton" class="btn btn-primary">
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="addLessonModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Add Lesson</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <input
+              id="lessonTitle"
+              class="form-control mb-2"
+              placeholder="Title"
+            />
+            <textarea
+              id="lessonContent"
+              class="form-control mb-2"
+              placeholder="Content"
+            ></textarea>
+            <input
+              id="lessonOrder"
+              type="number"
+              class="form-control"
+              placeholder="Lesson order"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button id="saveLessonBtn" class="btn btn-primary">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="viewLessonsModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Lessons</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div id="lessonsContainer" class="modal-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="editLessonModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Edit Lesson</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <input
+              id="editLessonTitle"
+              class="form-control mb-2"
+              placeholder="New Title"
+            />
+            <textarea
+              id="editLessonContent"
+              class="form-control mb-2"
+              placeholder="New content"
+            ></textarea>
+            <input id="editLessonOrder" type="number" class="form-control" />
+          </div>
+
+          <div class="modal-footer">
+            <button id="updateLessonBtn" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./Scripts/dashboard.js"></script>
+  </body>
+</html>
