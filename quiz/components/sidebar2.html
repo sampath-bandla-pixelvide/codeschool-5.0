@@ -1,0 +1,85 @@
+<!-- Desktop Sidebar -->
+<div class="d-none d-md-flex flex-column position-fixed top-0 start-0 vh-100"
+     style="width:250px;background:#1a3c6e;z-index:1000;">
+
+  <!-- Logo -->
+  <div class="border-bottom border-secondary py-3 px-3">
+    <h5 class="text-white fw-bold mb-0">
+      <i class="bi bi-mortarboard-fill me-3"></i>QuizPro
+    </h5>
+  </div>
+
+  <!-- Role Label -->
+  <div class="px-3 py-2">
+    <small class="text-uppercase text-secondary sideRoleLabel"
+           style="font-size:0.8rem;letter-spacing:1px;">
+      ADMIN PANEL
+    </small>
+  </div>
+
+  <!-- Nav Links -->
+  <div class="flex-grow-1 d-flex flex-column">
+    <ul class="nav flex-column px-2">
+
+      <li class="nav-item admin-link">
+        <a class="nav-link sidebar-link text-white rounded px-3 py-2 mb-1"
+           href="#" data-view="admin-home">
+          <i class="bi bi-speedometer2 me-2"></i>Dashboard
+        </a>
+      </li>
+
+      <li class="nav-item admin-link">
+        <a class="nav-link sidebar-link text-white rounded px-3 py-2 mb-1"
+           href="#" data-view="subjects">
+          <i class="bi bi-journal-bookmark me-2"></i>Subjects
+        </a>
+      </li>
+
+      <li class="nav-item admin-link">
+        <a class="nav-link sidebar-link text-white rounded px-3 py-2 mb-1"
+           href="#" data-view="quizzes">
+          <i class="bi bi-file-earmark-text me-2"></i>Quizzes
+        </a>
+      </li>
+
+      <li class="nav-item user-link">
+        <a class="nav-link sidebar-link text-white rounded px-3 py-2 mb-1"
+           href="#" data-view="user-home">
+          <i class="bi bi-speedometer2 me-2"></i>Dashboard
+        </a>
+      </li>
+
+      <li class="nav-item user-link">
+        <a class="nav-link sidebar-link text-white rounded px-3 py-2 mb-1"
+           href="#" data-view="attempt-list">
+          <i class="bi bi-play-circle me-2"></i>Attempt Quiz
+        </a>
+      </li>
+
+    </ul>
+
+    <div class="flex-grow-1"></div>
+
+    <!-- Footer -->
+    <div class="p-3 border-top border-secondary">
+      <div class="d-flex align-items-center gap-2 sideUserBtn"
+           style="cursor:pointer;">
+
+        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center sideAvatar"
+             style="width:36px;height:36px;font-size:1rem;" class="sideAvatar"></div>
+
+        <div>
+          <div class="text-white small fw-bold sideUserName"></div>
+          <div class="text-secondary small sideUserRole"></div>
+        </div>
+      </div>
+
+      <div class="logoutDropdown mt-2" style="display:none;">
+        <button class="btn btn-outline-danger btn-sm w-100 logoutBtn">
+          Logout
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

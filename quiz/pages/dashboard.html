@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuizPro — Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="../css/style.css" rel="stylesheet" />
+</head>
+<body style="background:#f4f6fb;">
+ 
+<!-- Sidebar (loaded by JS) -->
+<div id="sidebarContainer"></div>
+ 
+<!-- Main wrapper -->
+<div id="appWrapper" class="app-wrapper">
+ 
+  <!-- Navbar (loaded by JS) -->
+  <div id="navbarContainer"></div>
+ 
+  <!-- Page Content -->
+  <div class="p-4" id="mainContent">
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary"></div>
+    </div>
+  </div>
+ 
+</div>
+ 
+<!-- Modals (Subject) -->
+<div class="modal fade" id="subjectModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="subjectModalTitle">Add Subject</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="subjectId" />
+        <div class="mb-3">
+          <label class="form-label">Subject Name</label>
+          <input type="text" class="form-control" id="subjectName"
+                 placeholder="e.g., Java Programming" />
+        </div>
+        <div id="subjectModalError" class="small text-danger"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" id="saveSubjectBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- Modal (Quiz) -->
+<div class="modal fade" id="quizModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="quizModalTitle">Create Quiz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="quizId" />
+        <div class="mb-3">
+          <label class="form-label">Quiz Title</label>
+          <input type="text" class="form-control" id="quizTitle" placeholder="Enter quiz title" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Subject</label>
+          <select class="form-select" id="quizSubject"></select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Duration (minutes)</label>
+          <input type="number" class="form-control" id="quizDuration" placeholder="e.g. 30" min="1" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Marks per Question</label>
+          <input type="number" class="form-control" id="quizMarks" value="1" min="1" />
+        </div>
+        <div id="quizModalError" class="small text-danger"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" id="saveQuizBtn">Save Quiz</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/users.js"></script>
+</body>
+</html>

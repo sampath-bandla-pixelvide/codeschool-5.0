@@ -1,0 +1,69 @@
+<div class="mb-4">
+  <h4 class="fw-bold">Dashboard</h4>
+  <p class="text-muted">Track your quiz performance</p>
+</div>
+
+<!-- Stats -->
+<div class="row g-3 mb-4">
+  <div class="col-md-6">
+    <div class="card stat-card bg-primary text-white p-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="small opacity-75">Total Attempts</div>
+          <div class="fw-bold fs-2" id="totalAttempts">0</div>
+        </div>
+        <i class="bi bi-bar-chart fs-1 opacity-75"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card stat-card bg-success text-white p-3 pt-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="">
+          <div class="small opacity-75">Average Score</div>
+          <div class="fw-bold fs-2" id="avgScore">0%</div>
+
+          <!-- Progress -->
+          <div class="progress mt-1" style="height: 6px;">
+            <div id="avgProgressBar" class="progress-bar bg-success" style="width: 0%;"></div>
+          </div>
+        </div>
+        <i class="bi bi-graph-up fs-1 opacity-75"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Attempts -->
+<div class="card border-0 shadow-sm table-card">
+  <div class="card-header bg-white fw-bold ">
+    Recent Attempts
+  </div>
+
+  <div class="card-body p-0">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>Quiz</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody id="recentAttempts">
+        <tr>
+          <td colspan="3" class="text-center text-muted py-3">
+            Loading...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
+<div class="text-center mt-2">
+  <button class="btn btn-outline-primary btn-sm" id="loadMoreBtn" style="display:none;">
+    Show more
+  </button>
+</div>
