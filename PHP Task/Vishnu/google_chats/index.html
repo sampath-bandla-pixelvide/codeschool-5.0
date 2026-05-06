@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in – Google Accounts</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #1a1a1a;
+        font-family: "Google Sans", "Roboto", Arial, sans-serif;
+        color: #e8eaed;
+      }
+      .signin-card {
+        background: #000;
+        border-radius: 16px;
+        max-width: 860px;
+      }
+      .right-pane {
+        border-left: 1px solid #3d3d3d;
+      }
+      .google-logo {
+        height: 30px;
+        width: 30px;
+      }
+      .left-desc {
+        font-size: 14px;
+        color: #9aa0a6;
+      }
+      .float-group {
+        position: relative;
+      }
+      .float-group input {
+        background: transparent;
+        border: 1px solid #5f6368;
+        color: #e8eaed;
+        padding: 18px 14px 6px;
+      }
+      .float-group input:focus {
+        border-color: #8ab4f8;
+        box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.2);
+      }
+      .float-group label {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9aa0a6;
+        transition: 0.15s;
+      }
+      .float-group input:focus + label,
+      .float-group input:not(:placeholder-shown) + label {
+        top: 8px;
+        font-size: 11px;
+        color: #8ab4f8;
+      }
+      .error-text {
+        color: #f28b82;
+        font-size: 12px;
+      }
+      .link-blue {
+        color: #8ab4f8;
+        font-size: 14px;
+        border: none;
+        background: none;
+      }
+      .btn-next-pill {
+        background: #8ab4f8;
+        color: #202124;
+        border-radius: 24px;
+        padding: 8px 24px;
+      }
+      .btn-next-pill:disabled {
+        background: #444;
+        color: #888;
+      }
+      footer {
+        font-size: 12px;
+        color: #9aa0a6;
+      }
+      .pw-wrap {
+        position: relative;
+      }
+      .btn-eye {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #9aa0a6;
+      }
+      .form-control {
+        background: transparent !important;
+        color: #e8eaed !important;
+        border: 1px solid #5f6368;
+      }
+
+      .form-control:focus {
+        background: transparent !important;
+        color: #e8eaed !important;
+        border-color: #8ab4f8 !important;
+        box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.2) !important;
+      }
+    </style>
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <div
+      class="flex-grow-1 d-flex align-items-center justify-content-center p-3"
+    >
+      <div class="signin-card w-100">
+        <div class="row g-0">
+          <div class="col-md-5 p-4 d-flex flex-column">
+            <img src="./images/googlelogo.jpg" class="google-logo" />
+            <h1 class="mt-4">Sign in</h1>
+            <p class="left-desc mt-2">
+              with your Google Account. This account will be available to other
+              Google apps in the browser.
+            </p>
+          </div>
+
+          <div
+            class="col-md-7 p-4 right-pane d-flex flex-column justify-content-between"
+          >
+            <div id="emailStep">
+              <div class="mb-2">
+                <div class="float-group">
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder=" "
+                    class="form-control"
+                  />
+                  <label for="email">Email</label>
+                </div>
+                <div class="error-text" id="emailError"></div>
+              </div>
+
+              <div class="small text-secondary mb-4">
+                Not your computer? Use Guest mode to sign in privately.
+                <a href="#" class="text-decoration-none text-info"
+                  >Learn more</a
+                >
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-next-pill" onclick="nextStep()">
+                  Next
+                </button>
+              </div>
+            </div>
+
+            <div id="otpStep" class="d-none">
+              <p class="small text-secondary mb-3">
+                Sending OTP to
+                <strong id="otpEmailDisplay" class="text-light"></strong>
+              </p>
+
+              <div class="mb-2">
+                <div class="float-group pw-wrap">
+                  <input
+                    type="password"
+                    id="otpInput"
+                    placeholder=" "
+                    maxlength="8"
+                    class="form-control"
+                  />
+                  <label for="otpInput">Enter OTP</label>
+                  <button class="btn-eye" onclick="toggleOtp()">
+                    <i class="bi bi-eye" id="otpEyeIcon"></i>
+                  </button>
+                </div>
+                <div class="error-text" id="otpError"></div>
+              </div>
+
+              <div class="text-start mt-2">
+                <button id="resendBtn" class="link-blue p-0" onclick="resendOtp()" disabled style="font-size: 13px;">Resend OTP (59s)</button>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4">
+                <button class="link-blue" onclick="backToEmail()">Back</button>
+                <button class="btn btn-next-pill" id="loginBtn" onclick="verifyOtp()">
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="d-flex justify-content-between align-items-center px-3 py-3 mt-auto"
+    >
+      <span>English (United Kingdom) <i class="bi bi-chevron-down"></i></span>
+      <div class="d-flex gap-3">
+        <a href="#" class="text-decoration-none text-secondary">Help</a>
+        <a href="#" class="text-decoration-none text-secondary">Privacy</a>
+        <a href="#" class="text-decoration-none text-secondary">Terms</a>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
