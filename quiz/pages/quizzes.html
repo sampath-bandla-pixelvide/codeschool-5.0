@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h4 class="fw-bold mb-2">Quizzes</h4>
+    <p class="text-muted small">Manage all quizzes</p>
+  </div>
+
+  <button class="btn btn-primary" id="createQuizBtn">
+    <i class="bi bi-plus-lg me-1"></i>Create Quiz
+  </button>
+</div>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body p-0">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Subject</th>
+          <th>Duration</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="quizTable">
+        <tr>
+          <td colspan="5" class="text-center text-muted py-4">Loading...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- <div class="d-flex justify-content-between align-items-center mt-3">
+  <button class="btn btn-sm btn-outline-secondary" id="prevPage">
+    ← Previous
+  </button>
+  <span id="pageInfo" class="small text-muted"></span>
+  <button class="btn btn-sm btn-outline-secondary" id="nextPage">
+    Next →
+  </button>
+</div> -->
+<div
+  class="d-flex justify-content-between align-items-center mt-1 flex-wrap gap-2"
+>
+  <!-- Info -->
+  <div class="small text-muted" id="pageInfo"></div>
+
+  <!-- Controls -->
+  <div class="btn-group shadow-sm">
+    <button class="btn btn-light border" id="prevPage">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <button class="btn btn-light border disabled" id="currentPageBtn">1</button>
+
+    <button class="btn btn-light border" id="nextPage">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</div>
