@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profile</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <style>
+    body {
+      background: #fafafa;
+      font-family: Arial;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 75px;
+      height: 100vh;
+      background: white;
+      border-right: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      padding: 15px 10px;
+    }
+
+    .sidebar:hover {
+      width: 170px;
+    }
+
+    .middle-section {
+      flex-grow: 1;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .menu-item i {
+      font-size: 24px;
+    }
+
+    .menu-item span {
+      opacity: 0;
+      transition: 0.2s;
+    }
+
+    .sidebar:hover .menu-item span {
+      opacity: 1;
+    }
+
+    .menu-item:hover {
+      background: #f2f2f2;
+      border-radius: 10px;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 10px;
+    }
+
+    .profile-container {
+      margin-left: 80px;
+
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-header {
+      width: 900px;
+      display: flex;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .tabs {
+      width: 900px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 30px;
+      border-top: 1px solid #ddd;
+    }
+
+    .tab {
+      padding: 10px 0;
+      cursor: pointer;
+      position: relative;
+      color: #888;
+    }
+
+    .tab i {
+      font-size: 20px;
+    }
+
+    .tab.active {
+      color: black;
+      font-weight: bold;
+    }
+
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: black;
+    }
+
+    .highlights {
+      width: 900px;
+      margin-top: 40px;
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 250px;
+    }
+
+    .highlight-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-buttons-aligned {
+      width: 900px;
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: flex-start;
+    }
+
+    .profile-buttons-aligned button {
+      border-radius: 8px;
+      padding: 6px 20px;
+      border: 1px solid #ddd;
+      background: #efefef;
+      font-weight: 500;
+    }
+
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .post {
+      height: 250px;
+      background: #ddd;
+    }
+
+    .tab-content {
+      display: none;
+      width: 900px;
+      margin-top: 20px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .getting-started {
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card-box {
+      width: 250px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      background: white;
+    }
+
+    .card-box p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .active:hover {
+      font-weight: bold;
+    }
+
+    .empty-posts {
+      margin-top: 80px;
+    }
+
+    .posts img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    #profileModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 350px;
+      background: white;
+      border-radius: 15px;
+      z-index: 2000;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #viewPostModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      background: white;
+      z-index: 2000;
+      border-radius: 10px;
+    }
+
+    #deleteModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      background: white;
+      z-index: 3000;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-pic {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #cameraIcon {
+      position: absolute;
+    }
+
+    #uploadSpinner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+
+    #settingsModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 350px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    #modalOverlay {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+    }
+
+    .saved-item {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .saved-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #savedPostsContainer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .saved-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+
+  <body>
+    <aside class="sidebar">
+      <div class="top-section">
+        <div class="menu-item logo">
+          <i class="bi bi-instagram fs-6"></i>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="middle-section mt-3">
+        <div
+          class="menu-item active"
+          onclick="window.location.href = 'instgramHome.html'"
+        >
+          <i class="bi bi-house-door fs-6"></i><span>Home</span>
+        </div>
+        <div class="menu-item active">
+          <i class="bi bi-search fs-6"></i><span>Search</span>
+        </div>
+        <div class="menu-item active">
+          <i class="bi bi-compass fs-6"></i><span>Explore</span>
+        </div>
+        <div class="menu-item active">
+          <i class="bi bi-youtube fs-6"></i><span>Reels</span>
+        </div>
+        <div class="menu-item active">
+          <i class="bi bi-chat fs-6"></i><span>Messages</span>
+        </div>
+        <div class="menu-item active">
+          <i class="bi bi-heart fs-6"></i><span>Notifications</span>
+        </div>
+        <div class="menu-item active" id="createBtn">
+          <i class="bi bi-plus-square fs-6"></i><span>Create</span>
+        </div>
+        <div class="menu-item active">
+          <span class="sidebar-profile">
+            <i class="bi bi-person-circle fs-6"></i>
+          </span>
+          <span>Profile</span>
+        </div>
+      </div>
+
+      <div class="bottom-section">
+        <div class="menu-item active">
+          <i class="bi bi-list fs-6"></i><span>More</span>
+        </div>
+        <div class="menu-item active">
+          <i class="bi bi-grid fs-6"></i><span>From Meta</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="profile-container">
+      <div class="profile-header">
+        <div class="profile-pic bg-secondary" id="profilePicBox">
+          <img
+            id="profileImage"
+            src=""
+            style="
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              display: none;
+              object-fit: cover;
+            "
+          />
+
+          <i class="bi bi-camera fs-3" id="cameraIcon"></i>
+
+          <div id="uploadSpinner" style="display: none">
+            <div class="spinner-border text-light"></div>
+          </div>
+        </div>
+
+        <div class="profile-info">
+          <div class="d-flex align-items-center gap-3">
+            <h2 id="username" class="m-0">loading...</h2>
+            <i class="bi bi-gear-wide" style="cursor: pointer"></i>
+          </div>
+
+          <div id="fullname" class="mt-1"></div>
+
+          <div class="stats">
+            <div><b id="postCount">0</b> posts</div>
+            <div><b>0</b> followers</div>
+            <div><b>0</b> following</div>
+          </div>
+        </div>
+      </div>
+
+      <input type="file" id="profileInput" accept="image/*" hidden />
+
+      <div class="profile-buttons-aligned">
+        <button>Edit profile</button>
+        <button>View archive</button>
+      </div>
+    </div>
+
+    <div class="highlights">
+      <div class="highlight text-center">
+        <div class="highlight-circle fs-1">+</div>
+        <div>New</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active"><i class="bi bi-grid"></i></div>
+      <div class="tab"><i class="bi bi-bookmark"></i></div>
+      <div class="tab"><i class="bi bi-person"></i></div>
+    </div>
+
+    <div class="tab-content-wrapper ms-5">
+      <div class="tab-content active" id="postsTab">
+        <div class="getting-started">
+          <span style="margin-left: 100px">Getting started</span>
+        </div>
+
+        <div class="cards-container" id="gettingStartedCards">
+          <div class="card-box">
+            <i class="bi bi-camera fs-1"></i>
+            <h5>Share Photos</h5>
+            <p>When you share photos, they will appear on your profile.</p>
+            <button class="btn btn-primary" id="openUpload">
+              Share your first photo
+            </button>
+          </div>
+
+          <div class="card-box">
+            <i class="bi bi-telephone fs-1"></i>
+            <h5>Add phone number</h5>
+            <p>Add your phone number so you can reset your password.</p>
+            <button class="btn btn-primary">Add phone number</button>
+          </div>
+
+          <div class="card-box">
+            <i class="bi bi-person-circle fs-1"></i>
+            <h5>Add profile photo</h5>
+            <p>Add a profile photo so your friends know it's you.</p>
+            <button class="btn btn-primary">Add profile photo</button>
+          </div>
+        </div>
+        <div
+          id="postsContainer"
+          class="posts d-none"
+          style="margin-left: 100px"
+        ></div>
+      </div>
+
+      <div class="tab-content" id="savedTab">
+        <div id="savedPostsContainer">
+          <p class="text-center mt-5">No saved posts</p>
+        </div>
+      </div>
+
+      <div class="tab-content" id="taggedTab">
+        <p class="text-center mt-5">No tagged posts</p>
+      </div>
+    </div>
+
+    <div class="modal fade" id="uploadModal">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div
+          class="modal-content p-3"
+          style="background: white; border-radius: 15px"
+        >
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 id="modalTitle" class="m-0">Create new post</h5>
+            <div>
+              <button id="nextBtn" class="btn btn-sm btn-primary d-none">
+                Next
+              </button>
+              <button id="sharePostBtn" class="btn btn-sm btn-success d-none">
+                Share
+              </button>
+            </div>
+          </div>
+
+          <hr />
+
+          <div id="step1" class="text-center p-5">
+            <i class="bi bi-images fs-1"></i>
+            <p>Drag photos and videos here</p>
+            <button id="selectBtn" class="btn btn-primary">
+              Select from computer
+            </button>
+
+            <input type="file" id="imageInput" hidden />
+          </div>
+
+          <div id="step2" class="d-none text-center">
+            <img
+              id="previewImg"
+              class="img-fluid rounded"
+              style="max-height: 400px"
+            />
+          </div>
+
+          <div id="step3" class="d-none">
+            <div class="row">
+              <div class="col-md-7">
+                <img id="finalPreview" class="img-fluid rounded" />
+              </div>
+
+              <div class="col-md-5">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-person-circle fs-4"></i>
+                  <b id="shareUsername"></b>
+                </div>
+
+                <textarea
+                  class="form-control"
+                  placeholder="Write a caption..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div id="step4" class="d-none text-center p-5">
+            <div id="finalSpinner">
+              <div class="spinner-border text-primary"></div>
+              <p>Sharing...</p>
+            </div>
+
+            <div id="successText" class="d-none">
+              <h4>Your post has been shared</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="settingsModal">
+      <div class="list-group text-center">
+        <div class="list-group-item">Apps and websites</div>
+        <div class="list-group-item">QR code</div>
+        <div class="list-group-item">Notifications</div>
+        <div class="list-group-item">Settings and privacy</div>
+        <div class="list-group-item">Meta Verified</div>
+        <div class="list-group-item">Supervision</div>
+        <div class="list-group-item">Login activity</div>
+
+        <div
+          class="list-group-item text-danger"
+          id="logoutBtn"
+          style="cursor: pointer"
+        >
+          Log Out
+        </div>
+
+        <div class="list-group-item" id="closeModal" style="cursor: pointer">
+          Cancel
+        </div>
+      </div>
+    </div>
+
+    <div id="profileModal">
+      <div class="p-2 fw-bold">Change Profile Photo</div>
+      <hr />
+
+      <div class="p-2 text-primary" id="uploadNew">Upload Photo</div>
+      <hr />
+
+      <div class="p-2 text-danger" id="removePhoto">Remove Current Photo</div>
+      <hr />
+
+      <div class="p-2" id="closeProfileModal">Cancel</div>
+    </div>
+
+    <div id="modalOverlay"></div>
+
+    <div id="viewPostModal">
+      <div style="display: flex">
+        <div style="flex: 1">
+          <img id="viewPostImg" style="width: 100%; height: 100%" />
+        </div>
+
+        <div
+          style="
+            width: 300px;
+            padding: 10px;
+            box-shadow: 0px 0px 6px grey;
+            border-radius: 0px 10px 10px 0px;
+          "
+        >
+          <div class="d-flex justify-content-between">
+            <b id="modalUsername"></b>
+            <i
+              class="bi bi-three-dots"
+              id="postOptions"
+              style="cursor: pointer"
+            ></i>
+          </div>
+
+          <hr />
+
+          <p>No comments yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="deleteModal">
+      <div class="p-3 text-danger" id="confirmDelete" style="cursor: pointer">
+        Delete
+      </div>
+
+      <div class="p-3" id="cancelDelete" style="cursor: pointer">Cancel</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./Scripts/create.js"></script>
+    <script src="./Scripts/profile.js"></script>
+  </body>
+</html>
