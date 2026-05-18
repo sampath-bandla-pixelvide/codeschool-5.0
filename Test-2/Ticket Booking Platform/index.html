@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineBook — Login</title>
+    <meta name="description" content="Login to CineBook and start booking movie tickets instantly." />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --mb-bg:      #0f0f1a;
+        --mb-surface: #1a1a2e;
+        --mb-accent:  #e94560;
+        --mb-accent-h:#c73652;
+        --mb-text:    #e2e8f0;
+        --mb-muted:   #94a3b8;
+        --mb-border:  rgba(255,255,255,0.07);
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { height: 100%; }
+      body {
+        background: var(--mb-bg);
+        color: var(--mb-text);
+        font-family: 'DM Sans', system-ui, sans-serif;
+        display: flex;
+        min-height: 100vh;
+      }
+      .auth-hero {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 48px;
+        background: linear-gradient(135deg, #0f0f1a 0%, #16213e 50%, #1a1a2e 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      @media (min-width: 768px) { .auth-hero { display: flex; flex: 0 0 50%; } }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.18;
+        animation: drift 8s ease-in-out infinite alternate;
+      }
+      .orb-1 { width: 320px; height: 320px; background: var(--mb-accent); top: -80px; left: -80px; animation-delay: 0s; }
+      .orb-2 { width: 240px; height: 240px; background: #6366f1; bottom: -60px; right: -40px; animation-delay: 2s; }
+      .orb-3 { width: 160px; height: 160px; background: #f5a623; top: 50%; left: 55%; animation-delay: 4s; }
+      @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(20px,15px) scale(1.08); } }
+      .hero-logo {
+        font-size: 2.6rem; font-weight: 900; letter-spacing: -1.5px;
+        color: var(--mb-text); z-index: 1;
+      }
+      .hero-logo span { color: var(--mb-accent); }
+      .hero-tagline {
+        font-size: 1.05rem; color: var(--mb-muted); margin-top: 12px;
+        text-align: center; max-width: 300px; line-height: 1.6; z-index: 1;
+      }
+      .hero-features { margin-top: 40px; display: flex; flex-direction: column; gap: 14px; z-index: 1; }
+      .feat-item {
+        display: flex; align-items: center; gap: 12px;
+        font-size: 0.875rem; color: var(--mb-muted);
+      }
+      .feat-icon {
+        width: 36px; height: 36px; border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(233,69,96,0.15); color: var(--mb-accent); font-size: 1rem;
+        flex-shrink: 0;
+      }
+      .auth-form-wrap {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        background: var(--mb-bg);
+        overflow-y: auto;
+      }
+      .auth-card {
+        width: 100%;
+        max-width: 420px;
+      }
+      .auth-card-logo {
+        font-size: 1.6rem; font-weight: 900; letter-spacing: -0.5px;
+        color: var(--mb-text); margin-bottom: 28px; display: block;
+        text-align: center;
+      }
+      .auth-card-logo span { color: var(--mb-accent); }
+      .auth-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; }
+      .auth-subtitle { font-size: 0.875rem; color: var(--mb-muted); margin-bottom: 28px; }
+      .form-group-cb { margin-bottom: 14px; }
+      .form-label-cb {
+        font-size: 0.75rem; font-weight: 700; color: var(--mb-muted);
+        text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: block;
+      }
+      .form-input-cb {
+        width: 100%;
+        background: var(--mb-surface);
+        border: 1.5px solid var(--mb-border);
+        color: var(--mb-text);
+        border-radius: 12px;
+        padding: 13px 16px;
+        font-size: 0.9rem;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .form-input-cb:focus { border-color: var(--mb-accent); box-shadow: 0 0 0 3px rgba(233,69,96,0.12); }
+      .form-input-cb::placeholder { color: var(--mb-muted); }
+      .input-icon-wrap { position: relative; }
+      .input-icon-wrap .form-input-cb { padding-left: 44px; }
+      .input-icon {
+        position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+        color: var(--mb-muted); font-size: 1rem; pointer-events: none;
+      }
+      .err-msg { font-size: 0.75rem; color: var(--mb-accent); margin-top: 4px; min-height: 16px; display: block; }
+      .forgot-link {
+        font-size: 0.8rem; color: var(--mb-muted); text-decoration: none;
+        float: right; margin-top: -4px; margin-bottom: 14px; transition: color 0.2s;
+      }
+      .forgot-link:hover { color: var(--mb-accent); }
+      .btn-auth {
+        width: 100%; background: var(--mb-accent); color: #fff;
+        border: none; border-radius: 12px; padding: 14px;
+        font-size: 0.95rem; font-weight: 700; font-family: inherit;
+        cursor: pointer; transition: background 0.2s, transform 0.15s;
+        margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;
+      }
+      .btn-auth:hover { background: var(--mb-accent-h); transform: translateY(-1px); }
+      .btn-auth:active { transform: translateY(0); }
+      .auth-divider {
+        display: flex; align-items: center; gap: 12px;
+        margin: 20px 0; color: var(--mb-muted); font-size: 0.8rem;
+      }
+      .auth-divider::before, .auth-divider::after {
+        content: ''; flex: 1; height: 1px; background: var(--mb-border);
+      }
+      .auth-switch {
+        text-align: center; font-size: 0.875rem; color: var(--mb-muted); margin-top: 20px;
+      }
+      .auth-switch a {
+        color: var(--mb-accent); text-decoration: none; font-weight: 700;
+      }
+      .auth-switch a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <div class="auth-hero">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="hero-logo">Cine<span>Book</span></div>
+      <p class="hero-tagline">Your ultimate destination for booking movie tickets — fast, easy, and hassle-free.</p>
+      <div class="hero-features">
+        <div class="feat-item"><div class="feat-icon"><i class="bi bi-ticket-perforated"></i></div> Instant seat selection & booking</div>
+        <div class="feat-item"><div class="feat-icon"><i class="bi bi-film"></i></div> Hundreds of movies across genres</div>
+        <div class="feat-item"><div class="feat-icon"><i class="bi bi-geo-alt"></i></div> Multiple theatres in your city</div>
+        <div class="feat-item"><div class="feat-icon"><i class="bi bi-shield-check"></i></div> Secure & fast checkout</div>
+      </div>
+    </div>
+    <div class="auth-form-wrap">
+      <div class="auth-card">
+        <span class="auth-card-logo d-md-none">Cine<span>Book</span></span>
+        <h1 class="auth-title">Welcome back</h1>
+        <p class="auth-subtitle">Sign in to continue booking tickets</p>
+        <form id="loginForm" novalidate>
+          <div class="form-group-cb">
+            <label class="form-label-cb" for="floatingInput">Email Address</label>
+            <div class="input-icon-wrap">
+              <i class="bi bi-envelope input-icon"></i>
+              <input type="email" class="form-input-cb" id="floatingInput" placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <span id="emailError" class="err-msg"></span>
+          </div>
+          <div class="form-group-cb">
+            <label class="form-label-cb" for="floatingPassword">Password</label>
+            <div class="input-icon-wrap">
+              <i class="bi bi-lock input-icon"></i>
+              <input type="password" class="form-input-cb" id="floatingPassword" placeholder="Your password" autocomplete="current-password" />
+            </div>
+            <span id="passwordError" class="err-msg"></span>
+          </div>
+          <a href="./forgetPassword.html" class="forgot-link">Forgot password?</a>
+          <div style="clear:both;"></div>
+          <button type="submit" class="btn-auth">
+            <i class="bi bi-box-arrow-in-right"></i> Login Now
+          </button>
+        </form>
+        <div class="auth-divider">or</div>
+        <div class="auth-switch">
+          New here? <a href="./register.html">Create an account</a>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

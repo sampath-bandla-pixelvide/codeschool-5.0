@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <title>Netflix Home</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <style>
+
+      @media(min-width:768px) and (max-width:1023px){
+        #userName{
+          font-size:medium;
+        }
+        .list-item{
+          font-size:medium;
+        }
+        #header{
+          padding:15px;
+        }
+      }
+
+      @media (min-width:1024px) {
+        #userName{
+          font-size:larger;
+        }
+        .list-item{
+          font-size:larger ;
+        }
+        #header{
+          padding:15px ;
+        }
+        ul{
+          gap:10px;
+        }
+      }
+
+      @media(max-width:767px){
+        #userName{
+          font-size:smaller ;
+        }
+        .hero-content{
+          padding-top: 50px;
+        }
+        .movie-row{
+          padding:10px;
+        }
+      }
+
+      .dropdown {
+        cursor: pointer;
+      }
+      .dropdown-item {
+        text-decoration: none !important;
+      }
+      .cursive {
+        font-family: "Edu NSW ACT Cursive", cursive !important;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-weight: bold;
+      }
+
+      body {
+        background-color: black;
+        scrollbar-width: none;
+      }
+
+      #header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .hero {
+        height: 80vh;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150%;
+        height: 150%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: absolute;
+        z-index: 2;
+        padding: 50px;
+        /* max-width: 500px; */
+        padding-top: 250px;
+      }
+
+      .movie-row {
+        display: flex;
+        gap: 12px;
+        padding: 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        align-items: flex-start;
+        scrollbar-width: none;
+      }
+
+      .movie-img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+        transition: opacity 0.2s ease;
+      }
+
+      .hover-content {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 320px;
+        background: #181818;
+        border-radius: 8px;
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.92);
+        transition:
+          opacity 0.22s ease,
+          transform 0.22s ease;
+        padding-bottom: 10px;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .movie-card {
+        position: relative;
+        flex: 0 0 auto;
+        width: 250px;
+        cursor: pointer;
+        transition: transform 0.25s ease;
+        transform-origin: center center;
+        z-index: 1;
+        border-radius: 10px;
+        will-change: transform;
+        overflow:visible;
+      }
+
+      .movie-card.is-hovered {
+        transform: translateY(-8px) scale(1.03);
+        z-index: 10;
+      }
+
+      .movie-card.is-hovered .movie-img {
+        opacity: 0;
+      }
+
+      .movie-card.is-hovered .hover-content {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+        pointer-events: none;
+        box-shadow:
+          0 20px 36px rgba(0, 0, 0, 0.7),
+          0 0 0 1px rgba(255, 255, 255, 0.12);
+      }
+
+      .movie-row .movie-card:first-child.is-hovered .hover-content {
+        left: 0;
+        transform: translate(0, -26px) scale(1);
+      }
+
+      .movie-row .movie-card:last-child.is-hovered .hover-content {
+        left: auto;
+        right: 0;
+        transform: translate(0, -26px) scale(1);
+      }
+
+      .preview iframe {
+        width: 100%;
+        height: 180px;
+        border-radius: 8px 8px 0 0;
+        pointer-events: none;
+      }
+
+      .preview-thumb {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        padding: 12px 12px 8px;
+      }
+
+      .play-btn {
+        background: white;
+        color: black;
+        border-radius: 50%;
+        border: none;
+        width: 35px;
+        height: 35px;
+      }
+
+      .icon-btn {
+        background: transparent;
+        border: 1px solid white;
+        color: white;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+      }
+
+      .meta {
+        padding: 0 12px;
+        font-size: 12px;
+        color: #aaa;
+      }
+
+      .match {
+        color: #46d369;
+        font-weight: bold;
+      }
+
+      .genres {
+        padding: 7px 12px;
+        font-size: 13px;
+      }
+
+      .modal-hero iframe {
+        width: 100%;
+        height: 350px;
+      }
+
+      .modal-content-body {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .modal-content-body .left {
+        width: 60%;
+      }
+
+      .modal-content-body .right {
+        width: 35%;
+        color: #aaa;
+      }
+
+      .footer-text {
+        color: rgba(211, 208, 208, 0.7);
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      li {
+        text-decoration: underline;
+        font-size: medium;
+      }
+
+      #teluguMovies {
+        overflow-y:none;
+      }
+
+      .nav {
+        list-style-type: none;
+      }
+      .list-item {
+        color: white;
+        /* font-weight: bold; */
+        font-family:bree serif;
+        text-decoration: none;
+      }
+      .list-item:hover {
+        opacity: 10;
+        color: rgba(247, 110, 110, 0.915);
+        cursor: pointer;
+      }
+
+      #userName {
+        color: rgba(233, 225, 225, 0.857);
+      }
+
+      #logoutBtn:hover {
+        background-color: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header
+      class="d-flex justify-content-between bg-black"
+      id="header"
+    >
+      <div class="d-flex align-items-center gap-3 p-2">
+        <img
+          src="https://images.ctfassets.net/y2ske730sjqp/821Wg4N9hJD8vs5FBcCGg/9eaf66123397cc61be14e40174123c40/Vector__3_.svg?w=460"
+          class="col-5 col-md-1"
+        />
+        <ul class="d-flex nav d-md-flex d-none">
+          <li class="list-item mx-1">Home</li>
+          <li class="list-item mx-1">Shows</li>
+          <li class="list-item mx-1">Movies</li>
+          <li class="list-item mx-1">Games</li>
+          <li class="list-item mx-1">New & Popular</li>
+          <li class="list-item mx-1">My List</li>
+        </ul>
+      </div>
+
+      <div class="d-flex justify-content-end align-items-center col-md-4 col-7 gap-2 p-2">
+        <div id="userName" class="cursive"></div>
+
+        <div class="dropdown bg-black">
+          <div
+            class="bg-black dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://i.pinimg.com/474x/5b/50/e7/5b50e75d07c726d36f397f6359098f58.jpg"
+              alt="logo"
+              class="user-logo rounded-2"
+              height="35"
+              width="35"
+            />
+          </div>
+          <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+            <li class="text-decoration-none">
+              <a class="dropdown-item" href="#">Account</a>
+            </li>
+            <li class="text-decoration-none">
+              <a class="dropdown-item" href="#">Help center</a>
+            </li>
+            <li class="text-decoration-none">
+              <a class="dropdown-item" href="#">Manage profile</a>
+            </li>
+            <li class="text-decoration-none">
+              <hr class="dropdown-divider" />
+            </li>
+            <li class="text-decoration-none">
+              <a class="dropdown-item text-danger" id="logoutBtn"
+                ><i class="bi bi-box-arrow-right fw-bold fs-5 py-0"></i> Signout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div
+      class="hero position-relative d-flex flex-column justify-content-end pt-5"
+    >
+      <iframe
+        class="hero-video"
+        id="heroVideo"
+        src="https://www.youtube.com/embed/WepSY1rgoys?autoplay=1&mute=0&controls=0&loop=1&playlist=WepSY1rgoys"
+        frameborder="0"
+        allow="autoplay"
+        allowfullscreen
+      ></iframe>
+
+      <div class="overlay"></div>
+
+      <div class="hero-content text-white w-100">
+        <h2 class="cursive">
+          They Call him <span class="cursive text-danger">OG</span>
+        </h2>
+
+        <div class="mt-4 d-none d-md-flex">
+          <button class="btn btn-light me-2 px-4 fw-bold">
+            <i class="bi bi-play-fill"></i> Play
+          </button>
+          <button class="btn btn-secondary px-4 fw-bold">
+            <i class="bi bi-info-circle-fill"></i> More Info
+          </button>
+        </div>
+
+        <p class="mt-3 text-light">U/A 16+</p>
+      </div>
+    </div>
+
+    <section class="p-2">
+      <div class="mb-2">
+        <h4 class="text-white mb-1">Telugu Movies</h4>
+        <div class="movie-row" id="teluguMovies"></div>
+      </div>
+
+      <div class="mb-2">
+        <h4 class="text-white mb-1">Action Movies</h4>
+        <div class="movie-row" id="actionMovies"></div>
+      </div>
+
+      <div class="mb-2">
+        <h4 class="text-white mb-1">Thriller Movies</h4>
+        <div class="movie-row" id="thrillerMovies"></div>
+      </div>
+
+      <div class="mb-2">
+        <h4 class="text-white mb-1">Horror Movies</h4>
+        <div class="movie-row" id="horrorMovies"></div>
+      </div>
+
+      <div class="mb-2">
+        <h4 class="text-white mb-1">Crime Movies</h4>
+        <div class="movie-row" id="crimeMovies"></div>
+      </div>
+    </section>
+
+    <footer class="bg-black d-flex flex-column text-center p-3 pt-5">
+      <p class="footer-text ps-3">Questions? Call 000-800-919-1743</p>
+      <ul class="d-flex col-12 gap-2 justify-content-center footer-text">
+        <li>FAQ</li>
+        <li>Help Center</li>
+        <li>Privacy</li>
+        <li>Terms</li>
+      </ul>
+    </footer>
+
+    <div class="modal fade" id="movieModal" tabindex="-1" data-bs-keyboard="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./scripts/home.js"></script>
+  </body>
+</html>

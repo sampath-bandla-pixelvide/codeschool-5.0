@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineBook — Create Account</title>
+    <meta name="description" content="Register for CineBook and start booking movie tickets instantly." />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --mb-bg:      #0f0f1a;
+        --mb-surface: #1a1a2e;
+        --mb-accent:  #e94560;
+        --mb-accent-h:#c73652;
+        --mb-text:    #e2e8f0;
+        --mb-muted:   #94a3b8;
+        --mb-border:  rgba(255,255,255,0.07);
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { height: 100%; }
+      body {
+        background: var(--mb-bg);
+        color: var(--mb-text);
+        font-family: 'DM Sans', system-ui, sans-serif;
+        display: flex;
+        min-height: 100vh;
+      }
+      .auth-hero {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 48px;
+        background: linear-gradient(135deg, #0f0f1a 0%, #16213e 50%, #1a1a2e 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      @media (min-width: 768px) { .auth-hero { display: flex; flex: 0 0 42%; } }
+      .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; animation: drift 8s ease-in-out infinite alternate; }
+      .orb-1 { width: 300px; height: 300px; background: var(--mb-accent); top: -60px; left: -60px; animation-delay: 0s; }
+      .orb-2 { width: 200px; height: 200px; background: #6366f1; bottom: -50px; right: -30px; animation-delay: 2s; }
+      .orb-3 { width: 150px; height: 150px; background: #f5a623; top: 55%; left: 50%; animation-delay: 4s; }
+      @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(20px,15px) scale(1.08); } }
+      .hero-logo { font-size: 2.4rem; font-weight: 900; letter-spacing: -1px; color: var(--mb-text); z-index: 1; }
+      .hero-logo span { color: var(--mb-accent); }
+      .hero-tagline { font-size: 1rem; color: var(--mb-muted); margin-top: 12px; text-align: center; max-width: 280px; line-height: 1.6; z-index: 1; }
+      .hero-steps { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; z-index: 1; width: 100%; max-width: 280px; }
+      .step-item { display: flex; align-items: center; gap: 14px; }
+      .step-num {
+        width: 32px; height: 32px; border-radius: 50%;
+        background: var(--mb-accent); color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.8rem; font-weight: 800; flex-shrink: 0;
+      }
+      .step-text { font-size: 0.83rem; color: var(--mb-muted); line-height: 1.4; }
+      .auth-form-wrap {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 32px 20px;
+        background: var(--mb-bg);
+        overflow-y: auto;
+        scrollbar-width: none;
+      }
+      .auth-form-wrap::-webkit-scrollbar { display: none; }
+      .auth-card { width: 100%; max-width: 460px; }
+      .auth-card-logo { font-size: 1.5rem; font-weight: 900; color: var(--mb-text); margin-bottom: 24px; display: block; text-align: center; }
+      .auth-card-logo span { color: var(--mb-accent); }
+      .auth-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; }
+      .auth-subtitle { font-size: 0.875rem; color: var(--mb-muted); margin-bottom: 24px; }
+      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+      .form-group-cb { margin-bottom: 14px; }
+      .form-label-cb { font-size: 0.73rem; font-weight: 700; color: var(--mb-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: block; }
+      .form-input-cb {
+        width: 100%;
+        background: var(--mb-surface);
+        border: 1.5px solid var(--mb-border);
+        color: var(--mb-text);
+        border-radius: 12px;
+        padding: 13px 16px 13px 44px;
+        font-size: 0.875rem;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .form-input-cb.no-icon { padding-left: 16px; }
+      .form-input-cb:focus { border-color: var(--mb-accent); box-shadow: 0 0 0 3px rgba(233,69,96,0.12); }
+      .form-input-cb::placeholder { color: var(--mb-muted); }
+      .form-input-cb::-webkit-calendar-picker-indicator { filter: invert(0.7); }
+      .input-icon-wrap { position: relative; }
+      .input-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--mb-muted); font-size: 1rem; pointer-events: none; }
+      .err-msg { font-size: 0.72rem; color: var(--mb-accent); margin-top: 3px; min-height: 15px; display: block; }
+      .role-wrap { display: flex; gap: 10px; }
+      .role-opt { display: none; }
+      .role-label {
+        flex: 1; padding: 10px 12px; border-radius: 10px;
+        border: 1.5px solid var(--mb-border);
+        background: var(--mb-surface); color: var(--mb-muted);
+        font-size: 0.83rem; font-weight: 600; cursor: pointer;
+        text-align: center; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+      }
+      .role-opt:checked + .role-label { border-color: var(--mb-accent); color: var(--mb-accent); background: rgba(233,69,96,0.08); }
+      .role-label:hover { border-color: rgba(233,69,96,0.4); color: var(--mb-text); }
+      .btn-auth {
+        width: 100%; background: var(--mb-accent); color: #fff;
+        border: none; border-radius: 12px; padding: 14px;
+        font-size: 0.95rem; font-weight: 700; font-family: inherit;
+        cursor: pointer; transition: background 0.2s, transform 0.15s;
+        margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;
+      }
+      .btn-auth:hover { background: var(--mb-accent-h); transform: translateY(-1px); }
+      .auth-divider { display: flex; align-items: center; gap: 12px; margin: 18px 0; color: var(--mb-muted); font-size: 0.8rem; }
+      .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--mb-border); }
+      .auth-switch { text-align: center; font-size: 0.875rem; color: var(--mb-muted); margin-top: 14px; }
+      .auth-switch a { color: var(--mb-accent); text-decoration: none; font-weight: 700; }
+      .auth-switch a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <div class="auth-hero">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="hero-logo">Cine<span>Book</span></div>
+      <p class="hero-tagline">Join thousands of movie lovers booking tickets online every day.</p>
+      <div class="hero-steps">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-text">Create your account in under a minute</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-text">Browse movies &amp; pick your favourite</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-text">Select seats &amp; confirm booking instantly</div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-form-wrap">
+      <div class="auth-card">
+        <span class="auth-card-logo d-md-none">Cine<span>Book</span></span>
+        <h1 class="auth-title">Create account</h1>
+        <p class="auth-subtitle">Fill in the details below to get started</p>
+        <form id="registerForm" novalidate>
+          <div class="form-row">
+            <div class="form-group-cb">
+              <label class="form-label-cb" for="firstName">First Name</label>
+              <div class="input-icon-wrap">
+                <i class="bi bi-person input-icon"></i>
+                <input type="text" class="form-input-cb" id="firstName" placeholder="John" autocomplete="given-name" />
+              </div>
+              <span id="fnameError" class="err-msg"></span>
+            </div>
+            <div class="form-group-cb">
+              <label class="form-label-cb" for="lastName">Last Name</label>
+              <div class="input-icon-wrap">
+                <i class="bi bi-person input-icon"></i>
+                <input type="text" class="form-input-cb" id="lastName" placeholder="Doe" autocomplete="family-name" />
+              </div>
+              <span id="lnameError" class="err-msg"></span>
+            </div>
+          </div>
+          <div class="form-group-cb">
+            <label class="form-label-cb" for="floatingInput">Email Address</label>
+            <div class="input-icon-wrap">
+              <i class="bi bi-envelope input-icon"></i>
+              <input type="email" class="form-input-cb" id="floatingInput" placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <span id="emailError" class="err-msg"></span>
+          </div>
+          <div class="form-row">
+            <div class="form-group-cb">
+              <label class="form-label-cb" for="dob">Date of Birth</label>
+              <div class="input-icon-wrap">
+                <i class="bi bi-calendar3 input-icon"></i>
+                <input type="date" class="form-input-cb" id="dob" />
+              </div>
+              <span id="dobError" class="err-msg"></span>
+            </div>
+            <div class="form-group-cb">
+              <label class="form-label-cb" for="phone">Phone Number</label>
+              <div class="input-icon-wrap">
+                <i class="bi bi-telephone input-icon"></i>
+                <input type="text" class="form-input-cb" id="phone" placeholder="9876543210" maxlength="10" autocomplete="tel" />
+              </div>
+              <span id="phoneError" class="err-msg"></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group-cb">
+              <label class="form-label-cb" for="floatingPassword">Password</label>
+              <div class="input-icon-wrap">
+                <i class="bi bi-lock input-icon"></i>
+                <input type="password" class="form-input-cb" id="floatingPassword" placeholder="Min 8 chars" autocomplete="new-password" />
+              </div>
+              <span id="psswdError" class="err-msg"></span>
+            </div>
+            <div class="form-group-cb">
+              <label class="form-label-cb" for="confirmPassword">Confirm Password</label>
+              <div class="input-icon-wrap">
+                <i class="bi bi-lock-fill input-icon"></i>
+                <input type="password" class="form-input-cb" id="confirmPassword" placeholder="Repeat password" autocomplete="new-password" />
+              </div>
+              <span id="confirmPsswdError" class="err-msg"></span>
+            </div>
+          </div>
+          <div class="form-group-cb">
+            <label class="form-label-cb">Register As</label>
+            <div class="role-wrap">
+              <input type="radio" class="role-opt" name="roleOption" id="roleUser" value="user" checked />
+              <label class="role-label" for="roleUser"><i class="bi bi-person-circle"></i> User</label>
+              <input type="radio" class="role-opt" name="roleOption" id="roleAdmin" value="admin" />
+              <label class="role-label" for="roleAdmin"><i class="bi bi-shield-check"></i> Admin</label>
+            </div>
+            <span id="roleError" class="err-msg"></span>
+          </div>
+          <button type="submit" class="btn-auth">
+            <i class="bi bi-person-plus"></i> Create Account
+          </button>
+        </form>
+        <div class="auth-divider">or</div>
+        <div class="auth-switch">
+          Already have an account? <a href="./index.html">Sign In</a>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./scripts/resgister.js"></script>
+  </body>
+</html>
