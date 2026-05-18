@@ -41,7 +41,9 @@ $(document).ready(function () {
     }
 
     if (!dob.val()) {
-      $("#dobError").text("Please select your date of birth").removeClass("d-none");
+      $("#dobError")
+        .text("Please select your date of birth")
+        .removeClass("d-none");
       return;
     }
 
@@ -64,7 +66,9 @@ $(document).ready(function () {
     }
 
     if (age < 18) {
-      $("#dobError").text("You must be at least 18 years old").removeClass("d-none");
+      $("#dobError")
+        .text("You must be at least 18 years old")
+        .removeClass("d-none");
       return;
     }
 

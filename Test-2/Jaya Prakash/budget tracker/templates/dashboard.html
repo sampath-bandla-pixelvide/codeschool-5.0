@@ -1,0 +1,101 @@
+<div class="container-fluid d-flex justify-content-end">
+  <div class="d-flex justify-content-center">
+    <select
+      name="month"
+      id="monthList"
+      class="form-control rounded-2 text-center border border-dark"
+    ></select>
+  </div>
+</div>
+
+<div class="row justify-content-evenly gap-2 mt-4">
+  <div
+    class="col-md-3 stats-card shadow-lg p-3 bg-black rounded d-flex justify-content-start align-items-center"
+  >
+    <i class="bi bi-currency-rupee p-1 px-2 fs-3 bg-success rounded-3"></i>
+    <div
+      class="ms-3 d-flex justify-content-center align-items-start flex-column"
+    >
+      <span class="fs-5 fw-bold">Income</span>
+      <span class="fs-5">₹. <span id="incomeAmountSpan">0</span></span>
+    </div>
+  </div>
+  <div
+    class="col-md-3 stats-card shadow-lg p-3 bg-black rounded d-flex justify-content-start align-items-center"
+  >
+    <i class="bi bi-wallet2 p-1 px-2 fs-3 bg-warning rounded-3"></i>
+    <div
+      class="ms-3 d-flex justify-content-center align-items-start flex-column"
+    >
+      <span class="fs-5 fw-bold">Expenses</span>
+      <span class="fs-5">₹. <span id="expensesAmountSpan">0</span></span>
+    </div>
+  </div>
+  <div
+    class="col-md-3 stats-card shadow-lg p-3 bg-black rounded d-flex justify-content-start align-items-center"
+  >
+    <i class="bi bi-piggy-bank p-1 px-2 fs-3 bg-info rounded-3"></i>
+    <div
+      class="ms-3 d-flex justify-content-center align-items-start flex-column"
+    >
+      <span class="fs-5 fw-bold">Savings</span>
+      <span class="fs-5">₹. <span id="savingsAmountSpan">0</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- Charts -->
+<div class="container-fluid mt-4">
+  <div class="card bg-black shadow-lg border-0 rounded-4 p-4">
+    <h5 class="mb-4 text-white">Monthly Overview</h5>
+    <!-- Income Graphs -->
+    <div class="mb-4">
+      <div class="d-flex justify-content-between mb-1">
+        <span class="fw-bold text-primary"> Income </span>
+
+        <span id="incomeGraphAmount" class="text-white"> ₹0 </span>
+      </div>
+
+      <div class="progress" style="height: 25px">
+        <div
+          id="incomeGraphBar"
+          class="progress-bar bg-primary"
+          style="width: 0%"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Expenses Graph -->
+
+    <div class="mb-4">
+      <div class="d-flex justify-content-between mb-1">
+        <span class="fw-bold text-danger"> Expenses </span>
+
+        <span id="expensesGraphAmount" class="text-white"> ₹0 </span>
+      </div>
+
+      <div class="progress" style="height: 25px">
+        <div
+          id="expensesGraphBar"
+          class="progress-bar bg-danger"
+          style="width: 0%"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Savings graph -->
+    <div>
+      <div class="d-flex justify-content-between mb-1">
+        <span class="fw-bold text-success"> Savings </span>
+        <span id="savingsGraphAmount" class="text-white"> ₹0 </span>
+      </div>
+      <div class="progress" style="height: 25px">
+        <div
+          id="savingsGraphBar"
+          class="progress-bar bg-success"
+          style="width: 0%"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

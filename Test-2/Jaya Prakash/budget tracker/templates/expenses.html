@@ -1,0 +1,140 @@
+<!--Modal -->
+
+<div class="modal fade" id="addExpenseModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Expense</h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label"> Category </label>
+          <select id="expenseCategory" class="form-control"></select>
+          <small class="text-danger d-none" id="expenseCategoryError">
+            Please select category
+          </small>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"> Title </label>
+          <input
+            type="text"
+            id="expenseTitle"
+            class="form-control"
+            placeholder="Enter title"
+          />
+          <small class="text-danger d-none" id="expenseTitleError">
+            Title should be between 4 and 30 characters
+          </small>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"> Description </label>
+
+          <textarea
+            id="expenseDescription"
+            class="form-control"
+            rows="3"
+            placeholder="Enter description"
+          ></textarea>
+
+          <small class="text-danger d-none" id="expenseDescriptionError">
+            Description is required
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"> Amount </label>
+
+          <input
+            type="number"
+            id="expenseAmount"
+            class="form-control"
+            placeholder="Enter amount"
+          />
+
+          <small class="text-danger d-none" id="expenseAmountError">
+            Invalid amount
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"> Spend From Month </label>
+
+          <select id="expenseIncomeMonth" class="form-control"></select>
+
+          <small class="text-danger d-none" id="expenseIncomeMonthError">
+            Please select income month
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"> Date </label>
+
+          <input type="date" id="expenseDate" class="form-control" />
+
+          <small class="text-danger d-none" id="expenseDateError">
+            Please select date
+          </small>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        <button class="btn btn-primary" id="saveExpenseBtn">
+          Save Expense
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="mb-0">Expenses</h4>
+
+    <button
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#addExpenseModal"
+    >
+      <i class="bi bi-plus-circle pe-1"></i>
+      Add Expense
+    </button>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-3 mb-2">
+      <select id="monthList" class="form-control"></select>
+    </div>
+
+    <div class="col-md-3 mb-2">
+      <select id="statusList" class="form-control">
+        <option value="">All Categories</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered text-center align-middle">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Category</th>
+          <th>Title</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="expensesTableBody"></tbody>
+    </table>
+  </div>
+</div>

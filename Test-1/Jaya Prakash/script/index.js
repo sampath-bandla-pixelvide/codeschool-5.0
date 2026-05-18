@@ -66,16 +66,12 @@ function iterateDiv(article) {
     .addClass("rounded-top-4");
 
   let cardBody = $("<div>").addClass(
-    "card-body d-flex flex-column justify-content-between"
+    "card-body d-flex flex-column justify-content-between",
   );
 
-  let title = $("<p>")
-    .addClass("card-text fw-semibold")
-    .text(article.title);
+  let title = $("<p>").addClass("card-text fw-semibold").text(article.title);
 
-  let source = $("<small>")
-    .addClass("text-danger")
-    .text(article.source_name);
+  let source = $("<small>").addClass("text-danger").text(article.source_name);
 
   let link = $("<a>")
     .attr({

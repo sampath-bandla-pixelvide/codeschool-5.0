@@ -1,0 +1,111 @@
+<div
+  class="container-fluid d-flex justify-content-between align-items-center bg-black p-3 rounded-4 mb-2 border border-secondary"
+>
+  <span class="fs-5 px-3">Dark Mode</span>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="darkModeSwitch" />
+  </div>
+</div>
+<div
+  class="container-fluid bg-black text-white p-4 rounded-4 border border-secondary"
+>
+  <div class="mb-4">
+    <span class="fs-4 fw-semibold">Profile</span>
+  </div>
+
+  <!-- Profile Img -->
+  <div class="text-center mb-4">
+    <img
+      src="https://placehold.co/120x120/png?text=User"
+      alt="Profile Photo"
+      id="userProfileImg"
+      class="rounded-circle border border-secondary"
+      width="120"
+      height="120"
+    />
+  </div>
+
+  <form>
+    <div class="row g-3">
+      <!-- FirstName -->
+      <div class="col-md-6">
+        <label class="form-label text-secondary">First Name</label>
+        <input
+          type="text"
+          class="form-control border-secondary"
+          value="John"
+          id="userProfileFirstName"
+          disabled
+        />
+      </div>
+
+      <!-- Last name -->
+      <div class="col-md-6">
+        <label class="form-label text-secondary">Last Name</label>
+        <input
+          type="text"
+          class="form-control border-secondary"
+          value="Doe"
+          id="userProfileLastName"
+          disabled
+        />
+      </div>
+
+      <!-- phone -->
+      <div class="col-md-6">
+        <label class="form-label text-secondary">Phone Number</label>
+        <input
+          type="text"
+          class="form-control border-secondary"
+          value="+91 9876543210"
+          id="userProfilePhone"
+          disabled
+        />
+      </div>
+
+      <!--email -->
+      <div class="col-md-6">
+        <label class="form-label text-secondary">Email</label>
+        <input
+          type="email"
+          class="form-control border-secondary"
+          value="john@example.com"
+          id="userProfileEmail"
+          disabled
+        />
+      </div>
+    </div>
+
+    <!-- buttons div -->
+    <div
+      class="d-flex flex-column flex-md-row justify-content-end gap-3 mt-4"
+      id="editAndResetPasswordBtnsContainer"
+    >
+      <button
+        type="button"
+        id="editProfileBtn"
+        class="btn btn-primary px-4 rounded-3"
+      >
+        Edit Profile
+      </button>
+      <button type="button" class="btn btn-warning px-4 rounded-3">
+        Reset Password
+      </button>
+    </div>
+    <div
+      class="d-flex flex-column flex-md-row justify-content-end gap-3 mt-4 d-none"
+      id="confirmationBtnsContainer"
+    >
+      <button
+        type="button"
+        id="cancelBtn"
+        class="btn btn-outline-danger px-4 rounded-3"
+      >
+        Cancel
+      </button>
+      <button type="button" id="saveBtn" class="btn btn-info px-4 rounded-3">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
