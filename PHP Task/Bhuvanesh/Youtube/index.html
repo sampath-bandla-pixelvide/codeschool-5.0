@@ -46,12 +46,69 @@
 .dropDown li:hover{
   background-color: #212121 !important;
 }
+ #backToTop {
+      position: fixed; bottom: 1.5rem; left: 1.5rem;
+      width: 42px; height: 42px;
+      background: var(--clr-accent);
+      border: none; border-radius: 50%; color: #fff;
+      font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 999;
+      opacity: 0; visibility: hidden; transform: translateY(12px);
+      transition: all var(--transition);
+      box-shadow: 0 4px 16px rgba(255,92,40,.4);
+    }
+        #backToTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    #backToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+   #center .input-group {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      #hiddenSearchIcon {
+        left: 3%;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s;
+      }
+      #searchInput {
+        transition: 0.3s;
+      }
+      .search-box.active input {
+        padding-left: 40px !important;
+      }
+      .search-box.active #hiddenSearchIcon {
+        opacity: 1;
+      }
+      
+      a:hover {
+        background-color: #212121;
+      }
+      .header {
+        background: black;
+        transition: 0.3s;
+      }
+
+      .header.scrolled {
+        background: rgba(0, 0, 0, 0.9);
+      }
+      #searchInput::placeholder {
+        color: white;
+      }
+      #sidebartoggleBtn:hover{
+        background-color:#212121;
+      }
     </style>
   </head>
   <body
     class="vh-100 w-100 bg-black"
     style="padding-top: 70px; font-family: &quot;Roboto&quot;, sans-serif"
   >
+  <button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
     <div class="container-fluid">
       <div class="header fixed-top"></div>
       <div class="row ">

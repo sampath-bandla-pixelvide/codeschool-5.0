@@ -105,7 +105,6 @@ $(document).ready(function () {
       success: function (res) {
        console.log(res.data);
           if (res.status) {
-
             localStorage.setItem("token", res.data.token);
             if (res.data.role_id === 1) {
               window.location.replace("./admin.html");

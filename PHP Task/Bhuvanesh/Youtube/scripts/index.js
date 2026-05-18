@@ -14,6 +14,25 @@ $(document).ready(function () {
       console.log(err.responseText);
     },
   });
+  const backBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", function () {
+
+  if (window.scrollY > 400) {
+    backBtn.classList.add("show");
+  } else {
+    backBtn.classList.remove("show");
+  }
+
+});
+backBtn.addEventListener("click", function () {
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+});
 
   $(document).on("click", "#sidetoggleBtn", function (e) {
     e.preventDefault();
