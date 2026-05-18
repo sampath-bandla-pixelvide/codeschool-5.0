@@ -1,0 +1,148 @@
+<nav class="navbar navbar-dark bg-dark px-3 gap-3">
+  <a href="home.html" class="logo text-decoration-none">IMDb</a>
+
+  <button class="btn text-white fw-bold" id="openMenu">
+    <i class="bi bi-list"></i> Menu
+  </button>
+
+  <div class="input-group" style="max-width: 500px">
+
+    <button
+      id="searchTypeBtn"
+      class="btn btn-light dropdown-toggle border-end-0"
+      data-bs-toggle="dropdown"
+    >
+      All
+    </button>
+
+    <ul class="dropdown-menu">
+       <li>
+      <a class="dropdown-item text-warning" href="#">
+        <i class="bi bi-search me-2"></i> All
+      </a>
+    </li>
+
+    <li>
+      <a class="dropdown-item text-white" href="#">
+        <i class="bi bi-film me-2"></i> Titles
+      </a>
+    </li>
+
+    <li>
+      <a class="dropdown-item text-white" href="#">
+        <i class="bi bi-tv me-2"></i> TV episodes
+      </a>
+    </li>
+
+    <li>
+      <a class="dropdown-item text-white" href="#">
+        <i class="bi bi-people me-2"></i> Celebs
+      </a>
+    </li>
+      <a class="dropdown-item text-white" href="#">
+        <i class="bi bi-building me-2"></i> Companies
+      </a>
+    </li>
+
+    <li>
+      <a class="dropdown-item text-white" href="#">
+        <i class="bi bi-tag me-2"></i> Keywords
+      </a>
+    </li>
+
+    <li><hr class="dropdown-divider bg-secondary"></li>
+
+    <li>
+      <a class="dropdown-item text-white" href="#">
+        <i class="bi bi-search me-2"></i> Advanced search
+      </a>
+    </li>
+    </ul>
+
+
+    <input
+      type="text"
+      class="form-control border-start-0"
+      placeholder="Search for movies..."
+    />
+
+    <span class="input-group-text bg-light">
+      <i class="bi bi-search"></i>
+    </span>
+  </div>
+
+  <a href="#" class="text-white text-decoration-none fw-bold"
+    >IMDb<span class="text-info">Pro</span></a
+  >
+
+  <a href="watchlist.html" class="text-white text-decoration-none fw-bold"
+    ><svg
+      width="24"
+      height="24"
+      xmlns="http://www.w3.org/2000/svg"
+      class="ipc-icon ipc-icon--watchlist ipc-btn__icon ipc-btn__icon--pre"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      role="presentation"
+    >
+      <path
+        d="M17 3c1.05 0 1.918.82 1.994 1.851L19 5v16l-7-3-7 3V5c0-1.05.82-1.918 1.851-1.994L7 3h10zm-4 4h-2v3H8v2h3v3h2v-3h3v-2h-3V7z"
+        fill="currentColor"
+      ></path>
+    </svg>
+    Watchlist</a
+  >
+
+  <div id="authArea">
+    <button class="btn btn-outline-light" id="authBtn">Sign in</button>
+  </div>
+</nav>
+
+<div class="menu-overlay p-4" id="menuOverlay">
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="logo">IMDb</div>
+    <button class="close-menu" id="closeMenu">x</button>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <h4 class="fw-bold"><i class="bi bi-film text-warning"></i> Movies</h4>
+      <div class="menu-link ms-4">Release calendar</div>
+      <div class="menu-link ms-4">Top 250 movies</div>
+      <div class="menu-link ms-4">Most popular movies</div>
+      <div class="menu-link ms-4">Browse by genre</div>
+      <div class="menu-link ms-4">Top box office</div>
+      <div class="menu-link ms-4">Showtimes & tickets</div>
+      <div class="menu-link ms-4">Movie news</div>
+      <div class="menu-link ms-4">Indian movie spotlight</div>
+    </div>
+
+    <div class="col-md-4">
+      <h4 class="fw-bold"><i class="bi bi-tv text-warning"></i> TV Shows</h4>
+      <div class="menu-link ms-4">Top TV shows</div>
+      <div class="menu-link ms-4">Most popular</div>
+      <div class="menu-link ms-4">Browse TV shows</div>
+      <div class="menu-link ms-4">TV news</div>
+
+      <h4 class="fw-bold mt-4">
+        <i class="bi bi-file-earmark-play-fill text-warning"></i> Watch
+      </h4>
+      <div class="menu-link ms-4">What to watch</div>
+      <div class="menu-link ms-4">Trailers</div>
+      <div class="menu-link ms-4">IMDb Originals</div>
+      <div class="menu-link ms-4">IMDb Picks</div>
+      <div class="menu-link ms-4">IMDb Spotlight</div>
+      <div class="menu-link ms-4">IMDb Podcasts</div>
+    </div>
+
+    <div class="col-md-4">
+      <h4 class="fw-bold">
+        <i class="bi bi-star-fill text-warning"></i> Awards & Events
+      </h4>
+      <div class="menu-link ms-4">Oscars</div>
+      <div class="menu-link ms-4">Cannes Film Festival</div>
+      <div class="menu-link ms-4">Most Anticipated</div>
+      <div class="menu-link ms-4">All Events</div>
+    </div>
+  </div>
+</div>

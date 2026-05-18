@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMDb Clone | IMDb_APP</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="./images/imdb-favicon.webp"
+      type="image/x-icon"
+    />
+    <style>
+      body {
+        background: #000;
+        color: #fff;
+      }
+
+      .logo {
+        background: #f5c518;
+        color: #000;
+        font-weight: 900;
+        font-size: 26px;
+        padding: 3px 10px;
+        border-radius: 5px;
+      }
+
+      .imdb-yellow {
+        color: #f5c518;
+      }
+
+      .bg-imdb-card {
+        background: #1f1f1f;
+      }
+
+      .movie-img {
+        height: 320px;
+        object-fit: cover;
+      }
+
+      .card:hover {
+        transform: scale(1.03);
+        transition: 0.3s;
+      }
+
+      .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: #1f1f1f;
+        z-index: 2000;
+        display: none;
+      }
+
+      .close-menu {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #f5c518;
+        border: none;
+        font-size: 25px;
+      }
+
+      .hero-img {
+        height: 500px;
+        object-fit: cover;
+        opacity: 0.65;
+      }
+
+      .hero-trailer {
+        background: #111;
+      }
+
+      .hero-content {
+        background: linear-gradient(to top, #000, transparent);
+        width: 100%;
+      }
+
+      .play-btn {
+        width: 70px;
+        height: 70px;
+        border: 4px solid #f5c518;
+        border-radius: 50%;
+        background: transparent;
+        color: #f5c518;
+        font-size: 35px;
+      }
+
+      .up-next-item {
+        background: #111;
+        padding: 12px;
+        border-radius: 10px;
+      }
+
+      .up-next-item img {
+        width: 90px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .menu-link {
+        font-size: 18px;
+        margin-bottom: 12px;
+        cursor: pointer;
+      }
+
+      .menu-link:hover {
+        color: #f5c518;
+      }
+      .imdb-rating {
+        background: #111;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        color: #fff;
+        font-size: 18px;
+      }
+
+      footer i {
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      footer i:hover {
+        color: #f5c518;
+      }
+
+      .celebrity-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .celebrity-card h6 {
+        font-weight: 700;
+      }
+
+      #celebrityCarousel .carousel-control-prev,
+      #celebrityCarousel .carousel-control-next {
+        width: 50px;
+      }
+      .dropdown-menu {
+        background-color: #1f1f1f;
+        border: none;
+      }
+
+      .dropdown-item {
+        color: white;
+      }
+
+      .dropdown-item:hover {
+        background-color: #2a2a2a;
+        color: #f5c518;
+      }
+
+      .dropdown-item.active,
+      .dropdown-item:active {
+        background-color: #2a2a2a;
+        color: #f5c518;
+      }
+      .letter-space {
+        letter-spacing: 4px;
+      }
+      .top-card {
+        background: #1f1f1f;
+      }
+
+      .top-img {
+        width: 130px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .top-card:hover {
+        background: #2a2a2a;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <nav class="navbar navbar-dark bg-dark px-3 gap-3">
+
+    <div class="logo">IMDb</div>
+
+    <button class="btn text-white fw-bold" id="openMenu"><i class="bi bi-list"></i> Menu</button>
+
+
+    <div class="input-group w-50">
+        <select class="form-select" style="max-width: 80px; cursor: pointer;">
+            <option>All</option>
+        </select>
+        <input type="text" class="form-control" id="searchInput" placeholder="Search for movies...😊">
+        <span class="input-group-text"><i class="bi bi-search-heart"></i></span>
+    </div>
+
+    <a href="#" class="text-white text-decoration-none fw-bold">IMDb<span class="text-info">Pro</span></a>
+
+    <a href="watchlist.html" class="text-white text-decoration-none fw-bold"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="ipc-icon ipc-icon--watchlist ipc-btn__icon ipc-btn__icon--pre" viewBox="0 0 24 24" fill="currentColor" role="presentation"><path d="M17 3c1.05 0 1.918.82 1.994 1.851L19 5v16l-7-3-7 3V5c0-1.05.82-1.918 1.851-1.994L7 3h10zm-4 4h-2v3H8v2h3v3h2v-3h3v-2h-3V7z" fill="currentColor"></path></svg>
+         Watchlist</a>
+
+    <div id="authArea">
+    <button class="btn btn-outline-light" id="authBtn">
+        Sign in
+    </button>
+</div>
+
+</nav> -->
+    <div id="navbarContainer"></div>
+
+    <!-- <div class="menu-overlay p-4" id="menuOverlay">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="logo">IMDb</div>
+        <button class="close-menu" id="closeMenu">
+          <span class="text-center">x</span>
+        </button>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-4">
+          <h4 class="fw-bold">
+            <i class="bi bi-film text-warning"></i> Movies
+          </h4>
+          <div class="menu-link ms-4">Release calendar</div>
+          <div class="menu-link ms-4">Top 250 movies</div>
+          <div class="menu-link ms-4">Most popular movies</div>
+          <div class="menu-link ms-4">Browse by genre</div>
+          <div class="menu-link ms-4">Top box office</div>
+          <div class="menu-link ms-4">Showtimes & tickets</div>
+          <div class="menu-link ms-4">Movie news</div>
+          <div class="menu-link ms-4">Indian movie spotlight</div>
+        </div>
+
+        <div class="col-md-4">
+          <h4 class="fw-bold">
+            <i class="bi bi-tv text-warning"></i> TV Shows
+          </h4>
+          <div class="menu-link ms-4">Top TV shows</div>
+          <div class="menu-link ms-4">Most popular</div>
+          <div class="menu-link ms-4">Browse TV shows</div>
+          <div class="menu-link ms-4">TV news</div>
+
+          <h4 class="fw-bold mt-4">
+            <i class="bi bi-file-earmark-play-fill text-warning"></i> Watch
+          </h4>
+          <div class="menu-link ms-4">What to watch</div>
+          <div class="menu-link ms-4">Trailers</div>
+          <div class="menu-link ms-4">IMDb Originals</div>
+          <div class="menu-link ms-4">IMDb Picks</div>
+          <div class="menu-link ms-4">IMDb Spotlight</div>
+          <div class="menu-link ms-4">IMDb Podcasts</div>
+        </div>
+
+        <div class="col-md-4">
+          <h4 class="fw-bold">
+            <i class="bi bi-star-fill text-warning"></i> Awards & Events
+          </h4>
+          <div class="menu-link ms-4">Oscars</div>
+          <div class="menu-link ms-4">Cannes Film Festival</div>
+          <div class="menu-link ms-4">Most Anticipated</div>
+          <div class="menu-link ms-4">All Events</div>
+        </div>
+      </div>
+    </div> -->
+
+    <section class="container mt-4">
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <div
+            id="heroCarousel"
+            class="carousel slide hero-trailer rounded overflow-hidden"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="images/movies/interstellar.jpg"
+                  class="w-100 hero-img"
+                />
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/movies/inception.jpg" class="w-100 hero-img" />
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/movies/avatar.jpg" class="w-100 hero-img" />
+              </div>
+            </div>
+
+            <div
+              class="hero-content position-absolute bottom-0 start-0 p-4 d-flex align-items-center gap-3"
+            >
+              <button class="play-btn">
+                <i class="bi bi-play-fill"></i>
+              </button>
+              <div>
+                <h3 class="mb-1">Featured Trailer</h3>
+                <p class="mb-0 text-secondary">
+                  Watch the latest movie spotlight
+                </p>
+              </div>
+            </div>
+
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#heroCarousel"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#heroCarousel"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <h4 class="text-warning fw-bold mb-3">Up next</h4>
+
+          <div class="up-next-item d-flex gap-3 mb-3">
+            <img src="images/movies/inception.jpg" />
+            <div>
+              <h6>Inception Trailer</h6>
+              <small class="text-secondary">▶ 1:42</small>
+            </div>
+          </div>
+
+          <div class="up-next-item d-flex gap-3 mb-3">
+            <img src="images/movies/avatar.jpg" />
+            <div>
+              <h6>Avatar Official Clip</h6>
+              <small class="text-secondary">▶ 1:05</small>
+            </div>
+          </div>
+
+          <div class="up-next-item d-flex gap-3">
+            <img src="images/movies/kgf2.jpg" />
+            <div>
+              <h6>KGF Chapter 2 Teaser</h6>
+              <small class="text-secondary">▶ 1:30</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container mt-4" id="moviesContainer">
+      <h4 class="imdb-yellow fw-bold mb-3">Featured Movies</h4>
+      <div class="row" id="featuredMovies"></div>
+    </div>
+
+    <section class="container mt-5">
+      <div class="popular-section bg-black text-white p-4">
+        <h2 class="fw-bold mb-4">
+          <span class="border-start border-warning border-5 ps-3">
+            Most popular celebrities ❯
+          </span>
+        </h2>
+
+        <div class="d-flex gap-5 mb-3">
+          <h6 class="text-warning fw-bold letter-space">TOP RISING</h6>
+          <h6 class="text-warning fw-bold letter-space ms-0 ms-lg-5">
+            BY RANKING
+          </h6>
+        </div>
+      </div>
+
+      <div id="celebrityCarousel" class="carousel slide mt-3">
+        <div class="carousel-inner" id="celebrityContainer"></div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#celebrityCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#celebrityCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </section>
+
+    <div class="container mt-4" id="moviesContainer">
+      <h2 class="text-warning">What to Watch</h2>
+      <h4 class="fw-bold mb-4">
+        <span class="border-start border-warning border-5 ps-3">
+          Top pics ❯
+        </span>
+      </h4>
+      <div class="row" id="topMovies"></div>
+    </div>
+
+    <section class="container mt-5 px-4">
+      <h3 class="fw-bold mb-4">
+        <span class="border-start border-warning border-4 ps-3">
+          Top 10 on IMDb this week
+        </span>
+        <i class="bi bi-chevron-right"></i>
+      </h3>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="top-card d-flex gap-3 p-3 rounded">
+            <img src="images/movies/inception.jpg" class="top-img" />
+
+            <div>
+              <span class="badge bg-primary fs-6 mb-2">#1</span>
+              <h5 class="fw-bold">Inception</h5>
+              <p class="text-secondary mb-2">2010 · 2h 28m · PG-13</p>
+              <p class="mb-2"><span class="text-warning">★</span> 4.8 Rate</p>
+              <a href="#" class="text-decoration-none"
+                ><i class="bi bi-eye"></i> Mark as watched</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="top-card d-flex gap-3 p-3 rounded">
+            <img src="images/movies/interstellar.jpg" class="top-img" />
+
+            <div>
+              <span class="badge bg-primary fs-6 mb-2">#2</span>
+              <h5 class="fw-bold">Interstellar</h5>
+              <p class="text-secondary mb-2">2014 · 2h 49m · PG-13</p>
+              <p class="mb-2"><span class="text-warning">★</span> 4.7 Rate</p>
+              <a href="#" class="text-decoration-none"
+                ><i class="bi bi-eye"></i> Mark as watched</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="top-card d-flex gap-3 p-3 rounded">
+            <img src="images/movies/dark-knight.jpg" class="top-img" />
+
+            <div>
+              <span class="badge bg-primary fs-6 mb-2">#3</span>
+              <h5 class="fw-bold">The Dark Knight</h5>
+              <p class="text-secondary mb-2">2008 · 2h 32m · PG-13</p>
+              <p class="mb-2"><span class="text-warning">★</span> 4.9 Rate</p>
+              <a href="#" class="text-decoration-none"
+                ><i class="bi bi-eye"></i> Mark as watched</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="top-card d-flex gap-3 p-3 rounded">
+            <img src="images/movies/avatar.jpg" class="top-img" />
+
+            <div>
+              <span class="badge bg-primary fs-6 mb-2">#4</span>
+              <h5 class="fw-bold">Avatar</h5>
+              <p class="text-secondary mb-2">2009 · 2h 42m · PG-13</p>
+              <p class="mb-2"><span class="text-warning">★</span> 4.3 Rate</p>
+              <a href="#" class="text-decoration-none"
+                ><i class="bi bi-eye"></i> Mark as watched</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container mt-4" id="moviesContainer">
+      <h4 class="fw-bold mb-4">
+        <span class="border-start border-warning border-5 ps-3">
+          Fan favorites ❯
+        </span>
+      </h4>
+      <div class="row" id="fanMovies"></div>
+    </div>
+
+    <section class="container mt-5 px-4">
+      <h3 class="fw-bold mb-4">
+        <span class="border-start border-warning border-4 ps-3">
+          Popular interests
+        </span>
+        <i class="bi bi-chevron-right"></i>
+      </h3>
+
+      <div id="interestCarousel" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-4">
+              <div class="col-lg-3 col-md-6">
+                <div class="bg-dark rounded overflow-hidden position-relative">
+                  <img
+                    src="images/interests/drama.webp"
+                    class="w-100"
+                    style="height: 180px; object-fit: cover"
+                  />
+
+                  <h5 class="p-3 m-0 fw-bold text-white">Drama</h5>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="bg-dark rounded overflow-hidden position-relative">
+                  <img
+                    src="images/interests/horror.webp"
+                    class="w-100"
+                    style="height: 180px; object-fit: cover"
+                  />
+
+                  <h5 class="p-3 m-0 fw-bold text-white">Horror</h5>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="bg-dark rounded overflow-hidden position-relative">
+                  <img
+                    src="images/interests/comedy1.webp"
+                    class="w-100"
+                    style="height: 180px; object-fit: cover"
+                  />
+
+                  <h5 class="p-3 m-0 fw-bold text-white">Comedy</h5>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="bg-dark rounded overflow-hidden position-relative">
+                  <img
+                    src="images/interests/thiller.webp"
+                    class="w-100"
+                    style="height: 180px; object-fit: cover"
+                  />
+
+                  <h5 class="p-3 m-0 fw-bold text-white">Thriller</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-4">
+              <div class="col-lg-3 col-md-6">
+                <div class="bg-dark rounded overflow-hidden position-relative">
+                  <img
+                    src="images/interests/action.webp"
+                    class="w-100"
+                    style="height: 180px; object-fit: cover"
+                  />
+
+                  <h5 class="p-3 m-0 fw-bold text-white">Action</h5>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="bg-dark rounded overflow-hidden position-relative">
+                  <img
+                    src="images/interests/romance.webp"
+                    class="w-100"
+                    style="height: 180px; object-fit: cover"
+                  />
+
+                  <h5 class="p-3 m-0 fw-bold text-white">Romance</h5>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="bg-dark rounded overflow-hidden position-relative">
+                  <img
+                    src="images/interests/sci-fi.webp"
+                    class="w-100"
+                    style="height: 180px; object-fit: cover"
+                  />
+
+                  <h5 class="p-3 m-0 fw-bold text-white">Sci-Fi</h5>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="bg-dark rounded overflow-hidden position-relative">
+                  <img
+                    src="images/interests/animation.webp"
+                    class="w-100"
+                    style="height: 180px; object-fit: cover"
+                  />
+
+                  <h5 class="p-3 m-0 fw-bold text-white">Animation</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#interestCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#interestCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </section>
+
+    <footer class="bg-black text-white mt-5 pt-5 pb-3">
+      <div class="container text-center">
+        <button
+          class="btn btn-warning rounded-pill px-4 mb-4 fw-bold"
+          onclick="window.location.href = 'login.html'"
+        >
+          Sign in for more access
+        </button>
+
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <div class="border rounded p-3">
+              <h5 class="fw-bold mb-3">Follow IMDb on social</h5>
+              <i class="bi bi-tiktok mx-2"></i>
+              <i class="bi bi-instagram mx-2"></i>
+              <i class="bi bi-twitter-x mx-2"></i>
+              <i class="bi bi-youtube mx-2"></i>
+              <i class="bi bi-facebook mx-2"></i>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div
+              class="border rounded p-3 d-flex justify-content-between align-items-center"
+            >
+              <div>
+                <h5 class="fw-bold">Get the IMDb App</h5>
+                <p class="text-secondary">For Android and iOS</p>
+              </div>
+              <div>
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=IMDb"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 small">
+          <div class="mb-2">
+            Help · Site Index · IMDbPro · Box Office Mojo · License IMDb Data
+          </div>
+
+          <div class="mb-2">
+            Press Room · Advertising · Jobs · Conditions of Use · Privacy Policy
+          </div>
+        </div>
+
+        <div class="mt-4 text-secondary small">an amazon company</div>
+
+        <div class="text-secondary small mt-2">
+          © 1990-2026 by IMDb.com, Inc.
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#navbarContainer").load("./templates/navbar.html");
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/home.js"></script>
+  </body>
+</html>
