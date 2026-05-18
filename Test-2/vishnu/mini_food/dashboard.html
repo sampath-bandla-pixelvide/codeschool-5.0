@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>FoodExpress — Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --accent: #ff5722;
+        --accent2: #ff8a65;
+        --sidebar-w: 240px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f5f6fb;
+        margin: 0;
+      }
+
+      .sidebar {
+        width: var(--sidebar-w);
+        min-height: 100vh;
+        background: linear-gradient(
+          160deg,
+          #1a1a2e 0%,
+          #16213e 60%,
+          #0f3460 100%
+        );
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1040;
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s;
+      }
+      .sidebar-brand {
+        padding: 22px 20px 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .sidebar-brand .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--accent);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 16px;
+      }
+      .sidebar-brand .logo-text {
+        font-weight: 700;
+        font-size: 1rem;
+        color: #fff;
+      }
+      .sidebar-brand .logo-text span {
+        color: var(--accent2);
+      }
+
+      .sidebar-nav {
+        padding: 16px 0;
+        flex: 1;
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 20px;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 13.5px;
+        font-weight: 500;
+        border-radius: 0;
+        transition: 0.2s;
+        cursor: pointer;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+      }
+      .nav-link i {
+        width: 18px;
+        text-align: center;
+        font-size: 15px;
+      }
+      .nav-link:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .nav-link.active {
+        color: #fff;
+        background: rgba(255, 87, 34, 0.25);
+        border-right: 3px solid var(--accent);
+      }
+
+      .sidebar-user {
+        padding: 14px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .user-avatar-sm {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .user-info-sm .name {
+        font-size: 12px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .user-info-sm .role {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .main-content {
+        margin-left: var(--sidebar-w);
+        min-height: 100vh;
+      }
+      .top-bar {
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .top-bar-title {
+        font-weight: 700;
+        font-size: 1rem;
+        color: #1a1a2e;
+        margin: 0;
+      }
+      .cart-btn-top {
+        position: relative;
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        padding: 7px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .cart-count-badge {
+        background: #fff;
+        color: var(--accent);
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section {
+        display: none;
+        padding: 24px;
+      }
+      .section.active {
+        display: block;
+      }
+
+      .article-card {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        height: 100%;
+        transition: 0.2s;
+      }
+      .article-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+      }
+      .article-card .art-img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .article-card .art-body {
+        padding: 14px;
+      }
+      .article-card .art-tag {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--accent);
+        margin-bottom: 4px;
+      }
+      .article-card .art-title {
+        font-weight: 700;
+        font-size: 14px;
+        color: #1a1a2e;
+        margin-bottom: 6px;
+        line-height: 1.4;
+      }
+      .article-card .art-text {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .stat-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .stat-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+      .stat-val {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #1a1a2e;
+      }
+      .stat-lbl {
+        font-size: 11px;
+        color: #999;
+      }
+
+      .cat-card {
+        background: #fff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+        cursor: pointer;
+        transition: 0.2s;
+        text-align: center;
+        padding-bottom: 12px;
+        height: 100%;
+      }
+      .cat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+      .cat-card .cat-media {
+        overflow: hidden;
+      }
+      .cat-card .cat-media img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .cat-card .cat-placeholder {
+        width: 100%;
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, #ff8a65, #ff5722);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 3rem;
+      }
+      .cat-card .cat-name {
+        font-weight: 700;
+        font-size: 14px;
+        margin-top: 12px;
+        color: #1a1a2e;
+        padding: 0 10px;
+      }
+
+      .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .search-box {
+        position: relative;
+        flex: 1;
+        min-width: 200px;
+      }
+      .search-box input {
+        border-radius: 50px;
+        padding-left: 36px;
+        border: 1px solid #ddd;
+        font-size: 13px;
+        height: 38px;
+        width: 100%;
+      }
+      .search-box i {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #aaa;
+      }
+      .veg-toggle {
+        display: flex;
+        gap: 6px;
+      }
+      .veg-toggle button {
+        border-radius: 50px;
+        padding: 4px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        border: 2px solid;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.2s;
+      }
+      .veg-toggle .vbtn {
+        border-color: #28a745;
+        color: #28a745;
+      }
+      .veg-toggle .vbtn.active {
+        background: #28a745;
+        color: #fff;
+      }
+      .veg-toggle .nvbtn {
+        border-color: #dc3545;
+        color: #dc3545;
+      }
+      .veg-toggle .nvbtn.active {
+        background: #dc3545;
+        color: #fff;
+      }
+
+      .food-card {
+        border: none;
+        border-radius: 14px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+        transition: 0.2s;
+        overflow: hidden;
+        height: 100%;
+      }
+      .food-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+      .food-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .food-card .card-body {
+        padding: 12px 14px;
+      }
+      .veg-dot {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        margin-right: 4px;
+        flex-shrink: 0;
+      }
+      .veg-dot.g {
+        background: #28a745;
+      }
+      .veg-dot.r {
+        background: #dc3545;
+      }
+      .price-tag {
+        font-weight: 700;
+        color: var(--accent);
+        font-size: 0.95rem;
+      }
+      .add-btn {
+        background: var(--accent);
+        border: none;
+        color: #fff;
+        border-radius: 8px;
+        padding: 5px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .add-btn:hover {
+        background: #e64a19;
+      }
+      .qty-ctrl {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .qty-ctrl button {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 2px solid var(--accent);
+        background: #fff;
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .qty-ctrl button:hover {
+        background: var(--accent);
+        color: #fff;
+      }
+      .qty-ctrl span {
+        font-weight: 700;
+        font-size: 13px;
+        min-width: 18px;
+        text-align: center;
+      }
+
+      .order-card {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+      .order-badge {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 50px;
+      }
+      .order-item-row {
+        font-size: 12px;
+        color: #555;
+        padding: 3px 0;
+        border-bottom: 1px dashed #eee;
+      }
+      .order-item-row:last-child {
+        border: none;
+      }
+
+      .offcanvas-header {
+        background: linear-gradient(135deg, #ff5722, #ff8a65);
+        color: #fff;
+      }
+      .offcanvas-header .btn-close {
+        filter: invert(1);
+      }
+      .cart-item {
+        border-bottom: 1px solid #f5f5f5;
+        padding: 10px 0;
+      }
+      .empty-cart-msg {
+        text-align: center;
+        color: #ccc;
+        padding: 50px 0;
+      }
+
+      .sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1039;
+      }
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #1a1a2e;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          left: calc(-1 * var(--sidebar-w));
+        }
+        .sidebar.open {
+          left: 0;
+        }
+        .sidebar-overlay.show {
+          display: block;
+        }
+        .main-content {
+          margin-left: 0;
+        }
+        .hamburger {
+          display: block;
+        }
+      }
+
+      .section-title {
+        font-weight: 700;
+        font-size: 1rem;
+        color: #1a1a2e;
+        margin-bottom: 16px;
+      }
+      .welcome-banner {
+        background: linear-gradient(135deg, #ff5722, #ff8a65);
+        border-radius: 16px;
+        padding: 24px;
+        color: #fff;
+        margin-bottom: 24px;
+      }
+      .welcome-banner h5 {
+        font-weight: 700;
+        font-size: 1.15rem;
+        margin: 0 0 4px;
+      }
+      .welcome-banner p {
+        font-size: 13px;
+        margin: 0;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-icon"><i class="fa-solid fa-fire"></i></div>
+        <div class="logo-text">Food<span>Express</span></div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-link active" data-section="home">
+          <i class="fa-solid fa-house"></i> Home
+        </button>
+        <button class="nav-link" data-section="categories">
+          <i class="fa-solid fa-border-all"></i> Categories
+        </button>
+        <button class="nav-link" data-section="menu">
+          <i class="fa-solid fa-utensils"></i> Menu
+        </button>
+        <button class="nav-link" data-section="orders">
+          <i class="fa-solid fa-clock-rotate-left"></i> Order History
+        </button>
+        <button class="nav-link" data-section="settings">
+          <i class="fa-solid fa-gear"></i> Settings
+        </button>
+      </nav>
+      <div class="sidebar-user">
+        <div class="user-avatar-sm" id="sb-avatar">U</div>
+        <div class="user-info-sm">
+          <div class="name" id="sb-name">User</div>
+          <div class="role">Customer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="top-bar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="hamburger" id="hamburger-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h6 class="top-bar-title" id="page-title">Home</h6>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button
+            class="cart-btn-top"
+            id="open-cart-btn"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#cartCanvas"
+          >
+            <i class="fa-solid fa-bag-shopping"></i> Cart
+            <span class="cart-count-badge" id="cart-badge">0</span>
+          </button>
+          <button
+            class="btn btn-sm btn-outline-danger"
+            id="logout-btn"
+            title="Logout"
+          >
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="section active" id="section-home">
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: #fff3f0">
+                <i
+                  class="fa-solid fa-bag-shopping"
+                  style="color: var(--accent)"
+                ></i>
+              </div>
+              <div>
+                <div class="stat-val" id="stat-orders">—</div>
+                <div class="stat-lbl">Total Orders</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: #e8f5e9">
+                <i class="fa-solid fa-circle-check" style="color: #28a745"></i>
+              </div>
+              <div>
+                <div class="stat-val" id="stat-delivered">—</div>
+                <div class="stat-lbl">Delivered</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: #e3f2fd">
+                <i class="fa-solid fa-truck" style="color: #1976d2"></i>
+              </div>
+              <div>
+                <div class="stat-val" id="stat-active">—</div>
+                <div class="stat-lbl">Active Orders</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: #fce4ec">
+                <i
+                  class="fa-solid fa-indian-rupee-sign"
+                  style="color: #e91e63"
+                ></i>
+              </div>
+              <div>
+                <div class="stat-val" id="stat-spent">—</div>
+                <div class="stat-lbl">Total Spent</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-title">
+          <i class="fa-solid fa-newspaper me-2" style="color: var(--accent)"></i
+          >Food Facts &amp; Articles
+        </div>
+        <div class="row g-3" id="articles-grid"></div>
+      </div>
+
+      <div class="section" id="section-categories">
+        <div class="section-title">
+          <i
+            class="fa-solid fa-border-all me-2"
+            style="color: var(--accent)"
+          ></i
+          >Browse Categories
+        </div>
+        <div class="row g-3" id="cat-grid">
+          <div class="col-12 text-center text-muted py-4">Loading…</div>
+        </div>
+      </div>
+
+      <div class="section" id="section-menu">
+        <div class="filter-row">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search-input" placeholder="Search dishes…" />
+          </div>
+          <div class="veg-toggle">
+            <button class="vbtn" id="btn-veg">
+              <span class="veg-dot g"></span>Veg
+            </button>
+            <button class="nvbtn" id="btn-nveg">
+              <span class="veg-dot r"></span>Non-Veg
+            </button>
+          </div>
+        </div>
+        <div class="row g-3" id="menu-grid">
+          <div class="col-12 text-center text-muted py-4">Loading…</div>
+        </div>
+      </div>
+
+      <div class="section" id="section-orders">
+        <div class="section-title">
+          <i
+            class="fa-solid fa-clock-rotate-left me-2"
+            style="color: var(--accent)"
+          ></i
+          >Your Order History
+        </div>
+        <div id="orders-list">
+          <div class="text-center text-muted py-4">Loading…</div>
+        </div>
+      </div>
+
+      <div class="section" id="section-settings">
+        <div class="section-title">
+          <i class="fa-solid fa-gear me-2" style="color: var(--accent)"></i
+          >Settings
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+          <div class="card-body p-4">
+            <h6 class="fw-700 mb-3" style="color: #1a1a2e">
+              <i
+                class="fa-solid fa-user-pen me-2"
+                style="color: var(--accent)"
+              ></i
+              >My Profile
+            </h6>
+            <div id="profile-alert" class="alert d-none mb-3"></div>
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label fw-600" style="font-size: 12px"
+                  >Full Name</label
+                >
+                <input
+                  class="form-control form-control-sm"
+                  id="prof-name"
+                  disabled
+                  style="background: #f8f9fa"
+                />
+                <div class="form-text" style="font-size: 10px">
+                  Name cannot be changed. Contact support if needed.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-600" style="font-size: 12px"
+                  >Email</label
+                >
+                <input
+                  class="form-control form-control-sm"
+                  id="prof-email"
+                  type="email"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-600" style="font-size: 12px"
+                  >Mobile</label
+                >
+                <input
+                  class="form-control form-control-sm"
+                  id="prof-mobile"
+                  maxlength="10"
+                />
+              </div>
+              <div class="col-12">
+                <button
+                  class="btn btn-sm fw-600 px-4"
+                  style="
+                    background: var(--accent);
+                    color: #fff;
+                    border-radius: 8px;
+                  "
+                  id="save-profile-btn"
+                >
+                  <i class="fa-solid fa-floppy-disk me-1"></i>Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-700 mb-0" style="color: #1a1a2e">
+                <i
+                  class="fa-solid fa-location-dot me-2"
+                  style="color: var(--accent)"
+                ></i
+                >Saved Addresses
+              </h6>
+              <button
+                class="btn btn-sm btn-outline-secondary"
+                id="show-add-addr-btn"
+                style="font-size: 12px; border-radius: 8px"
+              >
+                <i class="fa-solid fa-plus me-1"></i>Add New
+              </button>
+            </div>
+            <div id="addr-list-wrap">
+              <div class="text-center text-muted py-3" style="font-size: 13px">
+                Loading…
+              </div>
+            </div>
+            <div
+              id="add-addr-form"
+              style="display: none"
+              class="border rounded-3 p-3 mt-3 bg-light"
+            >
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label fw-600" style="font-size: 11px"
+                    >Label</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="addr-label"
+                    placeholder="Home / Work"
+                    value="Home"
+                  />
+                </div>
+                <div class="col-6">
+                  <label class="form-label fw-600" style="font-size: 11px"
+                    >City</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="addr-city"
+                    placeholder="City"
+                  />
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-600" style="font-size: 11px"
+                    >Full Address</label
+                  >
+                  <textarea
+                    class="form-control form-control-sm"
+                    rows="2"
+                    id="addr-address"
+                    placeholder="Door no, street, area…"
+                  ></textarea>
+                </div>
+                <div class="col-6">
+                  <label class="form-label fw-600" style="font-size: 11px"
+                    >Pincode</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="addr-pincode"
+                    maxlength="10"
+                    placeholder="600001"
+                  />
+                </div>
+                <div class="col-6 d-flex align-items-end">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="addr-default"
+                    />
+                    <label
+                      class="form-check-label fw-600"
+                      style="font-size: 11px"
+                      >Set as default</label
+                    >
+                  </div>
+                </div>
+                <div class="col-12 d-flex gap-2">
+                  <button
+                    class="btn btn-sm fw-600"
+                    style="
+                      background: var(--accent);
+                      color: #fff;
+                      border-radius: 8px;
+                    "
+                    id="save-addr-btn"
+                  >
+                    <i class="fa-solid fa-floppy-disk me-1"></i>Save Address
+                  </button>
+                  <button class="btn btn-sm btn-light" id="cancel-addr-btn">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="cartCanvas"
+      style="width: 340px"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-700">
+          <i class="fa-solid fa-bag-shopping me-2"></i>Your Cart
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column p-0">
+        <div class="flex-grow-1 overflow-auto px-3 pt-2" id="cart-body">
+          <div class="empty-cart-msg">
+            <i class="fa-solid fa-bowl-food fa-3x mb-3 d-block"></i>Cart is
+            empty
+          </div>
+        </div>
+        <div
+          id="cart-footer"
+          class="px-3 pb-3 pt-2 border-top"
+          style="display: none"
+        >
+          <div
+            class="d-flex justify-content-between mb-1"
+            style="font-size: 13px"
+          >
+            <span class="text-muted">Subtotal</span
+            ><span id="cart-sub">₹0</span>
+          </div>
+          <div
+            class="d-flex justify-content-between mb-2"
+            style="font-size: 13px"
+          >
+            <span class="text-muted">Delivery</span
+            ><span id="cart-delivery">₹30</span>
+          </div>
+          <div class="d-flex justify-content-between fw-700 mb-3">
+            <span>Total</span><span id="cart-total">₹30</span>
+          </div>
+          <button
+            class="btn w-100 fw-600"
+            style="background: var(--accent); color: #fff; border-radius: 10px"
+            id="checkout-btn"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header border-0">
+            <h5 class="modal-title fw-700">Delivery Details</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body pt-0">
+            <div id="ch-alert" class="alert d-none mb-3"></div>
+            <div class="row g-2">
+              <div class="col-6">
+                <label class="form-label fw-600" style="font-size: 12px"
+                  >Full Name</label
+                >
+                <input class="form-control form-control-sm" id="ch-name" />
+              </div>
+              <div class="col-6">
+                <label class="form-label fw-600" style="font-size: 12px"
+                  >Mobile</label
+                >
+                <input class="form-control form-control-sm" id="ch-mobile" />
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-600" style="font-size: 12px">
+                  <i
+                    class="fa-solid fa-location-dot me-1"
+                    style="color: var(--accent)"
+                  ></i
+                  >Delivery Address
+                </label>
+                <div
+                  id="ch-addr-list"
+                  class="d-flex flex-column gap-2 mb-2"
+                ></div>
+                <div class="text-end">
+                  <a
+                    href="#"
+                    id="go-settings-link"
+                    style="font-size: 11px; text-decoration: none"
+                    ><i class="fa-solid fa-plus me-1"></i>Add New Address</a
+                  >
+                </div>
+                <input type="hidden" id="ch-address-id" />
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-600" style="font-size: 12px">
+                  <i
+                    class="fa-solid fa-credit-card me-1"
+                    style="color: var(--accent)"
+                  ></i
+                  >Payment Method
+                </label>
+                <select class="form-select form-select-sm" id="ch-method">
+                  <option value="cod">Cash on Delivery</option>
+                  <option value="upi">UPI</option>
+                  <option value="card">Card</option>
+                  <option value="netbanking">Net Banking</option>
+                  <option value="wallet">Wallet</option>
+                </select>
+              </div>
+              <div class="col-12" id="utr-row" style="display: none">
+                <label class="form-label fw-600" style="font-size: 12px"
+                  >UPI Transaction ID (UTR)
+                  <span class="text-danger">*</span></label
+                >
+                <input
+                  class="form-control form-control-sm"
+                  id="ch-utr"
+                  placeholder="e.g. 123456789012"
+                />
+                <div class="form-text" style="font-size: 10px">
+                  Enter the 12-digit UTR number from your UPI app after payment.
+                </div>
+              </div>
+            </div>
+            <div
+              class="mt-3 p-3 rounded"
+              style="background: #f8f9fa; font-size: 13px"
+            >
+              <div class="d-flex justify-content-between">
+                <span>Subtotal</span><span id="ch-sub"></span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Delivery</span><span id="ch-delivery">₹30</span>
+              </div>
+              <div
+                class="d-flex justify-content-between fw-700 mt-1 pt-1 border-top"
+              >
+                <span>Total</span><span id="ch-total"></span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button class="btn btn-light btn-sm" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button
+              class="btn btn-sm fw-600 px-4"
+              style="background: var(--accent); color: #fff; border-radius: 8px"
+              id="place-order-btn"
+            >
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="successModal"
+      tabindex="-1"
+      data-bs-backdrop="static"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content border-0 shadow text-center">
+          <div class="modal-body py-4 px-4">
+            <div
+              style="
+                width: 70px;
+                height: 70px;
+                background: #e8f5e9;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 16px;
+              "
+            >
+              <i class="fa-solid fa-check fa-2x" style="color: #28a745"></i>
+            </div>
+            <h6 class="fw-700 mb-1">Order Placed!</h6>
+            <p
+              class="text-muted mb-1"
+              style="font-size: 13px"
+              id="success-total"
+            ></p>
+            <p
+              class="text-muted mb-3"
+              style="font-size: 12px"
+              id="success-id"
+            ></p>
+            <button
+              class="btn btn-sm fw-600 px-4"
+              style="background: var(--accent); color: #fff; border-radius: 8px"
+              data-bs-dismiss="modal"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="scripts/dashboard.js"></script>
+  </body>
+</html>
