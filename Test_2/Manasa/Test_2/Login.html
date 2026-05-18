@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+        url("./Images/login_bg\ \(2\).jpg") no-repeat center center/cover;
+      min-height: 100vh;
+    }
+
+    .login-wrapper {
+      min-height: 100vh;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
+      padding: 30px;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-control {
+      height: 45px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 2px #4e73df;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #6f42c1, #553396);
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .form-label {
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a.small {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container login-wrapper d-flex justify-content-center align-items-center">
+    <div class="login-card">
+      <div class="text-center mb-3">
+        <h2 style="font-weight:800;color:#6f42c1">Found<span style="color:white;">IT</span></h2>
+      </div>
+      <h4 class="fw-bold mb-2 text-center">Welcome Back</h4>
+      <p class="text-light opacity-75 text-center mb-4">
+        Login to access your Lost & Found dashboard
+      </p>
+
+      <form id="loginForm">
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" />
+          <small class="text-danger" id="emailError"></small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" />
+          <small class="text-danger" id="passwordError"></small>
+        </div>
+
+        <div class="d-flex justify-content-end mb-3">
+          <a href="ForgotPassword.html" class="small">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 py-2">
+          Login
+        </button>
+      </form>
+
+      <div class="text-center mt-3">
+        <small>
+          Don't have an account?
+          <a href="./Register.html">Register</a>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./Scripts/login.js"></script>
+</body>
+
+</html>
