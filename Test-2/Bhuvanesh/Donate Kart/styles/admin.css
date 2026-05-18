@@ -1,0 +1,21 @@
+:root{
+      --clr-accent:#e57252;
+      --clr-accent-low:#f68e71;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.icon{
+    background-color:var(--clr-accent-low)
+}
+.icon:hover{
+    background-color: var(--clr-accent);
+}
+
+

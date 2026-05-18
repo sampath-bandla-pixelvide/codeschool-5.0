@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<style>
+    .sidebar{
+        scrollbar-width: thin;
+        scrollbar-color:#8c8c8c #000000;
+    }
+.sidebar-width{
+      width : 30px;
+    }
+
+</style>
+<body>
+ <div class="sidebar position-fixed z-2 bg-black " style="height: calc(100vh - 60px); overflow-y:auto;max-width:250px;flex-grow: 1;">
+  <div class=" d-flex flex-column d-none on-toggle">
+                         
+                <a class="nav-link active rounded-3 px-md-1 py-md-3" aria-current="page" href="" id="home">
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-center text-white"
+                  >
+                      <div
+                        style="
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          fill: currentcolor;
+                        "
+                        class="p-0 d-flex justify-content-center"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          focusable="false"
+                          aria-hidden="true"
+                          style="
+                            pointer-events: none;
+                            display: inherit;
+                            width: 100%;
+                            height: 100%;
+                          "
+                        >
+                          <path
+                            d="m11.485 2.143-8 4.8-2 1.2a1 1 0 001.03 1.714L3 9.567V20a2 2 0 002 2h5v-8h4v8h5a2 2 0 002-2V9.567l.485.29a1 1 0 001.03-1.714l-2-1.2-8-4.8a1 1 0 00-1.03 0Z"
+                          ></path>
+                        </svg>
+                      </div>
+                    <div class="" style="font-size: x-small;">
+                      <span>Home</span>
+                    </div>
+                  </div>
+                </a>
+          
+              
+                <a class="nav-link rounded-3 px-md-1 py-md-3" href="#" id="#shorts">
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-center text-white"
+                  >
+                      <div
+                        style="
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          fill: currentcolor;
+                        "
+                        class="p-0 d-flex justify-content-center"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          focusable="false"
+                          aria-hidden="true"
+                          style="
+                            pointer-events: none;
+                            display: inherit;
+                            width: 100%;
+                            height: 100%;
+                          "
+                        >
+                          <path
+                            d="m13.467 1.19-8 4.7a5 5 0 00-.255 8.46 5 5 0 005.32 8.462l8-4.7a5 5 0 00.258-8.462 5 5 0 001.641-6.464l-.12-.217a5 5 0 00-6.844-1.78m5.12 2.79a2.999 2.999 0 01-1.067 4.107l-1.327.78a1 1 0 00.096 1.775l.943.423a3 3 0 01.288 5.323l-8 4.7a3 3 0 01-3.039-5.173l1.327-.78a1 1 0 00-.097-1.775l-.942-.423a3 3 0 01-.288-5.323l8-4.7a3 3 0 014.106 1.066ZM15 12l-5-3v6l5-3Z"
+                          ></path>
+                        </svg>
+                      </div>
+                    <div class="p-0" style="font-size: x-small;">
+                      <span>Shorts</span>
+                    </div>
+                  </div>
+                </a>
+              
+              
+                <a class="nav-link rounded-3 px-md-1 py-md-3" href="#">
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-center text-white"
+                  >
+                      <div
+                        style="
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          fill: currentcolor;
+                        "
+                          class="p-0 d-flex justify-content-center"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          focusable="false"
+                          aria-hidden="true"
+                          style="
+                            pointer-events: none;
+                            display: inherit;
+                            width: 100%;
+                            height: 100%;
+                          "
+                        >
+                          <path
+                            d="M18 1H6a2 2 0 00-2 2h16a2 2 0 00-2-2Zm3 4H3a2 2 0 00-2 2v13a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2ZM3 20V7h18v13H3Zm13-6.5L10 10v7l6-3.5Z"
+                          ></path>
+                        </svg>
+                      </div>
+                    <div class="p-0 ms-1" style="font-size: x-small;">
+                      <span>Subscriptions</span>
+                    </div>
+                  </div>
+                </a>
+              
+             
+                <a class="nav-link rounded-3 px-md-1 py-md-3" href="#">
+                  <div
+                    class="d-flex flex-column align-items-center justify-content-center text-white"
+                  >
+                      <div
+                        style="
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          fill: currentcolor;
+                        "
+                          class="p-0 d-flex justify-content-center"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          focusable="false"
+                          aria-hidden="true"
+                          style="
+                            pointer-events: none;
+                            display: inherit;
+                            width: 100%;
+                            height: 100%;
+                          "
+                        >
+                          <path
+                            d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 016.447 15.276 7 7 0 00-12.895 0A9 9 0 0112 3Zm0 2a4 4 0 100 8 4 4 0 000-8Zm0 2a2 2 0 110 4 2 2 0 010-4Zm-.1 9.001L11.899 16a5 5 0 014.904 3.61A8.96 8.96 0 0112 21a8.96 8.96 0 01-4.804-1.391 5 5 0 014.704-3.608Z"
+                          ></path>
+                        </svg>
+                      </div>
+                    <div class="p-0" style="font-size: x-small;">
+                      <span>You</span>
+                    </div>
+                  </div>
+                </a>
+                      </div>            
+  <div class="d-flex flex-column">                    
+            <ul class="nav ps-1 flex-column sidebar-toggle">
+              <li class="nav-item">
+                <a class="nav-link active rounded-3" aria-current="page" href="" id="home">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div>
+                      <div
+                        style="
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          fill: currentcolor;
+                        "
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          focusable="false"
+                          aria-hidden="true"
+                          style="
+                            pointer-events: none;
+                            display: inherit;
+                            width: 100%;
+                            height: 100%;
+                          "
+                        >
+                          <path
+                            d="m11.485 2.143-8 4.8-2 1.2a1 1 0 001.03 1.714L3 9.567V20a2 2 0 002 2h5v-8h4v8h5a2 2 0 002-2V9.567l.485.29a1 1 0 001.03-1.714l-2-1.2-8-4.8a1 1 0 00-1.03 0Z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span class="sidebar-toggle">Home</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-3" href="#" id="#shorts">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div>
+                      <div
+                        style="
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          fill: currentcolor;
+                        "
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          focusable="false"
+                          aria-hidden="true"
+                          style="
+                            pointer-events: none;
+                            display: inherit;
+                            width: 100%;
+                            height: 100%;
+                          "
+                        >
+                          <path
+                            d="m13.467 1.19-8 4.7a5 5 0 00-.255 8.46 5 5 0 005.32 8.462l8-4.7a5 5 0 00.258-8.462 5 5 0 001.641-6.464l-.12-.217a5 5 0 00-6.844-1.78m5.12 2.79a2.999 2.999 0 01-1.067 4.107l-1.327.78a1 1 0 00.096 1.775l.943.423a3 3 0 01.288 5.323l-8 4.7a3 3 0 01-3.039-5.173l1.327-.78a1 1 0 00-.097-1.775l-.942-.423a3 3 0 01-.288-5.323l8-4.7a3 3 0 014.106 1.066ZM15 12l-5-3v6l5-3Z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span class = "sidebar-toggle">Shorts</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-3 collapsed" href="#">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div>
+                      <div
+                        style="
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          fill: currentcolor;
+                        "
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          focusable="false"
+                          aria-hidden="true"
+                          style="
+                            pointer-events: none;
+                            display: inherit;
+                            width: 100%;
+                            height: 100%;
+                          "
+                        >
+                          <path
+                            d="M18 1H6a2 2 0 00-2 2h16a2 2 0 00-2-2Zm3 4H3a2 2 0 00-2 2v13a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2ZM3 20V7h18v13H3Zm13-6.5L10 10v7l6-3.5Z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span class = "sidebar-toggle">Subscriptions</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-3" aria-current="page" href="#">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div>
+                      <div
+                        style="
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          fill: currentcolor;
+                        "
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          focusable="false"
+                          aria-hidden="true"
+                          style="
+                            pointer-events: none;
+                            display: inherit;
+                            width: 100%;
+                            height: 100%;
+                          "
+                        >
+                          <path
+                            d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 016.447 15.276 7 7 0 00-12.895 0A9 9 0 0112 3Zm0 2a4 4 0 100 8 4 4 0 000-8Zm0 2a2 2 0 110 4 2 2 0 010-4Zm-.1 9.001L11.899 16a5 5 0 014.904 3.61A8.96 8.96 0 0112 21a8.96 8.96 0 01-4.804-1.391 5 5 0 014.704-3.608Z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span class = "sidebar-toggle">You</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link active rounded-3 sidebar-toggle " aria-current="page" href="#">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white "
+                  >
+                    <div>
+                      <div
+                        style="
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          fill: currentcolor;
+                        "
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          focusable="false"
+                          aria-hidden="true"
+                          style="
+                            pointer-events: none;
+                            display: inherit;
+                            width: 100%;
+                            height: 100%;
+                          "
+                        >
+                          <path
+                            d="M8.76 1.487a11 11 0 11-7.54 12.706 1 1 0 011.96-.4 9 9 0 0014.254 5.38A9 9 0 0016.79 4.38 9 9 0 004.518 7H7a1 1 0 010 2H1V3a1 1 0 012 0v2.678a11 11 0 015.76-4.192ZM12 6a1 1 0 00-1 1v5.58l.504.288 3.5 2a1 1 0 10.992-1.736L13 11.42V7a1 1 0 00-1-1Z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span class = "sidebar-toggle">History</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="sidebar-signIn sidebar-toggle">
+              <hr style="border: 1px solid #303030" />
+            <div class="d-flex flex-column justify-content-start sidebar-toggle">
+              <p class="ms-3 text-white text-start">
+                Sign in to like videos, comment and subscribe.
+              </p>
+              <div class="d-flex align-items-center ms-4">
+            <button
+              class="btn d-flex align-items-center btn-outline-primary text-white border rounded-pill me-3 signInBtn sidebar-toggle">
+              <div class="rounded-circle fs-5 border text-white me-1">
+                <i class="text-white p-1 fw-bolder bi-person"></i>
+              </div>
+              Sign in
+            </button>
+             
+            </div>
+            <hr style="border: 1px solid #303030" />
+            </div>
+</div>
+           
+            <h6 class="ms-3 mt-3 text-white sidebar-toggle">Explore</h6>
+            <ul class="nav flex-column sidebar-toggle">
+              <li class="nav-item">
+                <a class="nav-link active rounded-3" aria-current="page" href="#">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M16 6h4a2 2 0 012 2v10a4 4 0 01-4 4H6a4 4 0 01-4-4V8a2 2 0 012-2h4V4.344l.005-.048C8.195 2.32 10.039 1 12 1c1.96 0 3.805 1.32 3.995 3.296l.005.048V6Zm-6 0h4V4.447C13.906 3.732 13.149 3 12 3s-1.906.732-2 1.447V6ZM4 18a2 2 0 002 2h12a2 2 0 002-2V8H4v10Zm11-9a1 1 0 00-1 1v.553c-.094.715-.851 1.447-2 1.447s-1.906-.732-2-1.447V10a1 1 0 00-2 0v.656l.005.048C8.195 12.68 10.04 14 12 14c1.961 0 3.805-1.32 3.995-3.296l.005-.048V10a1 1 0 00-1-1Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Shopping</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-3" href="#">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M12.514 1.909A1 1 0 0011 2.766v10.992a4.5 4.5 0 102 3.742V9.2l5.485 3.291A1 1 0 0020 11.634V6.966a1 1 0 00-.485-.857l-7-4.2h-.001Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Music</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-3" href="#">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M20 3H4a3 3 0 00-2.587 1.485l-.001.003-.01.015-.072.133-.037.077a3.046 3.046 0 00-.264.869l-.002.011-.011.1-.005.063-.005.06A3.004 3.004 0 001 6v12a3 3 0 003 3h16a3 3 0 003-3V6a3 3 0 00-3-3ZM4 5h1.986l2 2-2 2H3v-.686L4.313 7 3.04 5.725A1 1 0 014 5Zm13.315 2-2-2h3.67l2 2-2 2h-3.67l2-2Zm-6.5 0L8.814 5h3.672l2 2-2 2H8.815l2-2ZM3 18v-7h18v7a1 1 0 01-1 1H4a1 1 0 01-1-1Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Films</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-none sidebarItems rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          clip-rule="evenodd"
+                          d="M18.364 4.224a1 1 0 011.414 0 11 11 0 010 15.557 1 1 0 01-1.414-1.414 9 9 0 000-12.729 1 1 0 010-1.414ZM4.222 4.222a1 1 0 011.414 1.415 9 9 0 000 12.728 1 1 0 11-1.414 1.414 11.002 11.002 0 010-15.557Zm3.181 3.181a1.002 1.002 0 011.415 1.415 4.503 4.503 0 00-.975 4.904c.226.545.558 1.042.975 1.46a1.001 1.001 0 01-1.415 1.414 6.502 6.502 0 010-9.193Zm7.779 0c.39-.39 1.024-.39 1.415 0a6.5 6.5 0 010 9.193 1.001 1.001 0 01-1.415-1.415 4.5 4.5 0 000-6.363 1.001 1.001 0 010-1.415ZM12 10a2 2 0 110 4 2 2 0 010-4Z"
+                          fill-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Live</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-none sidebarItems rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M15.97 2.615 12 4.998 8.03 2.615a2 2 0 00-2.06 0l-5 3A2 2 0 000 7.33v7.34a2 2 0 00.97 1.715l10 6c.634.38 1.426.38 2.06 0l10-6A1.998 1.998 0 0024 14.67V7.33a2 2 0 00-.97-1.715l-5-3a2 2 0 00-2.06 0ZM12 7.33l5-3 5 3v7.34l-10 6-10-6V7.33l5-3 5 3ZM7 7.5a1 1 0 00-1 1v1.502H4.5a1 1 0 000 2H6V13.5a1 1 0 102 0v-1.498h1.5a1 1 0 000-2H8V8.5a1 1 0 00-1-1Zm11.5 1.502a1.5 1.5 0 100 3 1.5 1.5 0 000-3Zm-4 2a1.5 1.5 0 100 3 1.5 1.5 0 000-3Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Gaming</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-none sidebarItems rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M23 17V3H1v14a4 4 0 004 4h14a4 4 0 004-4ZM3 17V5h18v12a2 2 0 01-2 2H5a2 2 0 01-2-2ZM18 7H6a1 1 0 000 2h12a1 1 0 100-2Zm0 4h-3a1 1 0 000 2h3a1 1 0 000-2Zm-7 0H6a1 1 0 00-1 1v4a1 1 0 001 1h5a1 1 0 001-1v-4a1 1 0 00-1-1Zm-4 4v-2h3v2H7Zm11 0h-3a1 1 0 000 2h3a1 1 0 000-2Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>News</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-none sidebarItems rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M17.5 1h-11A1.5 1.5 0 005 2.5V4H2a1 1 0 00-1 1v3a5 5 0 004.669 4.987 7.01 7.01 0 004.72 3.826l-2.926 4.655A1 1 0 008.31 23h7.38a1 1 0 00.847-1.532l-2.927-4.657a7.01 7.01 0 004.72-3.824A5 5 0 0023 8V5a1 1 0 00-1-1h-3V2.5A1.5 1.5 0 0017.5 1ZM7 10V3h10v7a5 5 0 11-10 0ZM3 8V6h2v4c0 .283.017.565.052.845A3 3 0 013 8Zm16 2V6h2v2a3 3 0 01-2.053 2.845c.034-.277.052-.559.053-.845Zm-8.88 11L12 18.008 13.88 21h-3.76Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Sports</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-none sidebarItems rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M11.485 2.143 1.486 8.148a1 1 0 000 1.715L5 11.968v4.957a2 2 0 00.992 1.73l5.504 3.21a1 1 0 001.008 0l5.504-3.212A2 2 0 0019 16.926V11.97l2-1.2V18a1 1 0 002 0V9a1 1 0 00-.485-.852l-10-6.005a1 1 0 00-1.03 0ZM3.944 9.005 12 4.167l8.057 4.837L12 13.834l-8.056-4.83Zm8.57 6.852L17 13.167v3.759l-5 2.917-5-2.917v-3.758l4.486 2.69a1 1 0 001.028-.001Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Courses</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-none sidebarItems rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M11.545 2.782a3.25 3.25 0 00-2.613 2.145 1 1 0 101.888.66 1.25 1.25 0 011.005-.825A1.251 1.251 0 1112 7.25a1 1 0 00-1 1v2.214l-7.56 5.04C.973 17.15 2.138 21 5.106 21h14.38c3.02 0 4.147-3.957 1.582-5.55L13 10.444V9.092a3.25 3.25 0 00-1.455-6.31ZM4.55 17.168l7.468-4.98 7.994 4.962c.855.53.478 1.85-.528 1.85H5.104c-.99 0-1.377-1.283-.554-1.832Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Fashion&beauty</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-none sidebarItems rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M12 1a10 10 0 00-8.66 15 1 1 0 001.732-1 8 8 0 1113.856 0 1 1 0 001.732 1A10 10 0 0012 1Zm0 5a4 4 0 00-4 4v4a4 4 0 003 3.874V20h-1a1 1 0 000 2h4a1 1 0 000-2h-1v-2.126A4 4 0 0016 14v-4a4 4 0 00-4-4Zm0 2a2 2 0 012 2v4a2 2 0 01-4 0v-4a2 2 0 012-2Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Podcasts</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-none sidebarItems rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M12 1a3 3 0 100 6 3 3 0 000-6Zm8 0a3 3 0 100 6 3 3 0 000-6ZM5.556 1C4.92 1 4.355 1.295 4 1.75A1.97 1.97 0 002.444 1C1.37 1 .5 1.839.5 2.875.5 5.263 3.976 6.988 4 7c.024-.012 3.5-1.737 3.5-4.125C7.5 1.84 6.629 1 5.556 1ZM12 2.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5Zm8 0a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5Zm-5 7.5L12 8.5l-3 1.75v3.5l3 1.75 3-1.75v-3.5ZM4 9a3 3 0 100 6 3 3 0 000-6Zm16 0a3 3 0 100 6 3 3 0 000-6ZM4 10.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5Zm16 0a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5ZM4 17a3 3 0 100 6 3 3 0 000-6Zm8 0a3 3 0 100 6 3 3 0 000-6Zm11.5 2.4L21.75 17h-3.5l-1.75 2.4L20 23l3.5-3.6ZM4 18.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5Zm8 0a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Playables</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-3" id="sidetoggleBtn" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white "
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="M18.707 8.793a1 1 0 00-1.414 0L12 14.086 6.707 8.793a1 1 0 10-1.414 1.414L12 16.914l6.707-6.707a1 1 0 000-1.414Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Show more</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <hr class = "sidebar-toggle" style="border: 1px solid #303030" />
+            <ul class="nav flex-column sidebar-toggle">
+              <li class="nav-item">
+                <a class="nav-link rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        version="1.1"
+                        x="0px"
+                        y="0px"
+                        width="24px"
+                        height="24px"
+                        viewBox="0 0 24 24"
+                        enable-background="new 0 0 24 24"
+                        xml:space="preserve"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <g>
+                          <path
+                            fill="#FF0033"
+                            d="M21.58,7.19c-0.23-0.86-0.91-1.54-1.77-1.77C18.25,5,12,5,12,5S5.75,5,4.19,5.42   C3.33,5.65,2.65,6.33,2.42,7.19C2,8.75,2,12,2,12s0,3.25,0.42,4.81c0.23,0.86,0.91,1.54,1.77,1.77C5.75,19,12,19,12,19   s6.25,0,7.81-0.42c0.86-0.23,1.54-0.91,1.77-1.77C22,15.25,22,12,22,12S22,8.75,21.58,7.19z"
+                          ></path>
+                          <polygon
+                            fill="#FFFFFF"
+                            points="10,15 15,12 10,9  "
+                          ></polygon>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Youtube Premium</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-3" href="">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        version="1.1"
+                        x="0px"
+                        y="0px"
+                        width="24px"
+                        height="24px"
+                        viewBox="0 0 24 24"
+                        enable-background="new 0 0 24 24"
+                        xml:space="preserve"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <g>
+                          <circle
+                            id="XMLID_4814__yt119"
+                            fill="#FF0033"
+                            cx="12"
+                            cy="12"
+                            r="11"
+                          ></circle>
+                          <path
+                            fill="#FFFFFF"
+                            d="M12,6.25c3.17,0,5.75,2.58,5.75,5.75s-2.58,5.75-5.75,5.75S6.25,15.17,6.25,12S8.83,6.25,12,6.25 M12,5.25   c-3.73,0-6.75,3.02-6.75,6.75s3.02,6.75,6.75,6.75s6.75-3.02,6.75-6.75S15.73,5.25,12,5.25L12,5.25z"
+                          ></path>
+                          <polygon
+                            fill="#FFFFFF"
+                            points="10,15 15,12 10,9  "
+                          ></polygon>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Youtube Music</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-3" href="#">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        version="1.1"
+                        x="0px"
+                        y="0px"
+                        width="24px"
+                        height="24px"
+                        viewBox="0 0 24 24"
+                        enable-background="new 0 0 24 24"
+                        xml:space="preserve"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <g>
+                          <g>
+                            <path
+                              fill="#FF0033"
+                              d="M22.64,13.2c-0.01-1.04-0.62-5.98-0.9-6.74c-0.19-0.5-0.58-1.4-1.31-1.95c-0.94-0.7-1.7-0.83-2.68-0.85    C17.06,3.64,6.12,5.03,4.79,5.51C3.8,5.88,3.03,6.35,2.42,6.95c-0.99,0.98-1.18,1.93-1.02,3.6c0.14,1.52,0.85,6.55,1.21,7.59    c0.39,1.15,1.11,2.03,2.3,2.16c3.62,0.39,4.48-1.6,12.9-1.58c2.55,0.01,3.82-1.11,4.35-2.08C22.77,15.49,22.65,13.99,22.64,13.2z"
+                            ></path>
+                            <path
+                              fill="#212121"
+                              d="M17.47,4.04C17.47,4.04,17.48,4.04,17.47,4.04c0.94,0.02,1.67,0.14,2.56,0.81    c0.7,0.53,1.08,1.39,1.25,1.86c0.28,0.73,0.85,5.44,0.86,6.43c0.01,0.76,0.12,2.19-0.47,3.28c-0.5,0.92-1.71,1.98-4.13,1.98    c-0.01,0-0.01,0-0.02,0c-0.04,0-0.07,0-0.11,0c-7.23,0-8.55,1.56-11.33,1.56c-0.27,0-0.56-0.02-0.87-0.05    c-1.13-0.12-1.82-0.96-2.19-2.06c-0.34-0.99-1.01-5.79-1.15-7.24c-0.15-1.6,0.03-2.51,0.98-3.44c0.58-0.57,1.32-1.02,2.27-1.37    C6.38,5.35,16.73,4.04,17.47,4.04 M17.47,3.2c-0.47,0-3.53,0.37-6.09,0.72C8.82,4.27,5.6,4.75,4.84,5.03    c-1.06,0.39-1.9,0.9-2.56,1.56C1.05,7.8,0.9,9.06,1.05,10.7c0.12,1.27,0.8,6.28,1.19,7.43c0.53,1.55,1.55,2.48,2.89,2.62    c0.33,0.04,0.64,0.05,0.96,0.05c1.17,0,2.1-0.25,3.18-0.54c1.69-0.45,3.8-1.02,8.15-1.02l0.11,0l0.02,0    c1.07,0,3.68-0.24,4.86-2.42c0.63-1.17,0.6-2.59,0.58-3.43c0-0.09,0-0.18-0.01-0.26c-0.01-1.01-0.59-5.85-0.92-6.72    c-0.38-1-0.89-1.75-1.53-2.23c-1.05-0.79-1.94-0.96-3.04-0.98l-0.01,0L17.47,3.2L17.47,3.2z"
+                            ></path>
+                          </g>
+                          <g>
+                            <path
+                              fill="#FFFFFF"
+                              d="M15.28,11.85c-0.03,0.02-0.05,0.03-0.08,0.05c-0.21,0.14-0.42,0.28-0.63,0.43    c-0.49,0.33-3.33,2.26-3.33,2.26c-0.24,0.18-0.7,0.47-0.87,0.38c-0.17-0.09-0.23-0.72-0.27-1.02l-0.01-0.07    c-0.05-0.36-0.46-3.83-0.51-4.21C9.56,9.56,9.5,9.17,9.62,9.08c0.13-0.1,0.47,0.01,0.58,0.05c0.66,0.21,3.93,1.35,4.95,1.86    c0.03,0.02,0.06,0.03,0.1,0.04c0.15,0.06,0.35,0.15,0.35,0.39C15.6,11.65,15.42,11.76,15.28,11.85z"
+                            ></path>
+                            <path
+                              fill="#212121"
+                              d="M10.04,9.59c1.14,0.38,3.77,1.32,5.01,1.87c-0.15,0.1-0.3,0.2-0.45,0.3c-0.58,0.39-3.94,2.68-3.94,2.68    l-0.02,0.01l-0.02,0.01c0,0,0,0,0,0c0-0.03-0.01-0.05-0.01-0.07l-0.02-0.13l-0.01-0.08c-0.04-0.31-0.31-2.58-0.48-3.94    C10.08,9.98,10.06,9.76,10.04,9.59 M9.4,8.56c-0.07,0-0.14,0.01-0.18,0.05c-0.15,0.11-0.07,0.58-0.05,0.7    c0.05,0.45,0.54,4.56,0.6,4.99l0.01,0.08c0.05,0.36,0.12,1.1,0.33,1.21c0.03,0.01,0.06,0.02,0.1,0.02c0.25,0,0.68-0.28,0.93-0.47    c0,0,3.36-2.29,3.94-2.68c0.25-0.17,0.5-0.34,0.75-0.51c0.03-0.02,0.06-0.04,0.1-0.06c0.17-0.1,0.38-0.23,0.38-0.5    c-0.01-0.29-0.24-0.39-0.41-0.46c-0.04-0.02-0.08-0.03-0.11-0.05c-1.21-0.61-5.09-1.96-5.87-2.21C9.8,8.63,9.58,8.56,9.4,8.56    L9.4,8.56z"
+                            ></path>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Youtube Kids</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <hr class = "sidebar-toggle" style="border: 1px solid #303030" />
+            <ul class="nav flex-column sidebar-toggle">
+              <li class="nav-item">
+                <a class="nav-link rounded-3" href="#">
+                  <div
+                    class="d-flex align-items-center justify-content-start text-white"
+                  >
+                    <div
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        fill: currentcolor;
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        focusable="false"
+                        aria-hidden="true"
+                        style="
+                          pointer-events: none;
+                          display: inherit;
+                          width: 100%;
+                          height: 100%;
+                        "
+                      >
+                        <path
+                          d="m4 2.999-.146.073A1.55 1.55 0 003 4.454v16.545a1 1 0 102 0v-6.491a7.26 7.26 0 016.248.115l.752.376a8.94 8.94 0 008 0l.145-.073c.524-.262.855-.797.855-1.382V4.458a1.21 1.21 0 00-1.752-1.083 7.26 7.26 0 01-6.496 0L12 2.999a8.94 8.94 0 00-8 0Zm7.105 1.79v-.002l.752.376A9.26 9.26 0 0019 5.641v7.62a6.95 6.95 0 01-6.105-.052l-.752-.376A9.261 9.261 0 005 12.355v-7.62a6.94 6.94 0 016.105.054Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="ms-3 fw-medium">
+                      <span>Report history</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <hr class = "sidebar-toggle" style="border: 1px solid #303030" />
+            <div class="d-flex flex-column justify-content-start sidebar-toggle">
+              <p class="ms-4 mb-1 small fw-medium " style="color:#a6a6a6;">About Press Copy right <br>Contact us Creator Advertise Developers</p>
+              <p class="ms-4 mb-1 small fw-medium " style="color:#a6a6a6;">Terms Privacy Policy & Safety How YouTube works<br> Test new features</p>
+              <p class="ms-4 text-muted small">© 2026 Google LLC</p>
+            </div>
+                 </div>
+             </div>
+   
+
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
