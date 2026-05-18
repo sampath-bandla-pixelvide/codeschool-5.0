@@ -1,0 +1,84 @@
+<div class="container-fluid p-3 p-md-4">
+  <div class="card border-0 shadow-sm">
+    <div class="card-body text-center">
+      <div
+        class="rounded-circle text-white d-flex align-items-center justify-content-center mx-auto mb-3"
+        id="profileAvatar"
+        style="width: 90px; height: 90px; font-size: 2rem;background:#D45E20;"
+      ></div>
+
+      <h4 class="fw-bold mb-1" id="profileName"></h4>
+
+      <p class="text-muted mb-4" id="profileRole"></p>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="border rounded p-3">
+            <small class="text-muted d-block"> Email </small>
+
+            <div class="fw-semibold" id="profileEmail"></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="border rounded p-3">
+            <small class="text-muted d-block" id="profileLabel"> </small>
+
+            <div class="fw-semibold" id="profileTotal"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card border-0 shadow-sm mt-4">
+
+  <div class="card-body">
+
+    <h5 class="fw-bold mb-4">
+      Change Password
+    </h5>
+
+    <form id="changePasswordForm">
+
+      <div class="mb-3">
+        <label class="form-label">
+          Current Password
+        </label>
+
+        <input type="password"
+               class="form-control"
+               name="current_password">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">
+          New Password
+        </label>
+
+        <input type="password"
+               class="form-control"
+               name="new_password">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">
+          Confirm Password
+        </label>
+
+        <input type="password"
+               class="form-control"
+               name="confirm_password">
+      </div>
+
+      <button class="btn text-white"
+              style="background:#D45E20;">
+        Change Password
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+</div>
+

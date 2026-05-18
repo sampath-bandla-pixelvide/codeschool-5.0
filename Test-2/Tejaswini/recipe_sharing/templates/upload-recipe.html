@@ -1,0 +1,48 @@
+<div class="container-fluid p-3 p-md-4">
+  <div class="card border-0 shadow-sm">
+    <div class="card-body">
+      <h4 class="fw-bold mb-4">Upload Recipe</h4>
+
+      <form id="uploadRecipeForm">
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Title</label>
+          <input type="text" class="form-control" name="title" placeholder="Enter recipe title" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Description</label>
+          <textarea class="form-control" rows="3" name="description" placeholder="Enter recipe description"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Ingredients</label>
+          <textarea class="form-control" rows="4" name="ingredient" placeholder="Enter ingredients"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Steps</label>
+          <textarea class="form-control" rows="5" name="steps" placeholder="Enter cooking steps"></textarea>
+        </div>
+
+        <!-- Image Upload Section -->
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Recipe Images</label>
+
+          <div id="imageInputs">
+            <div class="d-flex gap-2 mb-2 image-row">
+              <input type="file" name="images[]" class="form-control" accept="image/*">
+              <button type="button" class="btn btn-success addImageBtn">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary px-4">
+          Upload Recipe
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>
