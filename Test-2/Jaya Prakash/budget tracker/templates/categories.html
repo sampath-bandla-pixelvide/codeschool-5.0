@@ -1,0 +1,57 @@
+<!-- add Category modal -->
+<div class="modal fade" id="addCategoryModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Category</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="CategoryNameInput"
+            placeholder="Category Name"
+          />
+          <label>Category Name</label>
+          <small class="text-danger d-none" id="CategoryNameError"
+            >Invalid Category name</small
+          >
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button class="btn btn-dark" id="saveCategoryBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="w-100 d-flex justify-content-end">
+  <button
+    class="btn btn-primary mb-3"
+    id="addCategoryBtn"
+    data-bs-toggle="modal"
+    data-bs-target="#addCategoryModal"
+  >
+    <i class="bi bi-plus-circle pe-1"></i>
+    Add Category
+  </button>
+</div>
+<table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Category Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="categoryTable">
+    <td colspan="3" class="">No Categories Found</td>
+  </tbody>
+</table>

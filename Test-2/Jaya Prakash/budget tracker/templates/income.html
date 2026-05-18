@@ -1,0 +1,74 @@
+<!-- Modal -->
+
+<div class="modal fade" id="addIncomeModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Income</h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label"> Amount </label>
+
+          <input
+            type="number"
+            id="incomeAmount"
+            class="form-control"
+            placeholder="Enter amount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"> Income Date </label>
+
+          <input type="date" id="incomeDate" class="form-control" />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        <button class="btn btn-dark" id="saveIncomeBtn">Save Income</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Income</h4>
+
+    <button
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#addIncomeModal"
+    >
+      <i class="bi bi-plus-circle pe-1"></i>
+      Add Income
+    </button>
+  </div>
+
+  <div id="incomeTableContainer"></div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered align-middle text-center">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Amount</th>
+        <th>Income Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody id="incomeTableBody"></tbody>
+  </table>
+</div>
