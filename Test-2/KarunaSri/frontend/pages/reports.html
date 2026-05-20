@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reports & Analytics | ORR Toll</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body class="bg-light">
+    <div class="d-flex">
+      <div id="sidebar-container"></div>
+      <div class="flex-grow-1">
+        <div id="navbar-container"></div>
+
+        <div class="container-fluid px-4">
+          <div class="row g-4 mb-4">
+            <!-- Filters -->
+            <div class="col-12">
+              <div class="card p-4">
+                <form id="filterForm" class="row g-3 align-items-end">
+                  <div class="col-md-3">
+                    <label class="form-label small fw-bold">Select Date</label>
+                    <input
+                      type="date"
+                      id="reportDate"
+                      class="form-control"
+                      value="${new Date().toISOString().split('T')[0]}"
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <button
+                      type="button"
+                      id="refreshBtn"
+                      class="btn btn-primary w-100"
+                    >
+                      <i class="bi bi-arrow-clockwise me-2"></i> Update Report
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Revenue Breakdown -->
+            <div class="col-lg-8">
+              <div class="card p-4" style="height: 350px">
+                <h5 class="fw-bold mb-4">Daily Revenue Trend</h5>
+                <canvas id="revenueChart" height="300"></canvas>
+              </div>
+            </div>
+
+            <!-- Collection Summary -->
+            <div class="col-lg-4">
+              <div class="card p-4">
+                <h5 class="fw-bold mb-4">Employee Collections</h5>
+                <div
+                  id="collectionList"
+                  class="overflow-auto"
+                  style="max-height: 300px"
+                >
+                  <!-- Loaded dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats Table -->
+            <div class="col-12">
+              <div class="card p-4">
+                <h5 class="fw-bold mb-4">System Analytics Summary</h5>
+                <div class="row g-4 text-center">
+                  <div class="col-md-3">
+                    <div class="p-3 bg-light rounded-4">
+                      <div class="text-muted small fw-bold">Daily Trips</div>
+                      <h3 class="fw-bold mb-0" id="statTrips">0</h3>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="p-3 bg-light rounded-4">
+                      <div class="text-muted small fw-bold">Avg. Toll/Trip</div>
+                      <h3 class="fw-bold mb-0" id="statAvg">₹0</h3>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="p-3 bg-light rounded-4">
+                      <div class="text-muted small fw-bold">Total Revenue</div>
+                      <h3 class="fw-bold mb-0 text-primary" id="statRevenue">
+                        ₹0
+                      </h3>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="p-3 bg-light rounded-4">
+                      <div class="text-muted small fw-bold">Peak Hour</div>
+                      <h3 class="fw-bold mb-0" id="statPeak">--</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/reports.js"></script>
+  </body>
+</html>
