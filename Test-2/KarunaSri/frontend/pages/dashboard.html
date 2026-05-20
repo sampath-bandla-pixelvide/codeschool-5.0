@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | ORR Toll Management System</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body class="bg-light">
+    <div class="d-flex">
+      <!-- Sidebar placeholder -->
+      <div id="sidebar-container"></div>
+
+      <!-- Page Content -->
+      <div class="flex-grow-1">
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <div class="container-fluid px-4">
+          <!-- Stats Cards -->
+          <div class="row g-4 mb-4">
+            <div class="col-md-3">
+              <div class="card p-4 border-start border-primary border-4">
+                <div class="d-flex align-items-center">
+                  <div class="bg-primary bg-opacity-10 p-3 rounded-3 me-3">
+                    <i class="bi bi-currency-dollar text-primary fs-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-muted small fw-bold text-uppercase">
+                      Total Revenue
+                    </div>
+                    <h3 class="mb-0 fw-bold" id="totalRevenue">₹0.00</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-4 border-start border-success border-4">
+                <div class="d-flex align-items-center">
+                  <div class="bg-success bg-opacity-10 p-3 rounded-3 me-3">
+                    <i class="bi bi-truck text-success fs-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-muted small fw-bold text-uppercase">
+                      Active Trips
+                    </div>
+                    <h3 class="mb-0 fw-bold" id="activeTripsCount">0</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-4 border-start border-info border-4">
+                <div class="d-flex align-items-center">
+                  <div class="bg-info bg-opacity-10 p-3 rounded-3 me-3">
+                    <i class="bi bi-check-circle text-info fs-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-muted small fw-bold text-uppercase">
+                      Daily Journeys
+                    </div>
+                    <h3 class="mb-0 fw-bold" id="dailyJourneys">0</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-4 border-start border-warning border-4">
+                <div class="d-flex align-items-center">
+                  <div class="bg-warning bg-opacity-10 p-3 rounded-3 me-3">
+                    <i class="bi bi-people text-warning fs-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-muted small fw-bold text-uppercase">
+                      Employees
+                    </div>
+                    <h3 class="mb-0 fw-bold" id="employeeCount">0</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts & Activity -->
+          <div class="row g-4 mb-4">
+            <div class="col-lg-8">
+              <div class="card p-4" style="height: 400px">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-2"
+                >
+                  <h5 class="fw-bold mb-0">Revenue Overview</h5>
+                  <select class="form-select form-select-sm w-auto">
+                    <option>Last 7 Days</option>
+                    <option>Last 30 Days</option>
+                  </select>
+                </div>
+                <canvas
+                  id="revenueChart"
+                  height="300"
+                  class="overflow-hidden"
+                ></canvas>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card p-4" style="height: 400px">
+                <h5 class="fw-bold mb-4">Traffic Analytics</h5>
+                <canvas id="trafficChart" height="300"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Trips -->
+          <div class="card p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="fw-bold mb-0">Live Active Trips</h5>
+              <a
+                href="active-trips.html"
+                class="btn btn-sm btn-light text-primary fw-bold"
+                >View All</a
+              >
+            </div>
+            <div class="table-responsive">
+              <table
+                class="table table-hover align-middle"
+                id="recentTripsTable"
+              >
+                <thead>
+                  <tr>
+                    <th>Token Number</th>
+                    <th>Vehicle Number</th>
+                    <th>Entry Plaza</th>
+                    <th>Entry Time</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Loaded dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+  </body>
+</html>
