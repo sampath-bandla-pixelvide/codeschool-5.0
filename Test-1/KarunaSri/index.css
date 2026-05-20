@@ -17,8 +17,17 @@
   color: #e97e3d;
 }
 .carousel-content1 {
-  top: 120px;
-  left: 100px;
+  top: 20%;
+  left: 10%;
+}
+
+@media (max-width: 768px) {
+  .carousel-content1 {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center;
+  }
 }
 
 .btn-ctc {

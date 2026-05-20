@@ -3,8 +3,27 @@
     <h1>Featured Products</h1>
     <div class="title-border"></div>
   </div>
-  <div class="featured-categories p-5 text-center">hello</div>
-  <div class="row row-cols-4" id="featured-products">
+  <ul class="nav nav-underline justify-content-center gap-4 mb-5 border-0">
+    <li class="nav-item">
+      <button class="nav-link cat-btn active text-dark" data-category="beauty">
+        Beauty
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link cat-btn text-muted" data-category="fragrances">
+        Fragrances
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link cat-btn text-muted" data-category="furniture">
+        Furniture
+      </button>
+    </li>
+  </ul>
+  <div
+    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+    id="featured-products"
+  >
     <!-- <div class="col">
             <div data-id="${product.id}">
               <div class="position-relative mx-2">

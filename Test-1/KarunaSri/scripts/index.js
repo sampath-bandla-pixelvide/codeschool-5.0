@@ -2,22 +2,33 @@ console.log("Hello World");
 
 let products = [];
 let catProducts = [];
-$(document).ready(function () {
-  fetchProducts();
-  //   fetchProductsByCategory();
+
+$(document).on("click", ".cat-btn", function () {
+  const category = $(this).data("category");
+  $(".cat-btn").removeClass("active text-dark").addClass("text-muted");
+  $(this).addClass("active text-dark").removeClass("text-muted");
+  fetchProductsByCategoryName(category);
 });
+
 function fetchProducts() {
+  fetchProductsByCategoryName("beauty");
+}
+
+function fetchProductsByCategoryName(category) {
   showLoading("#featured-products");
 
   $.ajax({
-    url: "https://dummyjson.com/products",
+    url: `https://dummyjson.com/products/category/${category}`,
     method: "GET",
     success: (response) => {
       const products = response.products.slice(0, 8);
       displayProducts(products);
     },
     error: () => {
-      showLoadingError("#featured-products", "Failed to load products");
+      showLoadingError(
+        "#featured-products",
+        `Failed to load ${category} products`,
+      );
     },
   });
 }
@@ -63,17 +74,28 @@ function displayProducts(products) {
   const html = products
     .map((product) => {
       const image = product.images?.[0];
+      const discount = Math.round(product.discountPercentage);
 
       return `
-      <div class="col mb-3">
-        <div data-id="${product.id}">
-          <div class="position-relative mx-2">
-            <img src="${image}" class="img-fluid" />
+      <div class="col">
+        <div class="product-card" data-id="${product.id}">
+          <div class="position-relative overflow-hidden rounded">
+            ${
+              discount > 0
+                ? `<span class="badge bg-light text-dark position-absolute top-0 start-0 m-3 shadow-sm" style="z-index: 2;">-${discount}%</span>`
+                : ""
+            }
+            <div class="bg-body-secondary p-4 d-flex align-items-center justify-content-center" style="height: 280px;">
+               <img src="${image}" class="img-fluid" style="max-height: 100%; object-fit: contain;" alt="${product.title}" />
+            </div>
+            <span class="wishlist-icon position-absolute top-0 end-0 m-3 bg-white rounded-circle d-flex align-items-center justify-content-center shadow-sm cursor-pointer" style="width: 35px; height: 35px; z-index: 2;">
+              <i class="bi bi-heart fs-5"></i>
+            </span>
           </div>
 
           <div class="text-center mt-3">
-            <h6>${product.title}</h6>
-            <span>₹${product.price}</span>
+            <h6 class="mb-1 text-dark fw-medium">${product.title}</h6>
+            <span class="text-muted small">₹${product.price.toFixed(2)}</span>
           </div>
         </div>
       </div>

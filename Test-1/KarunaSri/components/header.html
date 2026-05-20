@@ -54,38 +54,109 @@
   </nav>
 
   <!-- bottom header -->
-  <div class="container d-flex justify-content-between py-4">
-    <div>
-      <img src="./images/logo.webp" style="height: 30px" />
-    </div>
+  <div class="container py-3">
+    <div class="row align-items-center">
+      <div class="col-6 col-lg-3">
+        <img src="./images/logo.webp" style="height: 30px" />
+      </div>
 
-    <ul class="navbar-nav d-flex flex-row gap-5">
-      <li class="nav-item">
-        <a class="nav-link">Home</a>
-      </li>
+      <div class="col-lg-6 d-none d-lg-block">
+        <ul class="navbar-nav d-flex flex-row justify-content-center gap-4">
+          <li class="nav-item">
+            <a class="nav-link">Home</a>
+          </li>
 
-      <li class="nav-item">
-        <a class="nav-link">Megamenu</a>
-      </li>
+          <li class="nav-item">
+            <a class="nav-link">Products</a>
+          </li>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-          >Layouts</a
-        >
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item">Action</a></li>
-          <li><a class="dropdown-item">Another action</a></li>
+          <li class="nav-item">
+            <a class="nav-link">Megamenu</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+              >Layouts</a
+            >
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item">Action</a></li>
+              <li><a class="dropdown-item">Another action</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link">FAQs</a>
+          </li>
         </ul>
-      </li>
+      </div>
 
-      <li class="nav-item">
-        <a class="nav-link">FAQs</a>
-      </li>
-    </ul>
+      <div
+        class="col-6 col-lg-3 text-end d-flex justify-content-end gap-3 align-items-center"
+      >
+        <i class="bi bi-search fs-5"></i>
+        <i class="bi bi-cart fs-5"></i>
+        <!-- mobile menu toggle btn -->
+        <button
+          class="btn d-lg-none p-0 border-0 ms-2"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileMenu"
+        >
+          <i class="bi bi-list fs-3"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
-    <div class="d-flex gap-3">
-      <i class="bi bi-search"></i>
-      <i class="bi bi-cart"></i>
+  <!-- Offcanvas for mobile menu -->
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="mobileMenu"
+    aria-labelledby="mobileMenuLabel"
+  >
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <a class="text-decoration-none text-dark d-block py-2">Home</a>
+        </li>
+        <li class="list-group-item">
+          <a class="text-decoration-none text-dark d-block py-2">Products</a>
+        </li>
+        <li class="list-group-item">
+          <a class="text-decoration-none text-dark d-block py-2">Megamenu</a>
+        </li>
+        <li class="list-group-item">
+          <a
+            class="text-decoration-none text-dark d-block py-2"
+            data-bs-toggle="collapse"
+            href="#layoutsSubmenu"
+            >Layouts <i class="bi bi-chevron-down float-end"></i
+          ></a>
+          <div class="collapse" id="layoutsSubmenu">
+            <ul class="list-unstyled ps-3 mt-2">
+              <li class="py-1">
+                <a class="text-decoration-none text-muted">Action</a>
+              </li>
+              <li class="py-1">
+                <a class="text-decoration-none text-muted">Another action</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <a class="text-decoration-none text-dark d-block py-2">FAQs</a>
+        </li>
+      </ul>
     </div>
   </div>
 </header>

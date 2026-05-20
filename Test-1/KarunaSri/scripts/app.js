@@ -7,9 +7,13 @@ $(document).ready(function () {
   $("#modals").load("./components/auth-modal.html");
 
   // default page
-  $("#main-content").load("./pages/home.html");
-
-  $("#products").load("./pages/products.html");
+  $("#main-content").load("./pages/home.html", function () {
+    $("#products").load("./pages/products.html", function () {
+      if (typeof fetchProducts === "function") {
+        fetchProducts();
+      }
+    });
+  });
 });
 
 function updateAuthUI() {
@@ -39,11 +43,6 @@ function handleLogout() {
   }).then(() => {
     location.reload();
   });
-}
-
-// navigation loader
-function loadPage(page) {
-  $("#main-content").load(`./pages/${page}.html`);
 }
 
 function showInlineError(fieldId, message) {
