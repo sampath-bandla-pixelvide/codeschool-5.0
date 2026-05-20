@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vehicle Entry | ORR Toll</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body class="bg-light">
+    <div class="d-flex">
+      <div id="sidebar-container"></div>
+      <div class="flex-grow-1">
+        <div id="navbar-container"></div>
+
+        <div class="container-fluid px-4">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="card p-4 animate-fade-in">
+                <div class="text-center mb-4">
+                  <div
+                    class="bg-primary bg-opacity-10 p-3 d-inline-block rounded-circle mb-3"
+                  >
+                    <i class="bi bi-box-arrow-in-right text-primary fs-2"></i>
+                  </div>
+                  <h4 class="fw-bold">Register Vehicle Entry</h4>
+                  <p class="text-muted">
+                    Generate a new trip token for entering vehicle
+                  </p>
+                </div>
+
+                <form id="entryForm">
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">Vehicle Number</label>
+                    <input
+                      type="text"
+                      name="vehicle_number"
+                      class="form-control form-control-lg text-uppercase"
+                      placeholder="e.g. TS 09 EA 1234"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">Entry Plaza/Exit</label>
+                    <select
+                      name="entry_exit_id"
+                      id="exitSelect"
+                      class="form-select form-control-lg"
+                      required
+                    >
+                      <option value="">Select entry point...</option>
+                    </select>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary w-100 btn-lg py-3"
+                    id="submitBtn"
+                  >
+                    Generate Token <i class="bi bi-qr-code ms-2"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Token Success Modal -->
+    <div
+      class="modal fade"
+      id="tokenModal"
+      data-bs-backdrop="static"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg text-center p-4">
+          <div class="modal-body">
+            <div class="mb-4">
+              <i
+                class="bi bi-check-circle-fill text-success"
+                style="font-size: 4rem"
+              ></i>
+            </div>
+            <h3 class="fw-bold mb-2">Entry Registered!</h3>
+            <p class="text-muted mb-4">Trip token generated successfully</p>
+
+            <div
+              class="bg-light p-4 rounded-4 mb-4 border border-dashed border-primary"
+            >
+              <div class="small text-muted text-uppercase fw-bold mb-2">
+                Token Number
+              </div>
+              <h2 class="fw-bold text-primary mb-0" id="generatedToken">
+                ORR-2026-XXXX
+              </h2>
+            </div>
+
+            <div class="row g-3 text-start mb-4">
+              <div class="col-6">
+                <div class="small text-muted">Vehicle</div>
+                <div class="fw-bold" id="displayVehicle">-</div>
+              </div>
+              <div class="col-6">
+                <div class="small text-muted">Entry Time</div>
+                <div class="fw-bold" id="displayTime">-</div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-primary w-100 py-3"
+              data-bs-dismiss="modal"
+            >
+              Print Slip & Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/vehicle-entry.js"></script>
+  </body>
+</html>

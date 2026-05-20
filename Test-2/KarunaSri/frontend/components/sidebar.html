@@ -1,0 +1,62 @@
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h4 class="mb-0"><i class="bi bi-speedometer2 me-2"></i> ORR TOLL</h4>
+        <small class="text-white-50">Enterprise Management</small>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li class="nav-item-dashboard">
+            <a href="dashboard.html"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+        </li>
+        
+        <!-- Admin Only -->
+        <li class="admin-only">
+            <a href="employees.html"><i class="bi bi-people-fill"></i> Employees</a>
+        </li>
+        <li class="admin-only">
+            <a href="exits.html"><i class="bi bi-geo-alt-fill"></i> Exits/Plazas</a>
+        </li>
+        <li class="admin-only">
+            <a href="toll-rates.html"><i class="bi bi-currency-dollar"></i> Toll Rates</a>
+        </li>
+
+        <!-- Shared/Employee -->
+        <li>
+            <a href="vehicle-entry.html"><i class="bi bi-box-arrow-in-right"></i> Vehicle Entry</a>
+        </li>
+        <li>
+            <a href="vehicle-exit.html"><i class="bi bi-box-arrow-right"></i> Vehicle Exit</a>
+        </li>
+        <li>
+            <a href="active-trips.html"><i class="bi bi-clock-history"></i> Active Trips</a>
+        </li>
+
+        <!-- Admin Only -->
+        <li class="admin-only">
+            <a href="reports.html"><i class="bi bi-bar-chart-line-fill"></i> Reports</a>
+        </li>
+    </ul>
+
+    <div class="sidebar-footer mt-auto p-4 border-top border-secondary">
+        <button id="logoutBtn" class="btn btn-outline-danger w-100 btn-sm">
+            <i class="bi bi-power me-2"></i> Sign Out
+        </button>
+    </div>
+</nav>
+
+<script>
+    $(document).ready(function() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user && user.role !== 'admin') {
+            $('.admin-only').hide();
+        }
+        
+        // Mark active link
+        const currentPath = window.location.pathname;
+        $('#sidebar ul li a').each(function() {
+            if (currentPath.includes($(this).attr('href'))) {
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script>

@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3 px-4 mb-4">
+    <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="btn btn-light me-3">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <h5 class="mb-0 fw-bold text-dark" id="pageTitle">Dashboard</h5>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ms-auto align-items-center">
+                <li class="nav-item me-4 text-muted small d-none d-md-block">
+                    <i class="bi bi-calendar3 me-2"></i> <span id="currentDate"></span>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        <div class="avatar-circle me-2" id="userAvatar"></div>
+                        <div>
+                            <div class="fw-bold text-dark" id="userName">User Name</div>
+                            <div class="small text-muted" id="userRole">Admin</div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-3 animate-fade-in">
+                        <li><a class="dropdown-item py-2" href="#"><i class="bi bi-person me-2"></i> My Profile</a></li>
+                        <li><a class="dropdown-item py-2" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item py-2 text-danger" href="#" id="logoutBtnTop"><i class="bi bi-power me-2"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .avatar-circle {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            $('#userName').text(user.name);
+            $('#userRole').text(user.role.charAt(0).toUpperCase() + user.role.slice(1));
+            $('#userAvatar').text(user.name.charAt(0));
+        }
+
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        $('#currentDate').text(new Date().toLocaleDateString(undefined, options));
+
+        $('#logoutBtnTop').click((e) => {
+            e.preventDefault();
+            App.logout();
+        });
+
+        $('#sidebarCollapse').click(function() {
+            $('#sidebar').toggleClass('active');
+            if ($('#sidebar').hasClass('active')) {
+                $('#sidebar').css('margin-left', '-280px');
+            } else {
+                $('#sidebar').css('margin-left', '0');
+            }
+        });
+    });
+</script>

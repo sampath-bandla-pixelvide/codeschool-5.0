@@ -1,0 +1,162 @@
+<header>
+  <!-- top header -->
+  <nav class="navbar navbar-expand-lg border-bottom">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler ms-auto"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#topNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="topNavbar">
+        <ul class="navbar-nav ms-md-auto">
+          <li class="nav-item" id="login-link-item">
+            <a
+              class="nav-link"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              <i class="bi bi-person-fill"></i> Sign In
+            </a>
+          </li>
+
+          <li class="nav-item" id="register-link-item">
+            <a
+              class="nav-link"
+              data-bs-toggle="modal"
+              data-bs-target="#registerModal"
+            >
+              <i class="bi bi-lock-fill"></i> Create Account
+            </a>
+          </li>
+
+          <li class="nav-item d-none" id="logout-link-item">
+            <a class="nav-link" onclick="handleLogout()">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="bi bi-heart-fill"></i> Wishlist (0)
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link"> <i class="bi bi-recycle"></i> Compare (0) </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- bottom header -->
+  <div class="container py-3">
+    <div class="row align-items-center">
+      <div class="col-6 col-lg-3">
+        <img src="./images/logo.webp" style="height: 30px" />
+      </div>
+
+      <div class="col-lg-6 d-none d-lg-block">
+        <ul class="navbar-nav d-flex flex-row justify-content-center gap-4">
+          <li class="nav-item">
+            <a class="nav-link">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link">Products</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link">Megamenu</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+              >Layouts</a
+            >
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item">Action</a></li>
+              <li><a class="dropdown-item">Another action</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link">FAQs</a>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="col-6 col-lg-3 text-end d-flex justify-content-end gap-3 align-items-center"
+      >
+        <i class="bi bi-search fs-5"></i>
+        <i class="bi bi-cart fs-5"></i>
+        <!-- mobile menu toggle btn -->
+        <button
+          class="btn d-lg-none p-0 border-0 ms-2"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileMenu"
+        >
+          <i class="bi bi-list fs-3"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Offcanvas for mobile menu -->
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="mobileMenu"
+    aria-labelledby="mobileMenuLabel"
+  >
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <a class="text-decoration-none text-dark d-block py-2">Home</a>
+        </li>
+        <li class="list-group-item">
+          <a class="text-decoration-none text-dark d-block py-2">Products</a>
+        </li>
+        <li class="list-group-item">
+          <a class="text-decoration-none text-dark d-block py-2">Megamenu</a>
+        </li>
+        <li class="list-group-item">
+          <a
+            class="text-decoration-none text-dark d-block py-2"
+            data-bs-toggle="collapse"
+            href="#layoutsSubmenu"
+            >Layouts <i class="bi bi-chevron-down float-end"></i
+          ></a>
+          <div class="collapse" id="layoutsSubmenu">
+            <ul class="list-unstyled ps-3 mt-2">
+              <li class="py-1">
+                <a class="text-decoration-none text-muted">Action</a>
+              </li>
+              <li class="py-1">
+                <a class="text-decoration-none text-muted">Another action</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <a class="text-decoration-none text-dark d-block py-2">FAQs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
