@@ -1,0 +1,51 @@
+<div class="container mb-2" id="productDetailsContainer">
+  <div class="row justify-content-center align-items-center gap-2" style="min-height: 70vh;">
+    <!-- Image -->
+    <div class="col-md-5">
+      <img
+        id="productImage"
+        class="img-fluid rounded border"
+        height="400"
+        width="400"
+        src=""
+      />
+    </div>
+
+    <!-- Details -->
+    <div class="col-md-7 ">
+      <h3 id="productName"></h3>
+
+      <p class="text-muted" id="productCategory"></p>
+
+      <h4>₹. <span class="text-success" id="productPrice"></span> /-</h4>
+
+      <p id="productDescription"></p>
+
+      <p><strong>Stock:</strong> <span id="productStock"></span></p>
+
+      <div class="d-flex flex-column flex-md-row gap-2 align-items-center justify-content-center mb-3">
+        <div class="d-flex gap-1">
+          <button class="btn btn-outline-secondary" id="decreaseQty">-</button>
+  
+          <input
+            type="number"
+            id="quantityInput"
+            value="1"
+            min="1"
+            class="form-control text-center"
+            style="width: 60px"
+            disabled
+          />
+  
+          <button class="btn btn-outline-secondary" id="increaseQty">+</button>
+        </div>
+        <div>
+          <button class="btn btn-dark" id="addToCartBtn" >Add to Cart</button>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-success py-1 px-3 fs-5" id="buyNowBtn">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>

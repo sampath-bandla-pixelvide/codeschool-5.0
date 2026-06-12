@@ -1,0 +1,106 @@
+<!-- add product modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Product</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="productNameInput"
+            placeholder="Product Name"
+          />
+          <label>Product Name</label>
+          <small class="text-danger d-none" id="productNameError"
+            >Invalid name</small
+          >
+        </div>
+
+        <div class="form-floating mb-3">
+          <select class="form-select" id="categoryInput">
+          </select>
+          <label>Category</label>
+          <small class="text-danger d-none" id="categoryError"
+            >Select category</small
+          >
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="stockInput"
+            min="0"
+            placeholder="Stock"
+          />
+          <label>Stock</label>
+          <small class="text-danger d-none" id="stockError"
+            >Invalid stock</small
+          >
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="priceInput"
+            placeholder="Price"
+          />
+          <label>Price</label>
+          <small class="text-danger d-none" id="priceError"
+            >Invalid price</small
+          >
+        </div>
+
+        <div class="form-floating mb-3">
+          <textarea
+            class="form-control"
+            id="descriptionInput"
+            placeholder="Description"
+          ></textarea>
+          <label>Description</label>
+          <small class="text-danger d-none" id="descriptionError"
+            >Invalid description</small
+          >
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Product Image</label>
+          <input type="file" class="form-control" id="imageInput" />
+          <small class="text-danger d-none" id="imageError"
+            >Image required</small
+          >
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button class="btn btn-dark" id="saveProductBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-dark mb-3" id="addProductBtn" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Product</button>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Stock</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="productTable"></tbody>
+</table>

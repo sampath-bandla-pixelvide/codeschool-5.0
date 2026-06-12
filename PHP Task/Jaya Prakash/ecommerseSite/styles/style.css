@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.nav-hover:hover {
+  color: rgb(249, 81, 81) !important;
+}
+
+.dark-dropdown:hover {
+  color: black !important;
+}
+.bg-lightBlue {
+  background-color: rgb(21, 25, 52);
+}
+
+.footer-hover:hover {
+  color: white !important;
+}
+
+.card-hover:hover {
+  transform: scale(1.015);
+  transition: all 0.1s ease-in-out;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: black;
+  color: white;
+  position: fixed;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+}
+
+.sidebar a:hover {
+  color: rgb(249, 81, 81);
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
